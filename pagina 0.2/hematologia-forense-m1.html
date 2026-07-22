@@ -1,0 +1,1030 @@
+<!--<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hematología Forense</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #fff5f5; color: #2d1212; padding: 32px; }
+    .card { background: #fff; padding: 24px; border-radius: 10px; box-shadow: 0 2px 10px rgba(139,30,30,0.15); max-width: 800px; margin: 0 auto; }
+    h1 { color: #8b1e1e; }
+    a { color: #8b1e1e; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Hematología Forense</h1>
+    <p>La hematología forense estudia las propiedades de la sangre y su relación con los hechos criminales, como la identificación de manchas, análisis de grupos sanguíneos y reconstrucción de sucesos.</p>
+    <p>Es clave para determinar si una muestra corresponde a una lesión, una agresión o un accidente.</p>
+    <p><a href="temario.html">Volver al temario</a></p>
+  </div>
+</body>
+</html>-->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lección 1: Hematología Identificativa | El Asesino de tu Carrera</title>
+    <link rel="stylesheet" href="styles/hematologia-forense-m1.css">
+    <link rel="icon" type="image/jpeg" href="img/logo.jpeg">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="text-slate-800 min-h-screen flex flex-col selection:bg-red-600 selection:text-white">
+
+    <!-- Header / Barra de Navegación -->
+    <header class="border-b border-slate-200 bg-white/95 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-red-600 text-white p-2.5 rounded-xl shadow-md">
+                    <i class="fa-solid fa-building-columns text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="text-sm sm:text-base font-extrabold text-slate-900 tracking-tight">El asesino de tu carrera</h1>
+                    <a class="text-xs font-bold uppercase tracking-widest text-red-600" href="temario.html">Regresar al temario</a>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="hidden md:inline-block text-xs text-slate-500 font-medium">Progreso Global de la Lección:</span>
+                <div class="w-24 sm:w-36 bg-slate-100 h-2.5 rounded-full overflow-hidden border border-slate-200">
+                    <div id="lessonProgress" class="bg-gradient-to-r from-red-500 to-purple-600 h-full w-[10%] transition-all duration-500"></div>
+                </div>
+                <span class="text-xs font-bold text-red-600 bg-red-50 px-2 py-1 rounded-md" id="progressText">10%</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <!-- Tarjeta de Introducción Profesional -->
+        <div class="bg-gradient-to-br from-white via-slate-50 to-purple-50/30 border border-slate-200/80 rounded-3xl p-6 sm:p-8 shadow-forensic relative overflow-hidden">
+            <div class="absolute -right-16 -top-16 w-48 h-48 bg-purple-200/20 rounded-full blur-3xl"></div>
+            <div class="absolute -left-16 -bottom-16 w-48 h-48 bg-red-200/20 rounded-full blur-3xl"></div>
+
+            <div class="max-w-4xl relative z-10">
+                <span class="bg-red-100 text-red-700 text-xs font-extrabold px-3 py-1.5 rounded-full uppercase tracking-wider border border-red-200">
+                    Hematología Forense
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-4 text-slate-900 tracking-tight leading-tight">
+                    Lección 1: <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-purple-700">Protocolo de Hematología Identificativa</span>
+                </h2>
+                <p class="text-slate-600 mt-3 text-base sm:text-lg leading-relaxed">
+                    <br>
+                    <h3>Bienvenido investigador!!!</h3> <br> En el campo real, cometer un error en la recolección o confundir un falso positivo invalida por completo el caso ante los tribunales penales. <br>En esta sesión interactiva controlarás el instrumental
+                    de laboratorio clínico y resolverás dilemas prácticos de criminalística.
+                </p>
+                <div class="flex flex-wrap gap-3 mt-6">
+                    <span class="flex items-center space-x-1.5 text-xs text-slate-600 bg-white shadow-sm px-3.5 py-2 rounded-xl border border-slate-200">
+                        <i class="fa-solid fa-flask-vial text-cyan-500"></i>
+                        <span class="font-semibold">Mesa Quirúrgica Interactiva</span>
+                    </span>
+                    <span class="flex items-center space-x-1.5 text-xs text-slate-600 bg-white shadow-sm px-3.5 py-2 rounded-xl border border-slate-200">
+                        <i class="fa-solid fa-book-bookmark text-purple-500"></i>
+                        <span class="font-semibold">6 Píldoras de Campo</span>
+                    </span>
+                    <span class="flex items-center space-x-1.5 text-xs text-slate-600 bg-white shadow-sm px-3.5 py-2 rounded-xl border border-slate-200">
+                        <i class="fa-solid fa-stamp text-red-500"></i>
+                        <span class="font-semibold">Evaluación de 10 Casos Prácticos</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 1: LABORATORIO INTERACTIVO MULTI-PASO -->
+        <section class="space-y-6">
+            <div class="flex items-center space-x-3 border-b border-slate-200 pb-4">
+                <span class="bg-purple-100 text-purple-700 font-extrabold px-3 py-1.5 rounded-xl text-sm mono">01</span>
+                <div>
+                    <h3 class="text-xl font-extrabold text-slate-950">Mesa de Análisis Forense de Campo</h3>
+                    <p class="text-xs text-slate-500">Sigue el protocolo de cadena de custodia y análisis químico presuntivo paso a paso.</p>
+                </div>
+            </div>
+
+            <!-- Panel de Laboratorio de Dos Columnas -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+                <!-- Columna Izquierda: Simulador Visual Realista -->
+                <div class="lg:col-span-7 bg-white border border-slate-200/80 rounded-3xl p-6 shadow-forensic flex flex-col justify-between min-h-[500px] relative overflow-hidden">
+
+                    <!-- Estado superior de la muestra -->
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></span>
+                            <span id="currentSampleTitle" class="text-xs font-bold text-slate-700 mono">Indicio #A102: Mancha en azulejo de cocina</span>
+                        </div>
+                        <span class="text-xs text-slate-400 font-medium">Protocolo de Análisis</span>
+                    </div>
+
+                    <!-- Pantalla Interactiva Central del Laboratorio -->
+                    <div id="labScreen" class="flex-1 flex flex-col items-center justify-center py-8 smooth-transition relative bg-slate-50/50 rounded-2xl my-4 border border-slate-100">
+
+                        <!-- Contenedor del Hisopo/Tubo Principal -->
+                        <div id="labVisualizer" class="relative w-48 h-48 rounded-full border-4 border-slate-200 bg-white shadow-inner flex items-center justify-center smooth-transition">
+
+                            <!-- Gráfico de la Mancha -->
+                            <div id="stainAsset" class="w-20 h-20 rounded-full bg-red-800/80 blur-md smooth-transition absolute"></div>
+
+                            <!-- Gráfico del Reactivo Goteando (Simulación) -->
+                            <div id="fluidDrop" class="absolute w-4 h-4 bg-transparent rounded-full top-4 opacity-0 smooth-transition"></div>
+
+                            <!-- Herramienta visual sobrepuesta (Hisopo o Microscopio) -->
+                            <div id="overlayTool" class="absolute inset-0 flex items-center justify-center pointer-events-none"></div>
+                        </div>
+
+                        <!-- Panel de Controles Específicos de la Reacción -->
+                        <div id="reactionControls" class="mt-4 flex space-x-2 z-10">
+                            <!-- Botón de luces apagadas para Luminol -->
+                            <button id="lightSwitch" onclick="toggleLabLights()" class="hidden bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-slate-800 transition-all items-center space-x-1.5 shadow">
+                                <i class="fa-regular fa-lightbulb"></i>
+                                <span id="lightSwitchText">Apagar Luces de la Sala</span>
+                            </button>
+                            <!-- Botón para ver al microscopio en Takayama -->
+                            <button id="microscopeLensBtn" onclick="toggleMicroscopeView()" class="hidden bg-purple-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-purple-700 transition-all items-center space-x-1.5 shadow">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <span>Ver por el Ocular (Microscopio)</span>
+                            </button>
+                        </div>
+
+                        <!-- Indicación Didáctica Dinámica -->
+                        <p id="stepInstruction" class="mt-4 text-xs text-slate-500 text-center max-w-sm font-medium">
+                            Paso 1: Selecciona una muestra biológica sospechosa en la derecha para comenzar el protocolo.
+                        </p>
+                    </div>
+
+                    <!-- Bitácora de Campo de Análisis (Consola) -->
+                    <div class="bg-slate-900 text-slate-100 rounded-2xl p-4 border border-slate-800 shadow-md">
+                        <div class="flex items-center justify-between mb-1.5">
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mono">Bitácora Técnica Oficial:</span>
+                            <span class="text-[10px] bg-red-500/20 text-red-400 font-bold px-1.5 py-0.5 rounded mono">LOGS</span>
+                        </div>
+                        <p id="scientificLog" class="text-xs text-slate-300 leading-relaxed font-medium mono">
+                            [SISTEMA INICIALIZADO] Esperando selección de indicio...
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Columna Derecha: Panel de Control del Protocolo -->
+                <div class="lg:col-span-5 flex flex-col justify-between space-y-4">
+
+                    <!-- Tarjeta 1: Selección de Indicio Físico -->
+                    <div class="bg-white border border-slate-200/80 rounded-3xl p-5 shadow-forensic space-y-3">
+                        <h4 class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">Paso 1: Seleccionar Indicio</h4>
+                        <div class="grid grid-cols-1 gap-2.5">
+                            <button id="sampleBtn1" onclick="selectSample('cocina')" class="sample-btn text-left p-3.5 rounded-xl border-2 border-red-500 bg-red-50/30 hover:bg-red-50/50 transition-all flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fa-solid fa-house-chimney text-red-600"></i>
+                                    <div>
+                                        <h5 class="text-xs font-bold text-slate-900">Mancha en azulejo de cocina</h5>
+                                        <p class="text-[10px] text-slate-500">Recuperado cerca del refrigerador.</p>
+                                    </div>
+                                </div>
+                                <span class="text-[9px] bg-red-100 text-red-800 font-bold px-2 py-0.5 rounded uppercase">Seleccionado</span>
+                            </button>
+                            <button id="sampleBtn2" onclick="selectSample('alfombra')" class="sample-btn text-left p-3.5 rounded-xl border border-slate-200 hover:border-purple-300 transition-all flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fa-solid fa-rug text-purple-600"></i>
+                                    <div>
+                                        <h5 class="text-xs font-bold text-slate-900">Huella sospechosa en alfombra</h5>
+                                        <p class="text-[10px] text-slate-500">Muestra lavada y aparentemente limpia.</p>
+                                    </div>
+                                </div>
+                                <span class="text-[9px] bg-slate-100 text-slate-600 font-bold px-2 py-0.5 rounded uppercase">Inactivo</span>
+                            </button>
+                            <button id="sampleBtn3" onclick="selectSample('vegetal')" class="sample-btn text-left p-3.5 rounded-xl border border-slate-200 hover:border-purple-300 transition-all flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fa-solid fa-lemon text-amber-600"></i>
+                                    <div>
+                                        <h5 class="text-xs font-bold text-slate-900">Mancha parda en tabla de picar</h5>
+                                        <p class="text-[10px] text-slate-500">Sospecha de residuo vegetal (papa/rábano).</p>
+                                    </div>
+                                </div>
+                                <span class="text-[9px] bg-slate-100 text-slate-600 font-bold px-2 py-0.5 rounded uppercase">Inactivo</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 2: Aplicación de Reactivos y Pruebas -->
+                    <div class="bg-white border border-slate-200/80 rounded-3xl p-5 shadow-forensic space-y-3">
+                        <h4 class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">Paso 2: Aplicar Pruebas de Hematología</h4>
+                        <div class="grid grid-cols-1 gap-2">
+
+                            <!-- Kastle-Meyer -->
+                            <button onclick="runForensicTest('km')" class="w-full text-left p-3 rounded-xl border border-slate-100 bg-slate-50 hover:bg-red-50/50 hover:border-red-200 transition-all flex items-center space-x-3">
+                                <div class="bg-red-100 text-red-600 p-2.5 rounded-lg">
+                                    <i class="fa-solid fa-droplet text-sm"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h5 class="text-xs font-bold text-slate-900">Aplicar Reactivo Kastle-Meyer</h5>
+                                    <p class="text-[10px] text-slate-500">Prueba química de orientación (Fenolftaleína reducida).</p>
+                                </div>
+                            </button>
+
+                            <!-- Luminol -->
+                            <button onclick="runForensicTest('luminol')" class="w-full text-left p-3 rounded-xl border border-slate-100 bg-slate-50 hover:bg-cyan-50/50 hover:border-cyan-200 transition-all flex items-center space-x-3">
+                                <div class="bg-cyan-100 text-cyan-600 p-2.5 rounded-lg">
+                                    <i class="fa-solid fa-spray-can text-sm"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h5 class="text-xs font-bold text-slate-900">Rociar Solución de Luminol</h5>
+                                    <p class="text-[10px] text-slate-500">Prueba presuntiva para áreas amplias por quimioluminiscencia.</p>
+                                </div>
+                            </button>
+
+                            <!-- Takayama -->
+                            <button onclick="runForensicTest('takayama')" class="w-full text-left p-3 rounded-xl border border-slate-100 bg-slate-50 hover:bg-purple-50/50 hover:border-purple-200 transition-all flex items-center space-x-3">
+                                <div class="bg-purple-100 text-purple-600 p-2.5 rounded-lg">
+                                    <i class="fa-solid fa-microscope text-sm"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h5 class="text-xs font-bold text-slate-900">Ejecutar Reactivo Takayama</h5>
+                                    <p class="text-[10px] text-slate-500">Prueba de certeza para la confirmación de hemocromógeno.</p>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Botón de Limpieza General -->
+                    <button onclick="resetAdvancedLab()" class="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold uppercase tracking-wider rounded-xl border border-slate-200 transition-all flex items-center justify-center space-x-2 shadow-sm">
+                        <i class="fa-solid fa-trash-can"></i>
+                        <span>Desinfectar Mesa de Trabajo y Cambiar Instrumental</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: PÍLDORAS DE ALTA RETENCIÓN (MANUAL DIGITAL DE CAMPO) -->
+        <section class="space-y-6">
+            <div class="flex items-center space-x-3 border-b border-slate-200 pb-4">
+                <span class="bg-purple-100 text-purple-700 font-extrabold px-3 py-1.5 rounded-xl text-sm mono">02</span>
+                <div>
+                    <h3 class="text-xl font-extrabold text-slate-950">Manual de Campo: Reglas de Oro Forenses</h3>
+                    <p class="text-xs text-slate-500 font-medium">Información esencial sintetizada para el peritaje profesional sin abrumarse con teoría obsoleta.</p>
+                </div>
+            </div>
+
+            <!-- Grilla de Tarjetas Teóricas Detalladas -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Tarjeta 1: Presuntivo vs Confirmativo -->
+                <div class="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-forensic flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="flex items-center space-x-2 text-red-600">
+                            <i class="fa-solid fa-circle-exclamation text-base"></i>
+                            <h4 class="font-bold text-sm text-slate-900 uppercase">1. Orientar vs Confirmar</h4>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Las pruebas <strong>presuntivas</strong> tienen alta sensibilidad (detectan trazas microscópicas), pero baja especificidad (tienen falsos positivos). Las pruebas <strong>confirmativas</strong> garantizan científicamente al
+                            100% que la muestra es de origen hemático a nivel legal.
+                        </p>
+                    </div>
+                    <div class="mt-3 pt-3 border-t border-slate-100 text-[10px] text-purple-700 font-bold bg-purple-50 p-2 rounded-lg">
+                        ⚠️ Regla de Oro: En un juicio oral, un peritaje basado únicamente en Kastle-Meyer o Luminol es fácilmente descalificado por la defensa técnica.
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2: Fenolftaleína (Kastle-Meyer) -->
+                <div class="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-forensic flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="flex items-center space-x-2 text-purple-600">
+                            <i class="fa-solid fa-flask-vial text-base"></i>
+                            <h4 class="font-bold text-sm text-slate-900 uppercase">2. Fundamento de Kastle-Meyer</h4>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Funciona bajo una reacción de óxido-reducción. El hierro de la hemoglobina ($Fe^{2+}$) descompone el peróxido de hidrógeno ($H_2O_2$) liberando oxígeno molecular, el cual oxida la fenolftaleína reducida, cambiando instantáneamente a color <strong>rosa brillante</strong>.
+                        </p>
+                    </div>
+                    <div class="mt-3 pt-3 border-t border-slate-100 text-[10px] text-red-700 font-bold bg-red-50 p-2 rounded-lg">
+                        💡 Regla de Oro: El viraje debe ser inmediato. Si la muestra cambia a rosa después de 20 segundos, la fenolftaleína se oxidó por el aire, considerándose inválida.
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3: Química del Luminol -->
+                <div class="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-forensic flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="flex items-center space-x-2 text-cyan-600">
+                            <i class="fa-solid fa-wand-magic-sparkles text-base"></i>
+                            <h4 class="font-bold text-sm text-slate-900 uppercase">3. Luminol y Quimioluminiscencia</h4>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Al unirse con peróxido y catalizarse por el hierro hemático, el reactivo emite una luz azul fría ($3$-aminoftalato en estado excitado que regresa a su estado fundamental). Destaca en la oscuridad y revela patrones de arrastre lavados con blanqueadores
+                            comerciales.
+                        </p>
+                    </div>
+                    <div class="mt-3 pt-3 border-t border-slate-100 text-[10px] text-cyan-700 font-bold bg-cyan-50 p-2 rounded-lg">
+                        🔍 Regla de Oro: El brillo debido a cloro es fugaz e intenso; mientras que el brillo provocado por hemoglobina es constante y uniforme.
+                    </div>
+                </div>
+
+                <!-- Tarjeta 4: Pruebas Microquímicas -->
+                <div class="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-forensic flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="flex items-center space-x-2 text-amber-600">
+                            <i class="fa-solid fa-microscope text-base"></i>
+                            <h4 class="font-bold text-sm text-slate-900 uppercase">4. Certeza: Takayama vs Teichmann</h4>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            La prueba de <strong>Takayama</strong> (reactivo de piridina) genera cristales de piridina-hemocromógeno de color rosa salmón en forma de hojas bajo calor controlado. La de <strong>Teichmann</strong> genera cristales de hematina
+                            (haluro de hemina) de color marrón romboidal.
+                        </p>
+                    </div>
+                    <div class="mt-3 pt-3 border-t border-slate-100 text-[10px] text-amber-700 font-bold bg-amber-50 p-2 rounded-lg">
+                        🔬 Regla de Oro: Takayama es el método moderno preferido, puesto que requiere menos calor y funciona con sangre muy degradada u vieja.
+                    </div>
+                </div>
+
+                <!-- Tarjeta 5: Falsos Positivos Comunes -->
+                <div class="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-forensic flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="flex items-center space-x-2 text-violet-600">
+                            <i class="fa-solid fa-dna text-base"></i>
+                            <h4 class="font-bold text-sm text-slate-900 uppercase">5. Enemigos del Perito</h4>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Las peroxidasas vegetales abundan en papas, rábanos, cebollas y coliflores. En el baño, el óxido de hierro en tuberías y el blanqueador clorado también simulan la catálisis hemática, dando falsos positivos en las pruebas de orientación.
+                        </p>
+                    </div>
+                    <div class="mt-3 pt-3 border-t border-slate-100 text-[10px] text-violet-700 font-bold bg-violet-50 p-2 rounded-lg">
+                        🚫 Regla de Oro: Tratar el óxido frotando con hisopos estériles antes de reactivos puede evitar contaminaciones periciales.
+                    </div>
+                </div>
+
+                <!-- Tarjeta 6: Genética y Cadena de Custodia -->
+                <div class="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-forensic flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="flex items-center space-x-2 text-emerald-600">
+                            <i class="fa-solid fa-box-open text-base"></i>
+                            <h4 class="font-bold text-sm text-slate-900 uppercase">6. Embalaje Científico</h4>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Las muestras húmedas (como prendas ensangrentadas) deben colgarse para secar a temperatura ambiente en un rack de secado controlado. Jamás embalar en plástico sellado para evitar putrefacción fúngica y destrucción del ADN para estudios biológicos.
+                        </p>
+                    </div>
+                    <div class="mt-3 pt-3 border-t border-slate-100 text-[10px] text-emerald-700 font-bold bg-emerald-50 p-2 rounded-lg">
+                        📦 Regla de Oro: Se embala en bolsas de papel estériles o cajas de cartón limpias para garantizar la transpirabilidad celular.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: CUESTIONARIO DINÁMICO EXTENDIDO A 10 PREGUNTAS -->
+        <section class="space-y-6" id="quizContainer">
+            <div class="flex items-center space-x-3 border-b border-slate-200 pb-4">
+                <span class="bg-red-100 text-red-600 font-extrabold px-3 py-1.5 rounded-xl text-sm mono">03</span>
+                <div>
+                    <h3 class="text-xl font-extrabold text-slate-950">Examen Dinámico de Acreditación</h3>
+                    <p class="text-xs text-slate-500 font-medium">Resuelve los 10 casos prácticos reales para obtener tu dictamen aprobatorio de perito.</p>
+                </div>
+            </div>
+
+            <!-- Caja contenedora de la pregunta activa -->
+            <div id="quizContent" class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-forensic space-y-6 transition-all duration-300">
+
+                <!-- Encabezado de Pregunta -->
+                <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                    <div>
+                        <span class="text-xs font-bold text-red-600 uppercase tracking-widest mono" id="questionNumberIndicator">Caso Práctico 1 de 10</span>
+                        <h4 class="text-base sm:text-lg font-extrabold text-slate-900 mt-1" id="questionTitle">Cargando...</h4>
+                    </div>
+                    <span class="text-xs font-semibold px-2.5 py-1 bg-purple-50 text-purple-700 rounded-md border border-purple-100" id="questionDifficulty">Nivel: Inicial</span>
+                </div>
+
+                <!-- Opciones de Respuesta -->
+                <div class="grid grid-cols-1 gap-3" id="optionsContainer">
+                    <!-- Dinámico por JS -->
+                </div>
+
+                <!-- Cuadro de Retroalimentación Automatizada -->
+                <div id="feedbackBox" class="hidden rounded-2xl p-4 transition-all duration-300">
+                    <!-- Dinámico por JS -->
+                </div>
+
+                <!-- Barra de Navegación del Examen -->
+                <div class="flex items-center justify-between border-t border-slate-100 pt-4 mt-6">
+                    <span class="text-xs text-slate-500 font-semibold" id="quizPercentageText">Progreso del examen: 10%</span>
+                    <button id="nextQuestionBtn" onclick="nextQuestion()" class="hidden px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl transition-all shadow flex items-center space-x-1.5">
+                        <span>Siguiente Caso</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Panel de Resultados Globales con los 3 Botones Solicitados -->
+            <div id="quizFinalPanel" class="hidden bg-white border-2 border-purple-100 rounded-3xl p-8 text-center space-y-6 shadow-forensic">
+                <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-tr from-red-100 to-purple-100 text-purple-600 border border-purple-200 text-3xl shadow-sm animate-pulse">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <h4 class="text-2xl font-extrabold text-slate-900 tracking-tight">Evaluación Diagnóstica Finalizada</h4>
+                <p class="text-sm text-slate-600 max-w-xl mx-auto leading-relaxed" id="finalResultDescription">
+                    Has completado con éxito la lección didáctica.
+                </p>
+
+                <!-- Contenedor con la puntuación -->
+                <div class="inline-block px-6 py-3 bg-slate-50 border border-slate-200 rounded-2xl">
+                    <span class="text-xs font-bold text-slate-500 uppercase block tracking-wider">Aciertos totales:</span>
+                    <span class="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-purple-600" id="finalScoreVal">10/10</span>
+                </div>
+
+                <!-- LOS TRES BOTONES SOLICITADOS -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
+                    <!-- Botón 1: Reiniciar el Cuestionario -->
+                    <button onclick="restartFullQuiz()" class="w-full sm:w-auto px-6 py-3 bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-sm flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-rotate-left"></i>
+                        <span>Reiniciar Cuestionario</span>
+                    </button>
+                    <!-- Botón 2: Regresar a la página de los temarios -->
+                    <form action="temario.html"> <button> Regresar al Temario</button>
+                    </form>
+
+                    <!-- Botón 3: Avanzar al Siguiente Módulo -->
+                    <form action="hematologia-forense-m2.html"> <button>Siguente módulo</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal de Alerta / Simulación de Redireccionamiento o Navegación -->
+    <div id="navigationModal" class="hidden fixed inset-0 bg-slate-950/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center space-y-4 border border-slate-100 shadow-xl">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-purple-50 text-purple-600 text-xl">
+                <i class="fa-solid fa-laptop-code"></i>
+            </div>
+            <h5 class="text-base font-bold text-slate-900" id="modalTitle">Simulación de Redirección</h5>
+            <p class="text-xs text-slate-500" id="modalDescription">Esta función será vinculada con los archivos de tu servidor Apache/Firebase al integrar el temario.</p>
+            <button onclick="closeNavigationModal()" class="w-full py-2 bg-slate-900 text-white text-xs font-bold rounded-xl hover:bg-slate-800 transition-all">
+                Entendido
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer-->
+    <footer class="border-t border-slate-200 bg-white py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0 text-xs text-slate-500">
+            <div>
+                <span>• Ingeniería en Sistemas Computacionales</span>
+            </div>
+            <div class="flex space-x-6 font-medium text-slate-400">
+                <span>"El asesino de tu carrera" © 2026</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LÓGICA JAVASCRIPT DEL SISTEMA EDUCATIVO -->
+    <script>
+        // --- 1. BANCO DE PREGUNTAS DEL EXAMEN (10 CASOS) ---
+        const forensicQuestions = [{
+            id: 1,
+            title: "Encuentras una mancha rojiza sobre una tabla de picar de madera. Al aplicar Kastle-Meyer vira a rosa brillante al instante. ¿Qué debes dictaminar considerando el escenario?",
+            difficulty: "Inicial",
+            options: {
+                A: "Confirmar de inmediato que es sangre humana de la víctima.",
+                B: "Registrar la muestra como negativa debido al material vegetal del indicio.",
+                C: "Declarar la muestra como presuntiva positiva; requiere corroborarse con una prueba de certeza en laboratorio."
+            },
+            correct: "C",
+            feedback: {
+                A: "¡Error de procedimiento! La prueba de Kastle-Meyer es presuntiva de orientación y puede dar falsos positivos con peroxidasas del rábano u hortalizas de cocina. No confirma sangre por sí sola.",
+                B: "¡Falso! La prueba no es negativa porque sí viró de color. Debes reportarla como positiva presuntiva.",
+                C: "¡Excelente! Al ser una prueba presuntiva sobre una tabla de madera para picar (que pudo tener jugos de papa o cebolla), el dictamen correcto debe ser presuntivo positivo, requiriendo pruebas confirmativas específicas en el laboratorio forense."
+            }
+        }, {
+            id: 2,
+            title: "Aplicas Luminol en un baño lavado minuciosamente con cloro doméstico y observas un brillo azul inmediato y extendido. ¿Cuál es el procedimiento técnico correcto?",
+            difficulty: "Intermedio",
+            options: {
+                A: "Asegurar que hubo una masacre debido al brillo quimioluminiscente del reactivo.",
+                B: "Analizar el tiempo de emisión del destello; el cloro provoca un brillo de desvanecimiento muy veloz que ayuda a diferenciarlo.",
+                C: "Desechar la muestra porque el cloro de inmediato degrada y destruye el ADN de la hemoglobina humana."
+            },
+            correct: "B",
+            feedback: {
+                A: "¡Grave error forense! El blanqueador con cloro es el causante más conocido de falsos positivos masivos con Luminol. No asumas presencia de sangre sin descarte químico.",
+                B: "¡Perfecto! El cloro provoca un destello azul intenso y fugaz de desvanecimiento rápido, mientras que el complejo de hemoglobina produce un destello constante que perdura unos segundos de más, requiriendo pruebas de certeza.",
+                C: "¡Falso! Aunque el cloro puede degradar el material biológico, no destruye de manera instantánea las trazas utilizables para perfil genético molecular."
+            }
+        }, {
+            id: 3,
+            title: "Se localiza una camisa empapada de sangre fresca en el jardín trasero de un sospechoso. ¿Cuál es el método idóneo para su conservación y posterior embalaje?",
+            difficulty: "Procedimiento",
+            options: {
+                A: "Introducir la camisa mojada en una bolsa de plástico hermética para conservar la frescura de la sangre.",
+                B: "Dejar secar por completo la camisa en un rack protegido a temperatura ambiente y luego embalarla en una bolsa de papel o cartón.",
+                C: "Lavar la playera y enviar únicamente el agua destilada residual resultante del centrifugado."
+            },
+            correct: "B",
+            feedback: {
+                A: "¡Grave error! El plástico húmedo sellado favorece la proliferación de bacterias y hongos que descomponen la muestra celular en cuestión de horas, eliminando la opción de estudiar el perfil genético.",
+                B: "¡Sobresaliente! El secado al aire en ambiente libre de corrientes evita la degradación celular, y el embalaje poroso (papel/cartón) impide el enmohecimiento y resguarda la integridad de la cadena de custodia.",
+                C: "¡Absurdo! Lavar la muestra destruye la morfología de las manchas y los patrones de proyección."
+            }
+        }, {
+            id: 4,
+            title: "Bajo el microscopio observas cristales rosas con aspecto de agujas o tabillas de color salmón tras calentar la muestra con piridina. ¿A qué prueba científica corresponde?",
+            difficulty: "Laboratorio",
+            options: {
+                A: "Prueba confirmativa de Cristales de Takayama.",
+                B: "Prueba de orientación de Kastle-Meyer.",
+                C: "Prueba confirmativa de Cristales de Teichmann."
+            },
+            correct: "A",
+            feedback: {
+                A: "¡Excelente! La cristalización de Takayama (piridina-hemocromógeno) genera estos característicos cristales rosa salmón y confirma al 100% que la muestra contiene derivados de hemoglobina.",
+                B: "¡Incorrecto! Kastle-Meyer es una prueba química cromática, no microcristalina microscópica.",
+                C: "¡Incorrecto! La prueba de Teichmann utiliza halogenuros de hemina y produce cristales de color marrón oscuro o café romboidal."
+            }
+        }, {
+            id: 5,
+            title: "Un perito afirma que una mancha presuntiva positiva al reactivo de Kastle-Meyer es de sangre de origen humano sin realizar más pruebas. ¿Cuál es su error?",
+            difficulty: "Metodológico",
+            options: {
+                A: "El reactivo Kastle-Meyer solo vira en presencia de sangre de origen animal.",
+                B: "Omitió la prueba de precipitinas, la cual discrimina si la muestra es de origen humano o animal.",
+                C: "La fenolftaleína solo reacciona con hemoglobina canina."
+            },
+            correct: "B",
+            feedback: {
+                A: "¡Falso! Reacciona con la hemoglobina de cualquier origen porque el grupo Hemo es catalizador en todas ellas.",
+                B: "¡Correcto! Kastle-Meyer únicamente determina si hay presencia de hemoglobina (indicio hemático). Se requiere realizar pruebas de precipitinas de inmunodifusión para dictaminar el origen filogenético (humano vs animal).",
+                C: "¡Incorrecto! La reacción es independiente del mamífero o ave; reacciona con cualquier hemoglobina."
+            }
+        }, {
+            id: 6,
+            title: "Encuentras sangre líquida acumulada en un charco dentro del lugar de intervención. ¿Cuál es el instrumental adecuado para su recolección primaria?",
+            difficulty: "Campo",
+            options: {
+                A: "Recogerla con una jeringa de succión estéril y depositarla en un tubo con anticoagulante (EDTA).",
+                B: "Raspar la superficie del azulejo con una espátula de metal oxidado.",
+                C: "Verter arena limpia sobre el charco para solidificar la muestra."
+            },
+            correct: "A",
+            feedback: {
+                A: "¡Impecable! La sangre líquida se conserva recolectando con jeringa estéril hacia un tubo de ensayo de tapón morado con anticoagulante para resguardar la muestra fresca.",
+                B: "¡No! El óxido de metal interfiere como catalizador falso positivo y contamina la pureza química del indicio.",
+                C: "¡Falso! Solidificar la muestra con materiales ajenos altera por completo el perfil celular y físico del indicio biológico."
+            }
+        }, {
+            id: 7,
+            title: "Se realiza un peritaje aplicando reactivo de Luminol en una pared con manchas lavadas. ¿Este reactivo altera o imposibilita los análisis de ADN posteriores?",
+            difficulty: "Teórico",
+            options: {
+                A: "Sí, el Luminol calcina la estructura cromosómica e inutiliza los marcadores genéticos.",
+                B: "No, el Luminol no daña las trazas celulares básicas de los glóbulos blancos para la extracción de ADN.",
+                C: "El Luminol es un desinfectante que purifica el ADN y mejora la extracción de perfiles."
+            },
+            correct: "B",
+            feedback: {
+                A: "¡Incorrecto! Múltiples investigaciones de genética forense demuestran que el Luminol en concentraciones estándar permite análisis posteriores de ADN por PCR.",
+                B: "¡Perfecto! Aunque introduce reactivos adicionales, la quimioluminiscencia no destruye de inmediato los núcleos celulares de los leucocitos indispensables para obtener el ADN de la muestra.",
+                C: "¡Error! No es un desinfectante ni mejora la muestra; es un reactivo analítico de orientación."
+            }
+        }, {
+            id: 8,
+            title: "Una mancha rojiza sobre tierra no reacciona al reactivo de Kastle-Meyer. ¿Cómo debe proceder tu equipo técnico?",
+            difficulty: "Práctico",
+            options: {
+                A: "Asegurar que es sangre de un vampiro que carece de peróxidos naturales.",
+                B: "Dictaminar como negativo el rastro de sangre. Si la prueba presuntiva falla, se descarta el indicio hemático.",
+                C: "Llevar la tierra entera a calentar para forzar un viraje térmico tardío."
+            },
+            correct: "B",
+            feedback: {
+                A: "¡Absurdo! Es una opción ficticia. La criminalística es una ciencia exacta basada en principios físicos y químicos.",
+                B: "¡Excelente! La regla de oro metodológica indica: un resultado negativo en una prueba de orientación de alta sensibilidad descarta la presencia de sangre. No hay necesidad de gastar reactivos de certeza.",
+                C: "¡Incorrecto! Forzar reacciones químicas con procedimientos inadecuados altera e invalida cualquier proceso legal."
+            }
+        }, {
+            id: 9,
+            title: "Aparte del Kastle-Meyer y el Luminol, ¿qué otro método presuntivo portátil es ampliamente utilizado por los peritos en campo por su inmediatez?",
+            difficulty: "Tecnológico",
+            options: {
+                A: "Tiras reactivas de Hemastix.",
+                B: "Cromatografía de gases acoplada a masas.",
+                C: "Secuenciación masiva de genoma completo."
+            },
+            correct: "A",
+            feedback: {
+                A: "¡Correcto! Las tiras de Hemastix son tiras plásticas de bajo costo que viran a color verde oscuro tras frotar la mancha sospechosa. Son de gran utilidad para descartar indicios rápidamente.",
+                B: "¡Incorrecto! El cromatógrafo es un aparato de laboratorio gigante, no es portátil ni inmediato de campo.",
+                C: "¡Incorrecto! La secuenciación genómica requiere complejos laboratorios centralizados y tarda semanas."
+            }
+        }, {
+            id: 10,
+            title: "En la secuencia lógica del análisis de indicios biológicos, ¿cuál es el orden estricto de las pruebas de laboratorio que debe respetar la cadena de custodia?",
+            difficulty: "Avanzado",
+            options: {
+                A: "Estudio de perfil genético -> Prueba de Certeza -> Prueba de Orientación.",
+                B: "Prueba de Precipitinas de origen -> Prueba de Orientación -> Microscopía.",
+                C: "Prueba de Orientación (Kastle-Meyer) -> Prueba de Certeza (Takayama) -> Prueba de Origen (Precipitinas) -> Genética Forense."
+            },
+            correct: "C",
+            feedback: {
+                A: "¡Falso! No puedes iniciar con la secuenciación genética sin descartar antes falsos positivos; estarías gastando presupuesto oficial innecesariamente.",
+                B: "¡Incorrecto! Las pruebas de precipitinas (origen humano/animal) se realizan posterior a comprobar que la mancha efectivamente sea sangre.",
+                C: "¡Excelente! El orden metodológico estricto economiza recursos y blinda la legalidad del dictamen pericial: primero orientas (Kastle-Meyer), luego confirmas (Takayama), después discriminas la especie (Precipitinas) y finalmente individualizas con perfiles genéticos."
+            }
+        }];
+
+        // --- 2. VARIABLES DE ESTADO ---
+        let selectedSampleType = 'cocina';
+        let appliedReagents = [];
+        let currentQuestionIndex = 0;
+        let scoreCount = 0;
+        let quizHistory = {}; // Almacena si ya respondió cada pregunta
+
+        // --- 3. LÓGICA DEL SIMULADOR DE LABORATORIO AVANZADO ---
+        function selectSample(sampleType) {
+            selectedSampleType = sampleType;
+            appliedReagents = [];
+
+            // Actualizar apariencia de los botones de la derecha
+            document.querySelectorAll('.sample-btn').forEach(btn => {
+                btn.className = "sample-btn text-left p-3.5 rounded-xl border border-slate-200 hover:border-purple-300 transition-all flex items-center justify-between";
+                const badge = btn.querySelector('span');
+                badge.className = "text-[9px] bg-slate-100 text-slate-600 font-bold px-2 py-0.5 rounded uppercase";
+                badge.textContent = "Inactivo";
+            });
+
+            const activeBtn = document.getElementById(
+                sampleType === 'cocina' ? 'sampleBtn1' : (sampleType === 'alfombra' ? 'sampleBtn2' : 'sampleBtn3')
+            );
+            activeBtn.className = "sample-btn text-left p-3.5 rounded-xl border-2 border-red-500 bg-red-50/30 hover:bg-red-50/50 transition-all flex items-center justify-between";
+            const activeBadge = activeBtn.querySelector('span');
+            activeBadge.className = "text-[9px] bg-red-100 text-red-800 font-bold px-2 py-0.5 rounded uppercase";
+            activeBadge.textContent = "Seleccionado";
+
+            // Restablecer el contenedor visual
+            const visualizer = document.getElementById('labVisualizer');
+            const stain = document.getElementById('stainAsset');
+            const logs = document.getElementById('scientificLog');
+            const textInst = document.getElementById('stepInstruction');
+            const title = document.getElementById('currentSampleTitle');
+
+            // Ocultar botones extra por defecto
+            document.getElementById('lightSwitch').style.display = 'none';
+            document.getElementById('microscopeLensBtn').style.display = 'none';
+
+            visualizer.className = "relative w-48 h-48 rounded-full border-4 border-slate-200 bg-white shadow-inner flex items-center justify-center smooth-transition";
+            document.getElementById('overlayTool').innerHTML = "";
+
+            if (sampleType === 'cocina') {
+                title.textContent = "Indicio #A102: Mancha en azulejo de cocina";
+                stain.className = "w-14 h-14 rounded-full bg-red-900/80 blur-md smooth-transition absolute";
+                textInst.textContent = "Muestra de consistencia parda rojiza seca. Listo para reactivos de oxidación-reducción.";
+                logs.textContent = "[INDICE CARGADO] Mancha rojiza en cocina lista para aplicar reactivos.";
+            } else if (sampleType === 'alfombra') {
+                title.textContent = "Indicio #B209: Rastro lavado en sótano/alfombra";
+                stain.className = "w-28 h-28 rounded-full bg-slate-100 opacity-20 blur-md smooth-transition absolute";
+                textInst.textContent = "No se observa mancha visible bajo luz natural. El área parece lavada con químicos agresivos.";
+                logs.textContent = "[INDICE CARGADO] Área sospechosa de alfombra cargada. Requiere aspersión de Luminol.";
+            } else if (sampleType === 'vegetal') {
+                title.textContent = "Indicio #C301: Mancha en tabla de picar";
+                stain.className = "w-16 h-12 rounded-full bg-amber-900/60 blur-md smooth-transition absolute";
+                textInst.textContent = "Mancha parda seca sobre fibra de madera porosa. Se sospecha interferencia alimentaria.";
+                logs.textContent = "[INDICE CARGADO] Tabla de picar con mancha biológica. Precaución con falsos positivos.";
+            }
+        }
+
+        function runForensicTest(testType) {
+            const visualizer = document.getElementById('labVisualizer');
+            const stain = document.getElementById('stainAsset');
+            const logs = document.getElementById('scientificLog');
+            const textInst = document.getElementById('stepInstruction');
+            const drop = document.getElementById('fluidDrop');
+
+            // Efecto gotero animado
+            drop.style.backgroundColor = testType === 'km' ? '#f472b6' : (testType === 'luminol' ? '#22d3ee' : '#a78bfa');
+            drop.style.opacity = '1';
+            drop.style.transform = 'translateY(110px)';
+
+            setTimeout(() => {
+                drop.style.opacity = '0';
+                drop.style.transform = 'translateY(0px)';
+
+                // Ejecución lógica del test tras simular la gota
+                executeTestLogic(testType);
+            }, 600);
+        }
+
+        function executeTestLogic(testType) {
+            const visualizer = document.getElementById('labVisualizer');
+            const stain = document.getElementById('stainAsset');
+            const logs = document.getElementById('scientificLog');
+            const textInst = document.getElementById('stepInstruction');
+
+            if (testType === 'km') {
+                if (selectedSampleType === 'cocina') {
+                    visualizer.className = "relative w-48 h-48 rounded-full border-4 border-pink-500 bg-pink-50/20 shadow-inner flex items-center justify-center smooth-transition shadow-glow-pink";
+                    stain.className = "w-16 h-16 rounded-full bg-pink-600 blur-sm smooth-transition absolute";
+                    textInst.textContent = "¡REACCIÓN POSITIVA INMEDIATA! El hisopo viró a rosa fucsia en 1.2 segundos.";
+                    logs.textContent = "[PASO KM] Positivo. Oxidación de Fenolftaleína catalizada por hemoglobina sospechosa. Se requiere certeza.";
+                } else if (selectedSampleType === 'alfombra') {
+                    visualizer.className = "relative w-48 h-48 rounded-full border-4 border-slate-300 bg-slate-50 shadow-inner flex items-center justify-center smooth-transition";
+                    textInst.textContent = "Reacción sumamente débil o nula. El lavado con blanqueadores limitó la recolección física directa.";
+                    logs.textContent = "[PASO KM] Resultado indeterminado. Trazas demasiado diluidas o arrastradas en el tejido.";
+                } else if (selectedSampleType === 'vegetal') {
+                    visualizer.className = "relative w-48 h-48 rounded-full border-4 border-pink-500 bg-pink-50/20 shadow-inner flex items-center justify-center smooth-transition shadow-glow-pink";
+                    stain.className = "w-16 h-16 rounded-full bg-pink-500 blur-sm smooth-transition absolute";
+                    textInst.textContent = "¡REACCIÓN POSITIVA! Viraje rápido a rosa. Sin embargo, puede ser falso positivo vegetal.";
+                    logs.textContent = "[PASO KM] Alerta de posible falso positivo. Presencia de peroxidasas de rábano sospechadas en la tabla.";
+                }
+            } else if (testType === 'luminol') {
+                document.getElementById('lightSwitch').style.display = 'inline-flex';
+
+                if (selectedSampleType === 'alfombra') {
+                    logs.textContent = "[LUMINOL ROCIADO] Reactivo aplicado con aspersor. Apaga las luces de la sala de simulación para observar la fluorescencia azul fría.";
+                    textInst.textContent = "Luminol impregnado. Apaga las luces para activar la prueba de quimioluminiscencia.";
+                } else {
+                    logs.textContent = "[LUMINOL ROCIADO] Reactivo aplicado. Apaga la iluminación de la sala para evaluar la intensidad del brillo catalizado.";
+                    textInst.textContent = "Muestra rociada. Listo para prueba de luminiscencia nocturna.";
+                }
+            } else if (testType === 'takayama') {
+                document.getElementById('microscopeLensBtn').style.display = 'inline-flex';
+                logs.textContent = "[TAKAYAMA APLICADO] Solución saturada con piridina añadida. Montado sobre portaobjetos y calentado a 40°C. Da clic para observar al microscopio.";
+                textInst.textContent = "Muestra cristalizada bajo calor. Da clic en 'Ver por el Ocular' para confirmar presencia de hemocromógeno.";
+            }
+        }
+
+        // Simulación de Apagar Luces para Luminol
+        let lightsOn = true;
+
+        function toggleLabLights() {
+            const labScreen = document.getElementById('labScreen');
+            const visualizer = document.getElementById('labVisualizer');
+            const stain = document.getElementById('stainAsset');
+            const btnText = document.getElementById('lightSwitchText');
+            const logs = document.getElementById('scientificLog');
+
+            if (lightsOn) {
+                // Apagar luces
+                labScreen.classList.remove('bg-slate-50/50');
+                labScreen.classList.add('bg-slate-950');
+                btnText.textContent = "Encender Luces de la Sala";
+                lightsOn = false;
+
+                if (selectedSampleType === 'alfombra') {
+                    visualizer.className = "relative w-48 h-48 rounded-full border-4 border-cyan-400 bg-cyan-950/40 shadow-inner flex items-center justify-center smooth-transition shadow-glow-cyan";
+                    stain.className = "w-24 h-24 rounded-full bg-cyan-400 blur-lg opacity-90 smooth-transition absolute";
+                    logs.textContent = "[SALA OSCURA - LUMINOL] ¡Brillo de quimioluminiscencia azul intenso detectado! El patrón revela arrastre en forma de goteo lavado.";
+                } else if (selectedSampleType === 'cocina') {
+                    visualizer.className = "relative w-48 h-48 rounded-full border-4 border-cyan-400 bg-cyan-950/40 shadow-inner flex items-center justify-center smooth-transition shadow-glow-cyan";
+                    stain.className = "w-16 h-16 rounded-full bg-cyan-400 blur-md opacity-80 smooth-transition absolute";
+                    logs.textContent = "[SALA OSCURA - LUMINOL] Brillo azul moderado localizado en el centro de la muestra.";
+                } else {
+                    visualizer.className = "relative w-48 h-48 rounded-full border-4 border-cyan-600/30 bg-slate-900 shadow-inner flex items-center justify-center smooth-transition";
+                    stain.className = "w-16 h-16 rounded-full bg-cyan-400/20 blur-xl opacity-40 smooth-transition absolute";
+                    logs.textContent = "[SALA OSCURA - LUMINOL] Brillo fugaz, irregular y tenue. Típico comportamiento de interferencias de jugos vegetales.";
+                }
+            } else {
+                // Encender luces
+                labScreen.classList.remove('bg-slate-950');
+                labScreen.classList.add('bg-slate-50/50');
+                btnText.textContent = "Apagar Luces de la Sala";
+                lightsOn = true;
+                visualizer.className = "relative w-48 h-48 rounded-full border-4 border-slate-200 bg-white shadow-inner flex items-center justify-center smooth-transition";
+                stain.className = "w-14 h-14 rounded-full bg-red-950/20 blur-md smooth-transition absolute";
+                logs.textContent = "[ILUMINACIÓN RESTABLECIDA] Evaluando muestras bajo condiciones estándar.";
+            }
+        }
+
+        // Simulación de microscopio para Takayama
+        let microscopeView = false;
+
+        function toggleMicroscopeView() {
+            const overlay = document.getElementById('overlayTool');
+            const logs = document.getElementById('scientificLog');
+            const visualizer = document.getElementById('labVisualizer');
+
+            if (!microscopeView) {
+                microscopeView = true;
+                overlay.className = "absolute inset-0 flex items-center justify-center pointer-events-none lens-bg rounded-full";
+
+                if (selectedSampleType === 'cocina' || selectedSampleType === 'alfombra') {
+                    // Cristales rosas característicos de Takayama
+                    overlay.innerHTML = `
+                        <div class="relative w-full h-full flex flex-wrap justify-center items-center opacity-90 p-4 z-20">
+                            <div class="w-2.5 h-8 bg-pink-500 rotate-12 m-1 rounded shadow"></div>
+                            <div class="w-2 h-7 bg-pink-500 -rotate-45 m-1 rounded shadow"></div>
+                            <div class="w-3 h-9 bg-pink-600 rotate-45 m-1 rounded shadow"></div>
+                            <div class="w-2.5 h-8 bg-pink-500 -rotate-12 m-1 rounded shadow"></div>
+                            <span class="absolute bottom-2 text-[9px] bg-black text-white px-2 py-0.5 rounded uppercase font-bold tracking-widest mono">1000x - Piridina</span>
+                        </div>
+                    `;
+                    logs.textContent = "[OCULAR MICRO] Cristales de piridina-hemocromógeno rosa salmón confirmados. RESULTADO 100% SANGRE.";
+                } else {
+                    // Muestra vegetal o rábano (sin cristales rosas específicos)
+                    overlay.innerHTML = `
+                        <div class="relative w-full h-full flex flex-wrap justify-center items-center opacity-60 p-4 z-20">
+                            <div class="w-6 h-6 rounded-full bg-amber-200 m-2"></div>
+                            <div class="w-4 h-4 rounded-full bg-amber-300 m-2"></div>
+                            <span class="absolute bottom-2 text-[9px] bg-black text-white px-2 py-0.5 rounded uppercase font-bold tracking-widest mono">1000x - No cristales</span>
+                        </div>
+                    `;
+                    logs.textContent = "[OCULAR MICRO] Estructuras amorfas y vacuolas celulares. No se observan cristales de hemocromógeno. FALSO POSITIVO CONFIRMADO.";
+                }
+            } else {
+                microscopeView = false;
+                overlay.className = "absolute inset-0 flex items-center justify-center pointer-events-none";
+                overlay.innerHTML = "";
+                logs.textContent = "[PORTAOBJETOS RETIRADO] Microscopio liberado.";
+            }
+        }
+
+        function resetAdvancedLab() {
+            lightsOn = true;
+            microscopeView = false;
+            document.getElementById('labScreen').className = "flex-1 flex flex-col items-center justify-center py-8 smooth-transition relative bg-slate-50/50 rounded-2xl my-4 border border-slate-100";
+            document.getElementById('lightSwitch').style.display = 'none';
+            document.getElementById('microscopeLensBtn').style.display = 'none';
+            selectSample('cocina');
+        }
+
+        // --- 4. MOTOR LÓGICO DEL CUESTIONARIO (10 PREGUNTAS) ---
+        function loadQuestion(index) {
+            const question = forensicQuestions[index];
+            const numberIndicator = document.getElementById('questionNumberIndicator');
+            const title = document.getElementById('questionTitle');
+            const difficulty = document.getElementById('questionDifficulty');
+            const optionsContainer = document.getElementById('optionsContainer');
+            const feedbackBox = document.getElementById('feedbackBox');
+            const nextBtn = document.getElementById('nextQuestionBtn');
+            const progressText = document.getElementById('quizPercentageText');
+
+            // Actualizar textos básicos
+            numberIndicator.textContent = `Caso Práctico ${index + 1} de 10`;
+            title.textContent = question.title;
+            difficulty.textContent = `Nivel: ${question.difficulty}`;
+            progressText.textContent = `Progreso del examen: ${(index + 1) * 10}%`;
+
+            // Limpiar contenedores
+            optionsContainer.innerHTML = "";
+            feedbackBox.className = "hidden rounded-2xl p-4 transition-all duration-300";
+            feedbackBox.innerHTML = "";
+            nextBtn.classList.add('hidden');
+
+            // Renderizar nuevas opciones de respuesta
+            Object.entries(question.options).forEach(([key, value]) => {
+                const button = document.createElement('button');
+                button.className = "option-btn w-full text-left p-4 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center justify-between text-sm text-slate-800 font-medium shadow-sm";
+                button.onclick = () => selectOption(index, key);
+                button.innerHTML = `
+                    <span class="pr-4"><strong class="text-red-600 mr-1">${key})</strong> ${value}</span>
+                    <i class="fa-regular fa-circle text-slate-300 flex-shrink-0"></i>
+                `;
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        function selectOption(qIndex, optionKey) {
+            const question = forensicQuestions[qIndex];
+            const correctOpt = question.correct;
+            const feedbackBox = document.getElementById('feedbackBox');
+            const nextBtn = document.getElementById('nextQuestionBtn');
+            const optionsContainer = document.getElementById('optionsContainer');
+            const buttons = optionsContainer.querySelectorAll('.option-btn');
+
+            // Marcar que ya fue respondido en la historia
+            quizHistory[qIndex] = optionKey;
+
+            // Bloquear todos los botones
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.remove('hover:bg-slate-50', 'hover:border-slate-300');
+                btn.classList.add('opacity-60');
+
+                const optionText = btn.querySelector('span').textContent.trim();
+                const icon = btn.querySelector('i');
+
+                // Si es la opción correcta, marcarla verde
+                if (optionText.startsWith(correctOpt)) {
+                    btn.className = "option-btn w-full text-left p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50 text-emerald-900 transition-all flex items-center justify-between text-sm font-bold shadow-sm";
+                    icon.className = "fa-solid fa-circle-check text-emerald-600 text-lg flex-shrink-0";
+                }
+                // Si es la elegida por el alumno y es incorrecta, marcarla roja
+                else if (optionText.startsWith(optionKey) && optionKey !== correctOpt) {
+                    btn.className = "option-btn w-full text-left p-4 rounded-2xl border-2 border-red-500 bg-red-50 text-red-950 transition-all flex items-center justify-between text-sm font-bold shadow-sm";
+                    icon.className = "fa-solid fa-circle-xmark text-red-600 text-lg flex-shrink-0";
+                }
+            });
+
+            // Registrar puntuación
+            if (optionKey === correctOpt) {
+                scoreCount++;
+            }
+
+            // Desplegar retroalimentación
+            const isCorrect = (optionKey === correctOpt);
+            feedbackBox.className = `block rounded-2xl p-4 transition-all duration-300 ${
+                isCorrect 
+                    ? 'bg-emerald-50 border border-emerald-200 text-emerald-800' 
+                    : 'bg-red-50 border border-red-200 text-red-800'
+            }`;
+
+            feedbackBox.innerHTML = `
+                <div class="flex items-start space-x-3">
+                    <div class="mt-1">
+                        ${isCorrect 
+                            ? '<i class="fa-solid fa-square-check text-lg"></i>' 
+                            : '<i class="fa-solid fa-triangle-exclamation text-lg"></i>'}
+                    </div>
+                    <div>
+                        <h5 class="text-xs font-bold uppercase tracking-wider">${isCorrect ? '¡Acierto Científico!' : 'Análisis Erróneo'}</h5>
+                        <p class="text-xs mt-1 leading-relaxed font-medium">${question.feedback[optionKey]}</p>
+                    </div>
+                </div>
+            `;
+
+            // Mostrar botón para seguir
+            nextBtn.classList.remove('hidden');
+
+            // Actualizar la barra superior de progreso educativo general de la lección
+            updateAcademyProgress();
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < 9) {
+                currentQuestionIndex++;
+                loadQuestion(currentQuestionIndex);
+            } else {
+                // Finalizar cuestionario y desplegar resultados
+                showFinalResults();
+            }
+        }
+
+        function updateAcademyProgress() {
+            // El cuestionario tiene un peso del 90% (del 10% de inicio al 100% final)
+            const progress = 10 + Math.floor(((currentQuestionIndex + 1) / 10) * 90);
+            document.getElementById('lessonProgress').style.width = `${progress}%`;
+            document.getElementById('progressText').textContent = `${progress}%`;
+        }
+
+        function showFinalResults() {
+            document.getElementById('quizContent').classList.add('hidden');
+            const finalPanel = document.getElementById('quizFinalPanel');
+            const scoreVal = document.getElementById('finalScoreVal');
+            const desc = document.getElementById('finalResultDescription');
+
+            finalPanel.classList.remove('hidden');
+            scoreVal.textContent = `${scoreCount} / 10`;
+
+            if (scoreCount >= 9) {
+                desc.innerHTML = `<strong>¡Sobresaliente, Perito Experto!</strong> Tu capacidad para resolver dilemas de laboratorio criminalístico cumple con los estándares exigidos por la fiscalía forense en el ámbito legal actual.`;
+            } else if (scoreCount >= 6) {
+                desc.innerHTML = `<strong>Aprobado Técnico.</strong> Conoces el protocolo y la diferencia química entre pruebas, pero un par de errores menores en la preservación podrían comprometer un juicio oral. Repasa la bitácora teórica.`;
+            } else {
+                desc.innerHTML = `<strong>Requiere Repetición Obligatoria.</strong> Recuerda que confundir un indicio biológico debilita por completo el caso ante los tribunales. Reinicia el cuestionario y estudia cada una de las reglas de oro.`;
+            }
+
+            finalPanel.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // --- 5. FUNCIONES DE LOS BOTONES FINALES DE NAVEGACIÓN ---
+        function restartFullQuiz() {
+            currentQuestionIndex = 0;
+            scoreCount = 0;
+            quizHistory = {};
+
+            document.getElementById('quizFinalPanel').classList.add('hidden');
+            document.getElementById('quizContent').classList.remove('hidden');
+
+            loadQuestion(currentQuestionIndex);
+            document.getElementById('lessonProgress').style.width = `10%`;
+            document.getElementById('progressText').textContent = `10%`;
+        }
+
+        // --- 6. ARRANQUE INICIAL ---
+        window.onload = function() {
+            // Inicializar Laboratorio en la primera muestra por defecto
+            selectSample('cocina');
+            // Inicializar cuestionario en la primera pregunta
+            loadQuestion(currentQuestionIndex);
+        };
+    </script>
+
+    <!--function goToSyllabus() { const modal = document.getElementById('navigationModal'); document.getElementById('modalTitle').textContent = "Regresando al Temario Principal"; document.getElementById('modalDescription').textContent = "Redirección en progreso...
+    En tu proyecto final, puedes conectar esta función con tu archivo 'temario.html' o tu ruta de navegación en Node/Firebase."; modal.classList.remove('hidden'); } function goToNextModule() { const modal = document.getElementById('navigationModal');
+    document.getElementById('modalTitle').textContent = "Cargando Lección 2: Hematología Reconstructora"; document.getElementById('modalDescription').textContent = "El sistema cargará el simulador geométrico de patrones y ángulos de caída física de las
+    gotas de sangre en la escena del crimen."; modal.classList.remove('hidden'); } function closeNavigationModal() { document.getElementById('navigationModal').classList.add('hidden'); } -->
+
+</body>
+
+</html>

@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glosario de Criminalística | El asesino de tu carrera</title>
+    <link rel="stylesheet" href="styles/glosario forense.css">
+
+    <!-- Tailwind CSS para diseño responsivo rápido y limpio -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons para elementos decorativos e interfaz -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+</head>
+
+<body class="min-h-screen flex flex-col antialiased">
+
+    <!-- CABECERA DE INTERMEDIARIO: PANEL DE SEGUIMIENTO (PROYECT) - ESTILO CLARO -->
+    <header class="border-b border-slate-200 bg-white/95 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-3.5 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-red-50 border border-red-100 rounded-xl glow-red">
+                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h1 class="text-lg font-black tracking-tight text-zinc-900">El asesino de tu carrera</h1>
+
+                        </div>
+                        <h4 class="text-xl font-extrabold heading-font text-slate-900 flex items-center gap-2 mt-0.5">
+                            <a class="text-xs font-bold uppercase tracking-widest text-red-600" href="temario.html"> Regresar al temario</a> <span class="text-red-500">|</span> Glosario de <br> Criminalística
+                        </h4>
+                    </div>
+                </div>
+
+                <!-- Monitor de Entregables / Proyect Manager -->
+                <div class="flex items-center gap-4 bg-slate-50 border border-slate-200 rounded-xl p-2.5 px-4 text-xs shadow-inner">
+                    <div class="text-center border-r border-slate-200 pr-3">
+                        <span class="text-slate-500 block">Términos Totales</span>
+                        <span class="text-red-600 font-extrabold text-lg" id="total-count">100</span>
+                    </div>
+                    <div class="text-center border-r border-slate-200 pr-3 pl-1">
+                        <span class="text-slate-500 block">Ramas Forenses</span>
+                        <span class="text-purple-600 font-extrabold text-lg">8</span>
+                    </div>
+                    <div class="text-center pl-1">
+                        <span class="text-slate-500 block">Estatus de Código</span>
+                        <span class="text-emerald-600 font-extrabold flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span> Producción
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ÁREA DE CONTROL DEL PROYECTO (DESPLEGABLE EXPLICATIVO) - DISEÑO CLARO -->
+    <section class="bg-gradient-to-r from-slate-50 via-white to-slate-50 py-6 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-red-50/40 border border-red-100 rounded-2xl p-4 sm:p-6 shadow-sm">
+                <div class="flex flex-col lg:flex-row gap-6 items-start justify-between">
+                    <div class="space-y-2 max-w-3xl">
+                        <h2 class="text-lg font-bold text-red-700 flex items-center gap-2 heading-font">
+                            <i data-lucide="clipboard-check" class="text-red-600 w-5 h-5"></i>Glosario Forense
+                        </h2>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            ¡Bienvenido al panel educativo! <br>Todo está optimizado tanto para la navegación rápida en cuadrícula <br>como para el autoaprendizaje dinámico con flashcards.
+                        </p>
+                    </div>
+                    <div class="w-full lg:w-auto flex flex-wrap gap-2 lg:flex-col justify-end">
+                        <div class="flex items-center gap-2 text-xs bg-white p-2 rounded-lg border border-slate-200 shadow-sm">
+                            <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+                            <span class="text-slate-700 font-semibold">Buscador y filtros en tiempo real</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs bg-white p-2 rounded-lg border border-slate-200 shadow-sm">
+                            <span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span>
+                            <span class="text-slate-700 font-semibold">Flashcard mode para auto-evaluación</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs bg-white p-2 rounded-lg border border-slate-200 shadow-sm">
+                            <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                            <span class="text-slate-700 font-semibold">100 términos forenses académicos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8 sm:px-6 lg:px-8">
+
+        <!-- BARRA DE BÚSQUEDA Y CONTROLES -->
+        <div class="mb-8 space-y-4">
+            <div class="flex flex-col md:flex-row gap-4 justify-between items-center bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+
+                <!-- Buscador de Texto -->
+                <div class="relative w-full md:w-96">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i data-lucide="search" class="text-slate-400 w-5 h-5"></i>
+                    </span>
+                    <input type="text" id="search-input" placeholder="Buscar término o palabra..." class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 text-sm text-slate-800 placeholder-slate-400 transition-all">
+                </div>
+
+                <!-- Modo de Vista / Interactividad -->
+                <div class="flex gap-2 w-full md:w-auto justify-end">
+                    <button id="view-cards-btn" onclick="setViewMode('cards')" class="flex items-center gap-2 px-4 py-2.5 bg-red-50 border border-red-200 text-red-700 hover:bg-red-100/50 rounded-xl text-xs font-semibold transition-all">
+                        <i data-lucide="layout-grid" class="w-4 h-4"></i> Vista de Cuadrícula
+                    </button>
+                    <button id="view-flash-btn" onclick="setViewMode('flashcards')" class="flex items-center gap-2 px-4 py-2.5 bg-white border border-slate-200 text-slate-500 hover:text-slate-800 rounded-xl text-xs font-semibold transition-all">
+                        <i data-lucide="rotate-3d" class="w-4 h-4"></i> Modo Flashcard (Estudiar)
+                    </button>
+                </div>
+            </div>
+
+            <!-- FILTRO POR RAMAS DE LA CRIMINALÍSTICA -->
+            <div>
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Filtrar por Especialidad / Rama Forense:</p>
+                <div class="flex flex-wrap gap-2" id="filter-container">
+                    <button onclick="filterBranch('all')" class="btn-filter-active px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-200 hover:border-red-500 transition-all">
+                        🔍 Mostrar Todo (100)
+                    </button>
+                    <!-- Inyección dinámica de filtros desde JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- NOTIFICACIÓN DE ESTADO / BUSCADOR -->
+        <div id="results-meta" class="mb-4 text-xs text-slate-500 flex justify-between items-center px-2">
+            <span>Visualizando <strong class="text-red-600" id="current-count">100</strong> de 100 términos forenses</span>
+            <span class="italic text-slate-400">Haz clic en las tarjetas para repasar la explicación didáctica simplificada</span>
+        </div>
+
+        <!-- RECIPIENTE DE LAS TARJETAS / GLOSARIO -->
+        <div id="glossary-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Inyección dinámica de las 100 tarjetas desde Javascript -->
+        </div>
+
+        <!-- RECIPIENTE DE VISTA FLASHCARDS (OCULTO POR DEFECTO) -->
+        <div id="flashcard-deck" class="hidden max-w-2xl mx-auto py-6 flex flex-col items-center">
+            <div class="perspective-1000 w-full h-80 mb-6 cursor-pointer" onclick="flipActiveFlashcard()">
+                <div id="active-card-inner" class="card-inner relative w-full h-full duration-500 shadow-lg rounded-3xl border border-slate-200">
+
+                    <!-- Frente de la Flashcard -->
+                    <div class="card-front absolute inset-0 w-full h-full bg-white rounded-3xl p-8 flex flex-col justify-between border-2 border-red-50">
+                        <div class="flex justify-between items-start">
+                            <span id="fc-branch" class="text-xs font-bold text-red-700 bg-red-50 px-3 py-1 rounded-full border border-red-100">Rama Forense</span>
+                            <span class="text-xs text-slate-400 font-mono">Haz clic para voltear <i data-lucide="rotate-cw" class="inline w-3.5 h-3.5 text-red-500"></i></span>
+                        </div>
+                        <div class="flex flex-col items-center text-center space-y-4">
+                            <div id="fc-icon" class="text-5xl p-4 bg-slate-50 rounded-full border border-slate-100">🔍</div>
+                            <h3 id="fc-word" class="text-3xl font-bold heading-font text-slate-900 tracking-wide">Palabra</h3>
+                        </div>
+                        <div class="text-center text-xs text-slate-400">
+                            ¿Conoces su significado? ¡Pon a prueba tu mente!
+                        </div>
+                    </div>
+
+                    <!-- Reverso de la Flashcard -->
+                    <div class="card-back absolute inset-0 w-full h-full bg-gradient-to-br from-white to-slate-50 rounded-3xl p-8 flex flex-col justify-between border-2 border-purple-50">
+                        <div>
+                            <span class="text-xs font-bold text-purple-700 bg-purple-50 px-3 py-1 rounded-full border border-purple-100">Explicación Didáctica</span>
+                            <div class="mt-4 space-y-4">
+                                <div>
+                                    <h4 class="text-xs uppercase text-slate-500 font-bold tracking-wider">Definición Formal:</h4>
+                                    <p id="fc-def" class="text-sm text-slate-700 mt-1 leading-relaxed font-medium">...</p>
+                                </div>
+                                <div class="border-t border-slate-200/60 pt-3">
+                                    <h4 class="text-xs uppercase text-amber-700 font-bold tracking-wider flex items-center gap-1">
+                                        💡 Para que todos entiendan:
+                                    </h4>
+                                    <p id="fc-easy" class="text-sm text-amber-800 italic mt-1 leading-relaxed font-semibold">...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center text-xs text-slate-400 font-mono">
+                            Haz clic para regresar al frente
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Controles de Navegación Flashcards -->
+            <div class="flex items-center gap-6">
+                <button onclick="navigateFlashcard(-1)" class="p-3 bg-white border border-slate-200 text-slate-500 hover:text-slate-800 rounded-full transition-all hover:bg-slate-50 shadow-sm">
+                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                </button>
+                <span class="text-sm text-slate-600 font-bold" id="flashcard-progress">1 / 100</span>
+                <button onclick="navigateFlashcard(1)" class="p-3 bg-white border border-slate-200 text-slate-500 hover:text-slate-800 rounded-full transition-all hover:bg-slate-50 shadow-sm">
+                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <p class="text-xs text-slate-400 mt-4 text-center">Puedes usar las flechas del teclado <strong>izquierda/derecha</strong> y la tecla <strong>espacio</strong> para interactuar.</p>
+        </div>
+
+    </main>
+
+    <!-- PIE DE PÁGINA (ESTATUS DE ENTRÁNDOLA AL PROFESOR) -->
+    <footer class="mt-auto border-t border-slate-200 bg-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
+            <p class="text-xs text-slate-500">
+                Desarrollo autorizado bajo la supervisión de <strong>Proyect</strong> como prototipo interactivo para Universidad Insurgentes.
+            </p>
+            <div class="flex justify-center gap-6 text-xs text-slate-400">
+                <span>Versión: 3.0.0 Stable</span>
+                <span>•</span>
+                <span>Compatibilidad: HTML5 / CSS3 / ES6</span>
+                <span>•</span>
+                <span>Documentos Fuentes: PDF de la Biblioteca del Alumno</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- DECLARACIÓN DE LOS 100 TÉRMINOS FORENSES (JAVASCRIPT) -->
+    <script>
+        // Array robusto de exactamente 100 palabras clave organizadas por ramas científicas
+        const termsData = [
+            // Lofoscopía / Dactiloscopía (11)
+            {
+                word: "Dactiloscopía",
+                branch: "Lofoscopía",
+                icon: "🧬",
+                definition: "Disciplina forense que se encarga del estudio, clasificación, archivo y recuperación de los dibujos formados por las crestas papilares en las yemas de los dedos de las manos, con el fin de identificar a las personas de manera indubitable.",
+                easy: "La ciencia que estudia las huellas de tus dedos para saber exactamente quién eres, ya que nadie en el mundo tiene unas iguales."
+            }, {
+                word: "Lofograma",
+                branch: "Lofoscopía",
+                icon: "🖐️",
+                definition: "Dibujo o relieve formado por las crestas papilares y surcos interpapilares presentes en la epidermis de las manos y pies.",
+                easy: "El dibujo completo que dejan las líneas y relieves de tu piel cuando tocas una superficie húmeda o con tinta."
+            }, {
+                word: "Crestas Papilares",
+                branch: "Lofoscopía",
+                icon: "〰️",
+                definition: "Relieves epidérmicos lineales situados en la piel de las palmas de las manos y las plantas de los pies, donde se localizan las glándulas sudoríparas.",
+                easy: "Las pequeñas montañitas o líneas en relieve que tienes en los dedos y que forman tus huellas dactilares."
+            }, {
+                word: "Puntos Característicos",
+                branch: "Lofoscopía",
+                icon: "📍",
+                definition: "Particularidades de conformación morfológica que presentan las crestas papilares (bifurcaciones, ojales, cortadas, etc.) que permiten realizar un cotejo idéntico.",
+                easy: "Pequeños detalles únicos en el camino de tus huellas (como una línea que se corta o se divide en dos) que sirven para demostrar que una huella es tuya y de nadie más."
+            }, {
+                word: "Arco",
+                branch: "Lofoscopía",
+                icon: "⛺",
+                definition: "Tipo fundamental del sistema dactiloscópico caracterizado por crestas que entran por un lado del lóbulo, corren paralelas o suben formando una curva y salen por el lado opuesto sin poseer deltas.",
+                easy: "Un diseño de huella dactilar donde las líneas entran por un lado, suben como una montañita en medio y salen tranquilamente por el otro lado."
+            }, {
+                word: "Presilla Interna",
+                branch: "Lofoscopía",
+                icon: "🔄",
+                definition: "Configuración dactilar que presenta un delta a la derecha del observador y las crestas del núcleo nacen y mueren hacia el lado izquierdo.",
+                easy: "Un patrón de huella donde las líneas entran por la izquierda, hacen una curva cerrada en medio como un lazo y vuelven a salir por el mismo lado izquierdo."
+            }, {
+                word: "Pelmatoscopía",
+                branch: "Lofoscopía",
+                icon: "👣",
+                definition: "Estudio de las crestas papilares en las plantas de los pies para identificación criminal o de recién nacidos.",
+                easy: "La técnica para estudiar las huellas de tus pies y comprobar tu identidad, muy usada en hospitales cuando naces."
+            }, {
+                word: "Quiroscopía",
+                branch: "Lofoscopía",
+                icon: "✋",
+                definition: "Análisis y clasificación de los lofogramas formados en las palmas de las manos.",
+                easy: "La ciencia que estudia las líneas y relieves de la palma de tu mano para identificarte."
+            }, {
+                word: "Poroscopía",
+                branch: "Lofoscopía",
+                icon: "🕳️",
+                definition: "Estudio microscópico de los poros de las glándulas sudoríparas que se hallan en las crestas papilares como método de identificación.",
+                easy: "Analizar con un microscopio los hoyitos microscópicos por donde sudas en tus dedos; también son únicos en cada persona."
+            }, {
+                word: "Necrodactilia",
+                branch: "Lofoscopía",
+                icon: "💀",
+                definition: "Obtención de impresiones dactilares de personas fallecidas, útil para procesos de identificación de cadáveres.",
+                easy: "El proceso de tomarle las huellas dactilares a un cadáver para lograr saber quién era."
+            }, {
+                word: "Dactilograma",
+                branch: "Lofoscopía",
+                icon: "🖼️",
+                definition: "Conjunto de dibujos y líneas de crestas papilares registradas en un papel o soporte mediante tintas u otros sistemas físicos.",
+                easy: "La estampa o dibujo de la huella digital que queda impresa en un papel o superficie."
+            },
+
+            // Balística Forense (14)
+            {
+                word: "Balística Interior",
+                branch: "Balística Forense",
+                icon: "⚙️",
+                definition: "Estudio de los fenómenos que ocurren dentro del arma de fuego desde el momento en que el percutor hiere el fulminante hasta que el proyectil abandona la boca del cañón.",
+                easy: "Analiza todo lo que pasa adentro de la pistola (la explosión de la pólvora y el empuje de la bala) antes de que la bala salga volando."
+            }, {
+                word: "Balística Exterior",
+                branch: "Balística Forense",
+                icon: "🏹",
+                definition: "Parte de la balística forense que investiga el movimiento del proyectil a lo largo de su trayectoria por el aire, desde que sale del arma hasta que choca con un objetivo.",
+                easy: "Estudia el viaje de la bala por el aire: su velocidad, la resistencia del viento y cómo va cayendo poco a poco hasta pegar en su blanco."
+            }, {
+                word: "Balística de Efectos",
+                branch: "Balística Forense",
+                icon: "💥",
+                definition: "Estudio de los daños, deformaciones e impactos producidos por el proyectil sobre el blanco o superficie golpeada.",
+                easy: "Analiza el destrozo o marcas que deja la bala en el cuerpo, pared u objeto contra el que choca."
+            }, {
+                word: "Estriado",
+                branch: "Balística Forense",
+                icon: "🌀",
+                definition: "Conjunto de surcos helicoidales grabados en el ánima del cañón de un arma de fuego que le imprimen un movimiento de rotación al proyectil para darle estabilidad.",
+                easy: "Los canales en espiral dentro del cañón de la pistola que hacen girar la bala como un balón de fútbol americano para que viaje recta y veloz."
+            }, {
+                word: "Vaina o Casquillo",
+                branch: "Balística Forense",
+                icon: "🥤",
+                definition: "Contenedor cilíndrico de metal (generalmente latón) que aloja la carga de proyección (pólvora), el fulminante y el proyectil.",
+                easy: "El 'botecito' de metal que se queda tirado en el suelo cuando disparas, el cual contenía la pólvora antes de la explosión."
+            }, {
+                word: "Fulminante",
+                branch: "Balística Forense",
+                icon: "🔥",
+                definition: "Cápsula química altamente sensible al golpe que genera la chispa inicial necesaria para encender la pólvora dentro del cartucho.",
+                easy: "La pequeña tapita en la base del casquillo que, al recibir el golpe del arma, hace un chispazo para prenderle fuego a la pólvora."
+            }, {
+                word: "Trayectoria Balística",
+                branch: "Balística Forense",
+                icon: "📉",
+                definition: "Línea imaginaria que describe el centro de gravedad del proyectil durante su vuelo en el espacio.",
+                easy: "El camino invisible que recorrió la bala por el aire desde la punta de la pistola hasta el lugar del impacto."
+            }, {
+                word: "Anillo de Fisch",
+                branch: "Balística Forense",
+                icon: "⭕",
+                definition: "Zona que rodea el orificio de entrada de un proyectil de arma de fuego en la piel, compuesta por el orillo de frotamiento y el de contusión.",
+                easy: "La marca redonda, oscura y raspada que queda en la piel justo alrededor de la zona donde entró la bala."
+            }, {
+                word: "Ánima del Cañón",
+                branch: "Balística Forense",
+                icon: "🕳️",
+                definition: "La superficie interna del tubo del cañón de cualquier arma de fuego.",
+                easy: "El hueco o túnel del tubo de la pistola por donde pasa la bala antes de salir disparada."
+            }, {
+                word: "Calibre",
+                branch: "Balística Forense",
+                icon: "📏",
+                definition: "Diámetro interno del cañón medido de macizo a macizo o diámetro de la sección transversal de un proyectil.",
+                easy: "El ancho de la bala o del tubo de la pistola, expresado en milímetros o fracciones de pulgada."
+            }, {
+                word: "Disparador",
+                branch: "Balística Forense",
+                icon: "🔫",
+                definition: "Pieza del mecanismo de disparo que el tirador presiona para liberar el percutor y realizar la detonación.",
+                easy: "Lo que comúnmente llamamos gatillo; la palanca que jalas con el dedo para hacer el disparo."
+            }, {
+                word: "Percutor",
+                branch: "Balística Forense",
+                icon: "🔨",
+                definition: "Aguja metálica o martillo que golpea con fuerza el fulminante del cartucho para detonar el arma.",
+                easy: "La agujita metálica de la pistola que golpea la parte de atrás de la bala para iniciar la explosión."
+            }, {
+                word: "Boca de Fuego",
+                branch: "Balística Forense",
+                icon: "⭕",
+                definition: "Extremo anterior del cañón de un arma de fuego por donde egresan los proyectiles y gases.",
+                easy: "La punta de la pistola por donde sale la bala volando y se ve el chispazo del disparo."
+            }, {
+                word: "Disparo de Prueba",
+                branch: "Balística Forense",
+                icon: "🧪",
+                definition: "Detonación controlada realizada sobre un medio blando (como un tanque de agua) para recuperar proyectiles sin deformación.",
+                easy: "Disparar el arma sospechosa dentro de agua para recuperar la bala intacta y compararla con la del crimen."
+            },
+
+            // Hematología Forense (13)
+            {
+                word: "Hematología Reconstructora",
+                branch: "Hematología Forense",
+                icon: "🩸",
+                definition: "Rama de la hematología forense que estudia la morfología, posición y distribución de las manchas de sangre para determinar la dinámica de los hechos en el lugar del crimen.",
+                easy: "Mirar las formas de las gotas de sangre en el suelo o paredes para reconstruir si la víctima corrió, peleó o fue atacada acostada."
+            }, {
+                word: "Hematología Identificadora",
+                branch: "Hematología Forense",
+                icon: "🧪",
+                definition: "Análisis biológico e inmunológico de muestras de sangre para verificar si corresponden a sangre, si es humana o animal, y finalmente determinar su perfil de ADN.",
+                easy: "Hacer pruebas de laboratorio para comprobar si una mancha roja es sangre de verdad, si es de humano y a quién le pertenece."
+            }, {
+                word: "Patrón de Goteo",
+                branch: "Hematología Forense",
+                icon: "💧",
+                definition: "Conjunto de manchas de sangre de forma circular que caen de manera vertical debido a la acción exclusiva de la gravedad.",
+                easy: "Gotas de sangre perfectamente redondas que caen directo al piso cuando alguien está herido pero se queda quieto o camina despacio."
+            }, {
+                word: "Mancha por Proyección",
+                branch: "Hematología Forense",
+                icon: "💦",
+                definition: "Mancha hemática producida cuando la sangre es expulsada con fuerza desde una fuente externa (como una arteria rota o el impacto de un arma blanca).",
+                easy: "Salpicaduras de sangre alargadas que salen disparadas con fuerza hacia una pared, como cuando se usa un martillo o se corta una arteria."
+            }, {
+                word: "Mancha por Escurrimiento",
+                branch: "Hematología Forense",
+                icon: "🌊",
+                definition: "Acumulación y flujo continuo de sangre debido a la gravedad, que se desliza sobre una superficie inclinada formando charcos o regueros.",
+                easy: "La sangre que resbala de un cuerpo o herida y corre por el suelo acumulándose en un charco debido a la gravedad."
+            }, {
+                word: "Quimioluminiscencia (Luminol)",
+                branch: "Hematología Forense",
+                icon: "💡",
+                definition: "Reacción química que emite una luz azul visible en la oscuridad al entrar en contacto con el hierro de la hemoglobina, revelando rastros invisibles de sangre lavada.",
+                easy: "Un líquido mágico que los peritos rocían a oscuras y brilla con luz azul neón si encuentra manchas de sangre que alguien intentó limpiar."
+            }, {
+                word: "Ángulo de Impacto",
+                branch: "Hematología Forense",
+                icon: "📐",
+                definition: "Ángulo interno en el cual una gota de sangre choca contra una superficie de destino, determinando la elipticidad de la mancha.",
+                easy: "La inclinación con la que la gota de sangre pegó en la pared. Si es muy estirada, venía de lado; si es redonda, cayó recta."
+            }, {
+                word: "Patrón de Salpicadura por Impacto",
+                branch: "Hematología Forense",
+                icon: "💥",
+                definition: "Patrón de manchas de sangre resultante de un objeto que golpea una fuente de sangre líquida con fuerza física.",
+                easy: "La salpicadura de gotitas de sangre que sale volando cuando alguien recibe un golpe fuerte."
+            }, {
+                word: "Mancha por Contacto",
+                branch: "Hematología Forense",
+                icon: "🧤",
+                definition: "Mancha de sangre creada por el contacto estático entre una superficie ensangrentada y otra que no lo está.",
+                easy: "La marca que dejas, por ejemplo, al tocar la pared con la mano llena de sangre sin deslizarla."
+            }, {
+                word: "Mancha por Arrastre o Deslizamiento",
+                branch: "Hematología Forense",
+                icon: "🔄",
+                definition: "Mancha de sangre producida por el movimiento de un objeto o cuerpo ensangrentado sobre una superficie.",
+                easy: "El camino de sangre continuo que queda en el piso cuando arrastras a alguien herido."
+            }, {
+                word: "Eritrocitos o Glóbulos Rojos",
+                branch: "Hematología Forense",
+                icon: "🔴",
+                definition: "Células sanguíneas responsables de transportar oxígeno; en humanos maduros no tienen núcleo ni ADN.",
+                easy: "Las células que pintan de rojo tu sangre, pero no sirven para sacar ADN porque no tienen núcleo."
+            }, {
+                word: "Leucocitos o Glóbulos Blancos",
+                branch: "Hematología Forense",
+                icon: "⚪",
+                definition: "Células de defensa en la sangre que contienen núcleo celular y constituyen la fuente primaria para el análisis de ADN.",
+                easy: "Las células guerreras de la sangre de donde los científicos sí extraen el ADN para identificar a un sospechoso."
+            }, {
+                word: "Suero Sanguíneo",
+                branch: "Hematología Forense",
+                icon: "🧪",
+                definition: "Fracción líquida de la sangre obtenida después de la coagulación de la misma, desprovista de fibrina y células.",
+                easy: "El líquido amarillento que se separa de la sangre cuando esta se seca o se coagula."
+            },
+
+            // Toxicología y Química Forense (11)
+            {
+                word: "Toxicología Forense",
+                branch: "Toxicología y Química",
+                icon: "🧪",
+                definition: "Aplicación de la química analítica para detectar y cuantificar la presencia de drogas, venenos u otras sustancias tóxicas en fluidos o tejidos biológicos.",
+                easy: "La ciencia que investiga si una persona falleció o actuó bajo los efectos de un veneno, medicamento letal o droga."
+            }, {
+                word: "Cromatografía",
+                branch: "Toxicología y Química",
+                icon: "🌈",
+                definition: "Método físico de separación química en el cual los componentes de una muestra se distribuyen entre dos fases, permitiendo identificar sustancias complejas.",
+                easy: "Un examen de laboratorio para separar mezclas de químicos y ver elemento por elemento de qué estaba hecho un veneno."
+            }, {
+                word: "Veneno",
+                branch: "Toxicología y Química",
+                icon: "☠️",
+                definition: "Cualquier sustancia química líquida, sólida o gaseosa que, introducida en el organismo, provoca lesiones o la muerte mediante reacciones bioquímicas.",
+                easy: "Sustancia peligrosa que enferma gravemente o apaga el cuerpo de una persona por dentro."
+            }, {
+                word: "Metabolito",
+                branch: "Toxicología y Química",
+                icon: "♻️",
+                definition: "Sustancia producida por el organismo tras procesar, transformar o digerir un químico o droga introducida al sistema biológico.",
+                easy: "Las 'migajas' o rastros que deja una droga en el cuerpo después de que el hígado la procesa y que sirven para probar que se consumió."
+            }, {
+                word: "Alcoholemia",
+                branch: "Toxicología y Química",
+                icon: "🍷",
+                definition: "Determinación de la concentración de alcohol etílico en la sangre de un individuo, expresada comúnmente en gramos por litro.",
+                easy: "La medida exacta de cuánto alcohol trae una persona en su cuerpo tras haber tomado bebidas embriagantes."
+            }, {
+                word: "Dosificación de Arsénico",
+                branch: "Toxicología y Química",
+                icon: "🧴",
+                definition: "Análisis cuantitativo de arsénico en muestras orgánicas como cabello, uñas o huesos, indicativo de envenenamiento crónico o agudo.",
+                easy: "Analizar muestras de pelo o uñas para saber si a alguien lo estuvieron envenenando poco a poco con polvos tóxicos de arsénico."
+            }, {
+                word: "Dosis Letal (DL50)",
+                branch: "Toxicología y Química",
+                icon: "📊",
+                definition: "Concentración o dosis de una sustancia tóxica necesaria para matar al 50% de una población de prueba.",
+                easy: "La medida científica para saber qué tan extremadamente venenoso es un químico."
+            }, {
+                word: "Anfetaminas",
+                branch: "Toxicología y Química",
+                icon: "⚡",
+                definition: "Grupo de agentes estimulantes sintéticos del sistema nervioso central, frecuentemente abusados de manera ilegal.",
+                easy: "Sustancias químicas estimulantes que aceleran el cerebro y quitan el sueño, siendo de uso ilegal."
+            }, {
+                word: "Antídoto",
+                branch: "Toxicología y Química",
+                icon: "🛡️",
+                definition: "Sustancia capaz de neutralizar o contrarrestar los efectos tóxicos de un veneno específico.",
+                easy: "El medicamento o remedio químico que bloquea o cura el daño de un veneno."
+            }, {
+                word: "Adulterante",
+                branch: "Toxicología y Química",
+                icon: "🧂",
+                definition: "Sustancia ajena mezclada con una droga ilícita para aumentar su volumen físico o modificar sus efectos.",
+                easy: "El polvo que se agrega a las drogas para rebajarlas o hacer que pesen más y ganar más dinero."
+            }, {
+                word: "Abstinencia",
+                branch: "Toxicología y Química",
+                icon: "🌪️",
+                definition: "Estado de malestar orgánico y emocional provocado por el cese brusco del consumo de una sustancia de la cual se depende físicamente.",
+                easy: "El sufrimiento físico y temblores del cuerpo cuando le quitas de golpe la droga de la que es adicto."
+            },
+
+            // Medicina Forense / Tanatología (14)
+            {
+                word: "Autopsia / Necropsia",
+                branch: "Medicina Forense",
+                icon: "🩺",
+                definition: "Examen médico y quirúrgico minucioso del cadáver para determinar la causa precisa, mecanismo y manera de la muerte.",
+                easy: "La operación médica que se le hace a un cuerpo para descubrir de qué murió realmente."
+            }, {
+                word: "Rigor Mortis",
+                branch: "Medicina Forense",
+                icon: "🧘",
+                definition: "Estado de rigidez y endurecimiento muscular que se produce en el cadáver horas después del fallecimiento debido a procesos bioquímicos celulares.",
+                easy: "Cuando el cuerpo de una persona fallecida se pone muy duro y rígido unas horas después de morir."
+            }, {
+                word: "Livor Mortis (Livideces)",
+                branch: "Medicina Forense",
+                icon: "🎨",
+                definition: "Manchas de color rojo-violáceo que aparecen en las zonas declives del cadáver debido a la acumulación pasiva de la sangre por gravedad.",
+                easy: "Manchas moradas que salen en la espalda o zonas bajas del cadáver porque la sangre se acomoda ahí por el peso tras detenerse el corazón."
+            }, {
+                word: "Algor Mortis",
+                branch: "Medicina Forense",
+                icon: "❄️",
+                definition: "Descenso gradual de la temperatura corporal del cadáver hasta igualarse con la temperatura del medio ambiente.",
+                easy: "El enfriamiento natural del cuerpo que ocurre poco a poco tras perder la vida."
+            }, {
+                word: "Putrefacción",
+                branch: "Medicina Forense",
+                icon: "🥀",
+                definition: "Descomposición de las materias orgánicas del cadáver por la acción de bacterias, que genera gases, fluidos y cambios cromáticos.",
+                easy: "El proceso natural donde el cuerpo se deshace poco a poco debido a los microbios e insectos."
+            }, {
+                word: "Fauna Cadavérica",
+                branch: "Medicina Forense",
+                icon: "🪰",
+                definition: "Sucesión biológica de insectos y artrópodos que colonizan el cadáver en distintas etapas de la descomposición, útil para estimar el intervalo postmortem.",
+                easy: "Los insectos (como moscas y escarabajos) que llegan al cuerpo y ayudan a los científicos a adivinar hace cuántos días o semanas murió alguien."
+            }, {
+                word: "Lesión Antemortem",
+                branch: "Medicina Forense",
+                icon: "🤕",
+                definition: "Traumatismo o herida producida cuando el individuo aún se encontraba con vida, caracterizada por presentar infiltración sanguínea e inflamación activa.",
+                easy: "Golpes o heridas que recibió la persona cuando todavía respiraba y su corazón latía, lo que deja moretones hinchados."
+            }, {
+                word: "Asfixiología",
+                branch: "Medicina Forense",
+                icon: "🫁",
+                definition: "Estudio de las muertes producidas por la privación de oxígeno en los pulmones y tejidos corporales (ahorcamiento, estrangulamiento, sumersión).",
+                easy: "La especialidad médica que investiga cómo murió alguien por falta de aire en sus pulmones."
+            }, {
+                word: "Lesión Postmortem",
+                branch: "Medicina Forense",
+                icon: "🩹",
+                definition: "Daño físico infligido al cadáver después de ocurrida la muerte, caracterizado por ausencia de sangrado activo e inflamación.",
+                easy: "Cortes o heridas hechas al cuerpo cuando ya estaba muerto, que se reconocen porque no están hinchadas ni tienen moretones."
+            }, {
+                word: "Espasmo Cadavérico",
+                branch: "Medicina Forense",
+                icon: "✊",
+                definition: "Rigidez corporal instantánea y localizada que fija una postura extrema justo en el momento de la muerte, común en casos de violencia extrema.",
+                easy: "Cuando el cuerpo queda rígido de golpe en el instante de morir, como el suicida que se queda aferrado a la pistola."
+            }, {
+                word: "Data de Muerte",
+                branch: "Medicina Forense",
+                icon: "📅",
+                definition: "Estimación del tiempo aproximado transcurrido desde el momento del deceso de un individuo hasta el examen médico forense.",
+                easy: "El cálculo científico de cuántas horas o días lleva muerta una persona."
+            }, {
+                word: "Adipocira",
+                branch: "Medicina Forense",
+                icon: "🕯️",
+                definition: "Transformación química de las grasas corporales en una sustancia cerosa similar al jabón, en ambientes de alta humedad.",
+                easy: "Cuando la grasa del cuerpo se convierte en cera o jabón debido a la humedad extrema, conservándose por años."
+            }, {
+                word: "Momificación",
+                branch: "Medicina Forense",
+                icon: "🏜️",
+                definition: "Conservación del cadáver mediante la deshidratación extrema y desecación rápida de los tejidos corporales.",
+                easy: "Cuando el cuerpo se seca tan rápido por el aire o calor seco que la piel se queda pegada a los huesos, evitando que se pudra."
+            }, {
+                word: "Exhumación",
+                branch: "Medicina Forense",
+                icon: "🪦",
+                definition: "Extracción autorizada judicialmente de un cadáver de su sepultura para realizarle nuevos estudios periciales.",
+                easy: "Desenterrar un cuerpo sepultado con permiso de un juez para volver a examinarlo."
+            },
+
+            // Grafoscopía y Documentoscopía (11)
+            {
+                word: "Grafoscopía",
+                branch: "Grafoscopía",
+                icon: "✍️",
+                definition: "Rama forense orientada al análisis de la escritura manual y firmas para determinar su autenticidad, autoría o falsedad.",
+                easy: "El estudio de la letra escrita a mano para descubrir si una firma es falsa o si la escribió la persona que dice haberlo hecho."
+            }, {
+                word: "Documentoscopía",
+                branch: "Grafoscopía",
+                icon: "📄",
+                definition: "Análisis técnico y físico de documentos de sospecha (papel moneda, pasaportes, contratos) para verificar alteraciones o falsificaciones.",
+                easy: "La técnica para revisar si billetes, identificaciones o contratos impresos son verdaderos o alterados."
+            }, {
+                word: "Grafometría",
+                branch: "Grafoscopía",
+                icon: "📐",
+                definition: "Método de medición de las dimensiones, ángulos, espaciados y proporciones de las letras en un texto manuscrito para su análisis pericial.",
+                easy: "Medir con reglas especiales el tamaño y los ángulos de las letras para comparar firmas sospechosas de manera científica."
+            }, {
+                word: "Presión de Escritura",
+                branch: "Grafoscopía",
+                icon: "✒️",
+                definition: "Fuerza o energía que ejerce el escritor con el útil inscriptor sobre el soporte papel, dejando un relieve o profundidad característico.",
+                easy: "Qué tan fuerte recargas la pluma contra el papel al escribir, un hábito inconsciente casi imposible de imitar."
+            }, {
+                word: "Gesto Gráfico",
+                branch: "Grafoscopía",
+                icon: "🧩",
+                definition: "Características o modismos escriturales automáticos y personalizados que posee cada individuo que lo hacen reconocible de manera única.",
+                easy: "Los pequeños tics inconscientes al escribir (como la forma de poner los puntos sobre las íes o colas de letras) que definen tu estilo personal."
+            }, {
+                word: "Soporte Físico",
+                branch: "Grafoscopía",
+                icon: "📁",
+                definition: "Cualquier material (papel, cartón, madera, metal) sobre el cual se plasma un texto, firma o marca para ser objeto de estudio.",
+                easy: "El objeto material donde se escribió algo sospechoso (generalmente una hoja de papel, pero puede ser una pared)."
+            }, {
+                word: "Firma Dubitada",
+                branch: "Grafoscopía",
+                icon: "❓",
+                definition: "Firma o rúbrica cuya autenticidad o autoría se encuentra bajo duda o controversia legal y debe ser cotejada.",
+                easy: "La firma sospechosa que se cree que fue falsificada y debe ser analizada."
+            }, {
+                word: "Firma Indubitada",
+                branch: "Grafoscopía",
+                icon: "✓",
+                definition: "Firma de la cual se tiene certeza absoluta sobre su legitimidad, sirviendo de patrón indudable de comparación.",
+                easy: "La firma de la que estamos seguros que es real y se usa para compararla con la sospechosa."
+            }, {
+                word: "Inscripción",
+                branch: "Grafoscopía",
+                icon: "🖊️",
+                definition: "El grabado o plasmado de caracteres gráficos en una superficie mediante tinta o presión de un útil inscriptor.",
+                easy: "Escribir o grabar palabras y firmas sobre un papel o cualquier otra superficie."
+            }, {
+                word: "Tinta de Bolígrafo",
+                branch: "Grafoscopía",
+                icon: "💧",
+                definition: "Sustancia pastosa cuya composición química y envejecimiento son analizables para determinar la data de un escrito.",
+                easy: "La pasta de color de la pluma, que puede analizarse para saber hace cuánto tiempo se escribió un documento."
+            }, {
+                word: "Grafía",
+                branch: "Grafoscopía",
+                icon: "🔤",
+                definition: "La forma representativa particular que adopta cada letra o signo gráfico al ser trazado a mano por un individuo.",
+                easy: "La forma física de cada letra que dibujas de forma única al escribir."
+            },
+
+            // Investigación del Lugar de Intervención (13)
+            {
+                word: "Cadena de Custodia",
+                branch: "Investigación",
+                icon: "⛓️",
+                definition: "Sistema de control y registro aplicado a los indicios o evidencias desde su localización en la escena hasta su valoración en el juzgado, garantizando su autenticidad.",
+                easy: "La bitácora estricta de quién toca una prueba para asegurar que nadie la altere, cambie o ensucie desde que se junta hasta que llega con el juez."
+            }, {
+                word: "Indicio",
+                branch: "Investigación",
+                icon: "🔍",
+                definition: "Todo objeto, instrumento, huella, marca o señal que se localiza en el lugar de los hechos y que tiene relación con el presunto delito.",
+                easy: "Cualquier cosita sospechosa hallada en la escena del crimen (un cabello, un casquillo, un vaso) que podría estar relacionada con lo que pasó."
+            }, {
+                word: "Evidencia",
+                branch: "Investigación",
+                icon: "📌",
+                definition: "Indicio que, tras ser analizado científicamente en un laboratorio forense, se comprueba que guarda relación directa con el hecho delictivo.",
+                easy: "Un indicio que ya pasó por pruebas de laboratorio y resultó ser clave para el caso (ejemplo: comprobar que el cabello es de la víctima)."
+            }, {
+                word: "Prueba",
+                branch: "Investigación",
+                icon: "⚖️",
+                definition: "Elemento de convicción valorado y aceptado formalmente por el juez en un proceso penal para fundar la culpabilidad o inocencia del imputado.",
+                easy: "La evidencia que el juez ya aceptó legalmente en el juicio para culpar o salvar a alguien."
+            }, {
+                word: "Lugar de Intervención",
+                branch: "Investigación",
+                icon: "🚧",
+                definition: "Espacio físico delimitado donde se ha producido un hecho delictivo o donde se localizan indicios relacionados con el mismo.",
+                easy: "El área física donde ocurrió el crimen (o donde se encontraron cuerpos/pistas) y que los peritos deben inspeccionar."
+            }, {
+                word: "Acordonamiento",
+                branch: "Investigación",
+                icon: "🚷",
+                definition: "Acción policial orientada a preservar el lugar de los hechos mediante barreras físicas (cintas de advertencia) para evitar la contaminación de indicios.",
+                easy: "Poner cinta amarilla de 'Prohibido el paso' para que los curiosos o el viento no destruyan las pistas de la escena."
+            }, {
+                word: "Método de Búsqueda en Rejilla",
+                branch: "Investigación",
+                icon: "🏁",
+                definition: "Técnica de rastreo que consiste en cuadricular el terreno imaginariamente para que el investigador avance primero de norte a sur y luego de este a oeste.",
+                easy: "Caminar por la escena del crimen en líneas horizontales y luego verticales para no dejar ningún pedacito de suelo sin revisar."
+            }, {
+                word: "Fijación Fotográfica",
+                branch: "Investigación",
+                icon: "📸",
+                definition: "Registro visual exacto de cómo se encuentra la escena del crimen y la posición de cada indicio antes de que sean levantados o alterados.",
+                easy: "Tomar fotos de toda la escena (desde lejos y muy de cerca) para congelar el momento exacto en el que se encontraron las cosas."
+            }, {
+                word: "Lugar de Hallazgo",
+                branch: "Investigación",
+                icon: "📍",
+                definition: "Espacio geográfico donde se localizan indicios de un delito que se perpetró originalmente en otra ubicación.",
+                easy: "El sitio donde se encuentra un cuerpo u objeto del delito, aunque el crimen haya ocurrido en otra parte."
+            }, {
+                word: "Lugar de Enlace",
+                branch: "Investigación",
+                icon: "🚗",
+                definition: "Sitio físico o medio utilizado para trasladar indicios entre el lugar de los hechos y el de hallazgo (ej. el maletero de un coche).",
+                easy: "El área intermedia usada para mover cuerpos u objetos del crimen, como un vehículo."
+            }, {
+                word: "Fijación Escrita",
+                branch: "Investigación",
+                icon: "📝",
+                definition: "Descripción narrativa, rigurosa y exacta por escrito de las condiciones en que fue hallado el escenario del crimen.",
+                easy: "El reporte detallado donde el perito escribe palabra por palabra cómo se veía la escena."
+            }, {
+                word: "Levantamiento",
+                branch: "Investigación",
+                icon: "🧤",
+                definition: "Técnica científica de recolección de indicios físicos, biológicos o materiales evitando su alteración.",
+                easy: "La acción de recoger una prueba con pinzas o guantes estériles para no contaminarla."
+            }, {
+                word: "Embalaje",
+                branch: "Investigación",
+                icon: "📦",
+                definition: "Protección física individualizada que se aplica a cada indicio recolectado para su envío seguro al laboratorio.",
+                easy: "El contenedor (bolsa de papel, tubo o caja) donde se guarda y sella cada prueba del crimen."
+            },
+
+            // Criminología y Perfilación (13)
+            {
+                word: "Perfilación Criminal",
+                branch: "Criminología",
+                icon: "👤",
+                definition: "Técnica psicológica forense que infiere las características de personalidad, comportamiento, hábitos y datos demográficos de un agresor basándose en el análisis de la escena del crimen.",
+                easy: "Usar la psicología para adivinar cómo piensa, dónde vive y qué edad tiene el delincuente solo viendo cómo dejó la escena del crimen."
+            }, {
+                word: "Modus Operandi",
+                branch: "Criminología",
+                icon: "🛠️",
+                definition: "Conjunto de conductas o métodos específicos que realiza un criminal para llevar a cabo el delito, asegurar su éxito y facilitar su huida.",
+                easy: "El 'método de trabajo' del delincuente: cómo entra a las casas, qué herramientas usa y cómo escapa sin que lo atrapen."
+            }, {
+                word: "Firma Criminal",
+                branch: "Criminología",
+                icon: "🖋️",
+                definition: "Aspecto del comportamiento del agresor en la escena que no es necesario para cometer el delito, sino que sirve para satisfacer sus necesidades psicológicas o fantasías.",
+                easy: "Un sello personal innecesario que deja el delincuente solo para satisfacer su mente (como colocar los cuerpos de cierta forma o dejar un dibujo)."
+            }, {
+                word: "Victimología",
+                branch: "Criminología",
+                icon: "🥺",
+                definition: "Estudio científico del papel que desempeña la víctima en el hecho delictivo, su relación con el infractor y su vulnerabilidad.",
+                easy: "Analizar por qué el delincuente eligió a esa persona específica como su víctima y qué conexión tenían."
+            }, {
+                word: "Escena Organizada",
+                branch: "Criminología",
+                icon: "🗂️",
+                definition: "Escena del crimen que revela una planificación metódica por parte de un agresor inteligente, quien usualmente limpia rastros y lleva herramientas consigo.",
+                easy: "Un crimen muy bien planeado, donde el culpable fue cuidadoso, llevó armas preparadas y no dejó pistas fáciles."
+            }, {
+                word: "Escena Desorganizada",
+                branch: "Criminología",
+                icon: "🌪️",
+                definition: "Escena que denota impulsividad, descontrol emocional o psicosis en el agresor, caracterizada por caos, improvisación de armas y abundante evidencia física.",
+                easy: "Un crimen impulsivo y caótico donde el delincuente atacó sin pensar, usó lo primero que halló y dejó pistas por todos lados."
+            }, {
+                word: "Psicopatía",
+                branch: "Criminología",
+                icon: "🧠",
+                definition: "Trastorno de personalidad caracterizado por la falta patológica de empatía, remordimiento, manipulación egocéntrica y encanto superficial.",
+                easy: "Un rasgo de personalidad donde alguien hace daño a otros sin sentir culpa alguna, siendo frío y calculador."
+            }, {
+                word: "Criminogénesis",
+                branch: "Criminología",
+                icon: "🌱",
+                definition: "Estudio del origen, causa y factores biológicos, sociales y psicológicos que detonan que un individuo decida cometer una conducta criminal.",
+                easy: "La investigación sobre qué fue lo que hizo que una persona se volviera delincuente (su infancia, su entorno o su cerebro)."
+            }, {
+                word: "Criminodinámica",
+                branch: "Criminología",
+                icon: "⚙️",
+                definition: "Explicación del desarrollo secuencial del comportamiento criminal de un sujeto y la interacción con su medio ambiente.",
+                easy: "Estudiar el paso a paso de cómo cometió el delincuente su crimen en la vida real."
+            }, {
+                word: "Sociopatía",
+                branch: "Criminología",
+                icon: "💢",
+                definition: "Trastorno antisocial de la personalidad detonado comúnmente por factores de entorno familiar o abuso infantil severo.",
+                easy: "Un comportamiento agresivo e irresponsable de desprecio a las reglas debido a una infancia dura."
+            }, {
+                word: "Factores Criminógenos",
+                branch: "Criminología",
+                icon: "⚠️",
+                definition: "Estímulos o circunstancias endógenas y exógenas que facilitan y propician la inclinación hacia el delito.",
+                easy: "Las cosas que empujan a alguien al delito (ej. problemas mentales, adicciones o pobreza)."
+            }, {
+                word: "Prevención del Delito",
+                branch: "Criminología",
+                icon: "🛡️",
+                definition: "Estrategias de orden social y policial destinadas a mitigar y disuadir los comportamientos antisociales antes de su ejecución.",
+                easy: "Las medidas tomadas para evitar que ocurran delitos en una comunidad."
+            }, {
+                word: "Penología",
+                branch: "Criminología",
+                icon: "🏛️",
+                definition: "Estudio científico de las penas, el castigo penal y el funcionamiento de los sistemas penitenciarios para la readaptación social.",
+                easy: "La ciencia que investiga cómo deben ser las cárceles para corregir a los delincuentes."
+            }
+        ];
+
+        // Mapeo de colores y categorías para un look premium y claro
+        const branchMetadata = {
+            "Lofoscopía": {
+                color: "border-cyan-200 text-cyan-700 bg-cyan-50/50 hover:border-cyan-500",
+                tag: "Lofoscopía"
+            },
+            "Balística Forense": {
+                color: "border-emerald-200 text-emerald-700 bg-emerald-50/50 hover:border-emerald-500",
+                tag: "Balística"
+            },
+            "Hematología Forense": {
+                color: "border-red-200 text-red-700 bg-red-50/50 hover:border-red-500",
+                tag: "Hematología"
+            },
+            "Toxicología y Química": {
+                color: "border-purple-200 text-purple-700 bg-purple-50/50 hover:border-purple-500",
+                tag: "Química / Tox"
+            },
+            "Medicina Forense": {
+                color: "border-pink-200 text-pink-700 bg-pink-50/50 hover:border-pink-500",
+                tag: "Medicina Forense"
+            },
+            "Grafoscopía": {
+                color: "border-amber-200 text-amber-700 bg-amber-50/50 hover:border-amber-500",
+                tag: "Grafoscopía"
+            },
+            "Investigación": {
+                color: "border-blue-200 text-blue-700 bg-blue-50/50 hover:border-blue-500",
+                tag: "Investigación Escena"
+            },
+            "Criminología": {
+                color: "border-orange-200 text-orange-700 bg-orange-50/50 hover:border-orange-500",
+                tag: "Criminología"
+            }
+        };
+
+        let currentViewMode = "cards"; // o "flashcards"
+        let activeFilter = "all";
+        let activeFlashcardIndex = 0;
+        let isFlipped = false;
+
+        // Iniciar componentes al cargar la ventana
+        window.onload = function() {
+            lucide.createIcons();
+            buildFilters();
+            renderGlossary();
+            setupKeyboardNavigation();
+        };
+
+        // Construir dinámicamente botones de filtrado
+        function buildFilters() {
+            const container = document.getElementById("filter-container");
+            const branches = [...new Set(termsData.map(t => t.branch))];
+
+            branches.forEach(branch => {
+                const count = termsData.filter(t => t.branch === branch).length;
+                const btn = document.createElement("button");
+                btn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold border border-slate-200 text-slate-600 bg-white hover:border-red-500 hover:text-red-600 shadow-sm transition-all";
+                btn.id = `btn-filter-${branch.replace(/\s+/g, '-')}`;
+                btn.innerHTML = `${branch} (${count})`;
+                btn.onclick = () => filterBranch(branch);
+                container.appendChild(btn);
+            });
+        }
+
+        // Obtener datos filtrados por palabra y categoría
+        function getFilteredData() {
+            const searchQuery = document.getElementById("search-input").value.toLowerCase();
+            return termsData.filter(item => {
+                const matchesSearch = item.word.toLowerCase().includes(searchQuery) ||
+                    item.definition.toLowerCase().includes(searchQuery) ||
+                    item.easy.toLowerCase().includes(searchQuery);
+                const matchesBranch = activeFilter === "all" || item.branch === activeFilter;
+                return matchesSearch && matchesBranch;
+            });
+        }
+
+        // Renderizar Cuadrícula del Glosario
+        function renderGlossary() {
+            const grid = document.getElementById("glossary-grid");
+            grid.innerHTML = "";
+            const filtered = getFilteredData();
+
+            // Actualizar contadores en la UI
+            document.getElementById("current-count").innerText = filtered.length;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-16 text-center border border-dashed border-slate-300 rounded-2xl bg-slate-50">
+                        <i data-lucide="info" class="mx-auto w-12 h-12 text-slate-400 mb-3"></i>
+                        <p class="text-slate-600 font-bold">No se encontraron términos para tu búsqueda.</p>
+                        <p class="text-slate-400 text-xs mt-1">Prueba reajustando los filtros o escribiendo otra palabra.</p>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            filtered.forEach((item, index) => {
+                const meta = branchMetadata[item.branch];
+                const card = document.createElement("div");
+
+                // Efecto de tarjeta en el glosario estándar
+                card.className = "group relative bg-white border border-slate-200 rounded-2xl p-5 hover:bg-slate-50/50 transition-all duration-300 glow-red-hover flex flex-col justify-between overflow-hidden shadow-sm";
+                card.innerHTML = `
+                    <div>
+                        <!-- Encabezado de la Tarjeta -->
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-2xl p-2 bg-slate-100 rounded-xl border border-slate-200 group-hover:scale-110 transition-transform">
+                                ${item.icon}
+                            </span>
+                            <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border ${meta.color}">
+                                ${meta.tag}
+                            </span>
+                        </div>
+                        
+                        <!-- Cuerpo Informativo -->
+                        <div class="space-y-3">
+                            <h3 class="text-lg font-bold heading-font text-slate-900 tracking-wide group-hover:text-red-600 transition-colors">
+                                ${item.word}
+                            </h3>
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Definición Estándar:</span>
+                                <p class="text-xs text-slate-600 leading-relaxed mt-1 font-medium">
+                                    ${item.definition}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pestaña de Explicación Sencilla (Didáctica) integrada elegantemente en la base -->
+                    <div class="mt-4 pt-4 border-t border-slate-200 bg-slate-50/50 rounded-xl p-3 border border-dashed border-slate-300 group-hover:bg-amber-50/30 group-hover:border-amber-200 transition-colors">
+                        <span class="text-[10px] font-bold text-amber-600 uppercase tracking-wider flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> 💡 Explicación Sencilla:
+                        </span>
+                        <p class="text-xs text-amber-900 italic mt-1 leading-relaxed font-semibold">
+                            "${item.easy}"
+                        </p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        // Controladores de Vistas (Cards vs Flashcards)
+        function setViewMode(mode) {
+            currentViewMode = mode;
+            const grid = document.getElementById("glossary-grid");
+            const deck = document.getElementById("flashcard-deck");
+            const cardsBtn = document.getElementById("view-cards-btn");
+            const flashBtn = document.getElementById("view-flash-btn");
+
+            if (mode === "cards") {
+                grid.classList.remove("hidden");
+                deck.classList.add("hidden");
+
+                cardsBtn.className = "flex items-center gap-2 px-4 py-2.5 bg-red-50 border border-red-200 text-red-700 hover:bg-red-100/50 rounded-xl text-xs font-semibold transition-all";
+                flashBtn.className = "flex items-center gap-2 px-4 py-2.5 bg-white border border-slate-200 text-slate-500 hover:text-slate-800 rounded-xl text-xs font-semibold transition-all";
+                renderGlossary();
+            } else {
+                grid.classList.add("hidden");
+                deck.classList.remove("hidden");
+
+                cardsBtn.className = "flex items-center gap-2 px-4 py-2.5 bg-white border border-slate-200 text-slate-500 hover:text-slate-800 rounded-xl text-xs font-semibold transition-all";
+                flashBtn.className = "flex items-center gap-2 px-4 py-2.5 bg-red-50 border border-red-200 text-red-700 hover:bg-red-100/50 rounded-xl text-xs font-semibold transition-all";
+                activeFlashcardIndex = 0;
+                isFlipped = false;
+                renderActiveFlashcard();
+            }
+        }
+
+        // Filtro por rama forense
+        function filterBranch(branch) {
+            activeFilter = branch;
+
+            // Actualizar estilo visual del filtro seleccionado
+            document.querySelectorAll("#filter-container button").forEach(btn => {
+                btn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold border border-slate-200 text-slate-600 bg-white hover:border-red-500 hover:text-red-600 shadow-sm transition-all";
+            });
+
+            if (branch === "all") {
+                event.target.className = "btn-filter-active px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-200 hover:border-red-500 transition-all";
+            } else {
+                const selectedBtn = document.getElementById(`btn-filter-${branch.replace(/\s+/g, '-')}`);
+                if (selectedBtn) {
+                    selectedBtn.className = "btn-filter-active px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-200 hover:border-red-500 transition-all";
+                }
+            }
+
+            if (currentViewMode === "cards") {
+                renderGlossary();
+            } else {
+                activeFlashcardIndex = 0;
+                isFlipped = false;
+                renderActiveFlashcard();
+            }
+        }
+
+        // Buscador reactivo
+        document.getElementById("search-input").addEventListener("input", () => {
+            if (currentViewMode === "cards") {
+                renderGlossary();
+            } else {
+                activeFlashcardIndex = 0;
+                isFlipped = false;
+                renderActiveFlashcard();
+            }
+        });
+
+        // Lógica de Flashcards individuales
+        function renderActiveFlashcard() {
+            const filtered = getFilteredData();
+            const deck = document.getElementById("flashcard-deck");
+            const inner = document.getElementById("active-card-inner");
+
+            if (filtered.length === 0) {
+                inner.innerHTML = `
+                    <div class="absolute inset-0 w-full h-full bg-white rounded-3xl p-8 flex flex-col justify-center items-center text-center border-2 border-slate-200">
+                        <i data-lucide="info" class="w-12 h-12 text-slate-400 mb-3"></i>
+                        <p class="text-slate-600 font-bold">Sin resultados para esta selección.</p>
+                        <p class="text-slate-400 text-xs mt-1">Cambia el filtro de búsqueda o de rama forense.</p>
+                    </div>
+                `;
+                document.getElementById("flashcard-progress").innerText = "0 / 0";
+                lucide.createIcons();
+                return;
+            }
+
+            const item = filtered[activeFlashcardIndex];
+
+            // Reset del estado de giro
+            isFlipped = false;
+            inner.classList.remove("card-flipped");
+
+            // Rellenar datos
+            document.getElementById("fc-branch").innerText = item.branch;
+            document.getElementById("fc-icon").innerText = item.icon;
+            document.getElementById("fc-word").innerText = item.word;
+            document.getElementById("fc-def").innerText = item.definition;
+            document.getElementById("fc-easy").innerText = `"${item.easy}"`;
+
+            // Progreso
+            document.getElementById("flashcard-progress").innerText = `${activeFlashcardIndex + 1} / ${filtered.length}`;
+            lucide.createIcons();
+        }
+
+        function flipActiveFlashcard() {
+            const inner = document.getElementById("active-card-inner");
+            isFlipped = !isFlipped;
+            if (isFlipped) {
+                inner.classList.add("card-flipped");
+            } else {
+                inner.classList.remove("card-flipped");
+            }
+        }
+
+        function navigateFlashcard(direction) {
+            const filtered = getFilteredData();
+            if (filtered.length === 0) return;
+
+            activeFlashcardIndex += direction;
+            if (activeFlashcardIndex >= filtered.length) {
+                activeFlashcardIndex = 0; // Regresa al inicio
+            } else if (activeFlashcardIndex < 0) {
+                activeFlashcardIndex = filtered.length - 1; // Va al final
+            }
+
+            // Transición suave al cambiar de tarjeta (girándola de nuevo si estaba volteada)
+            const inner = document.getElementById("active-card-inner");
+            inner.classList.remove("card-flipped");
+            isFlipped = false;
+
+            setTimeout(() => {
+                renderActiveFlashcard();
+            }, 150);
+        }
+
+        // Navegación con teclado amigable
+        function setupKeyboardNavigation() {
+            document.addEventListener("keydown", (e) => {
+                if (currentViewMode !== "flashcards") return;
+
+                if (e.key === " " || e.code === "Space") {
+                    e.preventDefault(); // Evitar scroll
+                    flipActiveFlashcard();
+                } else if (e.key === "ArrowRight") {
+                    navigateFlashcard(1);
+                } else if (e.key === "ArrowLeft") {
+                    navigateFlashcard(-1);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lección 3: Preservación y Cadena de Custodia - Hematología Forense</title>
+    <!-- Tailwind CSS para diseño responsivo moderno -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons para simbología forense -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles/hematologia-forense-m3.css">
+    <link rel="icon" type="image/jpeg" href="img/logo.jpeg">
+</head>
+
+<body class="bg-[#fcf8f8] text-[#2d1212] min-h-screen font-sans">
+
+    <!-- Header / Barra de Navegación del Módulo -->
+    <header class="bg-white border-b border-rose-100 sticky top-0 z-40 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="p-2 bg-rose-50 rounded-lg text-rose-600">
+                    <i data-lucide="shield-alert" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h1 class="text-sm sm:text-base font-extrabold text-slate-900 tracking-tight">El asesino de tu carrera</h1>
+                    <a class="text-xs font-bold uppercase tracking-widest text-red-600" href="temario.html">Regresar al temario</a>
+                </div>
+            </div>
+            <!-- Indicador de Progreso Dinámico -->
+            <div class="flex items-center gap-3 w-full sm:w-auto max-w-xs">
+                <span class="text-xs font-semibold text-gray-500 whitespace-nowrap">Progreso Lección:</span>
+                <div class="w-full bg-rose-100 rounded-full h-2.5">
+                    <div id="lessonProgress" class="bg-rose-600 h-2.5 rounded-full transition-all duration-500" style="width: 20%"></div>
+                </div>
+                <span id="progressText" class="text-xs font-bold text-rose-700">20%</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-12">
+
+        <!-- Banner de Bienvenida Metodológica -->
+        <section class="bg-gradient-to-r from-rose-50 via-white to-indigo-50 border border-rose-100 rounded-2xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center gap-6">
+            <div class="flex-1 space-y-4">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-rose-100 text-rose-800">
+                    <span class="w-1.5 h-1.5 rounded-full bg-rose-600 animate-pulse"></span> Simulador de Campo
+                </span>
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">Lección 3: Preservación y Cadena de Custodia</h1>
+                <h2>El Mayor Error de un Criminalista es Contaminar la Muestra</h2>
+                <p class="text-gray-600 leading-relaxed text-sm sm:text-base">
+                    En esta lección interactiva de alto nivel, dominarás los protocolos críticos para embalar muestras hemáticas sin degradar el ADN ni provocar la proliferación de hongos. Explora el escenario 3D, memoriza las directrices científicas y supera los casos de
+                    resolución judicial.
+                </p>
+            </div>
+            <div class="w-full md:w-72 flex justify-center">
+                <div class="relative bg-white p-4 rounded-xl shadow-md border border-rose-100 max-w-xs">
+                    <div class="text-center space-y-2">
+                        <div class="inline-flex p-3 bg-indigo-50 rounded-full text-indigo-600">
+                            <i data-lucide="dna" class="w-8 h-8"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-900 text-sm">Integridad del Perfil de ADN</h4>
+                        <p class="text-xs text-gray-500">Un embalaje en bolsa plástica de una muestra húmeda condena el indicio en menos de 24 horas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 1: LABORATORIO VIRTUAL HIPERREALISTA DE ESCENA -->
+        <section class="space-y-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div class="space-y-1">
+                    <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                        <span class="p-1.5 bg-rose-100 text-rose-700 rounded-lg"><i data-lucide="eye" class="w-5 h-5"></i></span> 1. Simulador Visual: Procesamiento e Indicios Hemáticos
+                    </h3>
+                    <p class="text-sm text-gray-500">Interactúa con los puntos calientes (Hotspots) para determinar el protocolo de levantamiento idóneo.</p>
+                </div>
+                <!-- Selector de Herramienta Forense -->
+                <div class="bg-white p-1.5 border border-rose-100 rounded-xl shadow-xs flex items-center gap-1 self-start md:self-auto">
+                    <span class="text-xs font-bold text-gray-400 px-2">Herramienta:</span>
+                    <button onclick="selectTool('hisopo')" id="tool-hisopo" class="tool-btn flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold bg-rose-600 text-white transition-all">
+                        <i data-lucide="droplet" class="w-3.5 h-3.5"></i> Hisopo + H2O Destilada
+                    </button>
+                    <button onclick="selectTool('jeringa')" id="tool-jeringa" class="tool-btn flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold text-gray-600 hover:bg-gray-50 transition-all">
+                        <i data-lucide="syringe" class="w-3.5 h-3.5"></i> Jeringa de Aspiración
+                    </button>
+                    <button onclick="selectTool('bisturi')" id="tool-bisturi" class="tool-btn flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold text-gray-600 hover:bg-gray-50 transition-all">
+                        <i data-lucide="scissors" class="w-3.5 h-3.5"></i> Raspado (Bisturí)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Contenedor Principal del Simulador -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Lienzo Isométrico / Interactivos -->
+                <div class="lg:col-span-2 bg-white border border-rose-100 rounded-2xl p-6 shadow-sm relative overflow-hidden flex flex-col justify-between min-h-[400px]">
+                    <!-- Indicador de herramienta activa flotante -->
+                    <div class="absolute top-4 left-4 z-10 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-full border border-rose-100 text-xs font-bold shadow-xs flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-cyan-500 animate-ping"></span> Modo de uso: <span id="activeToolText" class="text-rose-600">Hisopo + H2O Destilada</span>
+                    </div>
+
+                    <!-- Representación Gráfica Isométrica de Escena (SVG Premium) -->
+                    <div class="w-full h-[320px] relative flex items-center justify-center bg-gradient-to-b from-slate-50 to-rose-50/20 rounded-xl border border-gray-100">
+                        <svg viewBox="0 0 800 450" class="w-full h-full max-h-[320px]">
+                            <!-- Paredes de la Escena del Crimen en Isometría -->
+                            <polygon points="100,300 400,150 400,50 100,200" fill="#f3f4f6" stroke="#e5e7eb" stroke-width="2"/>
+                            <polygon points="400,150 700,300 700,200 400,50" fill="#e5e7eb" stroke="#d1d5db" stroke-width="2"/>
+                            <!-- Piso de Baldosa -->
+                            <polygon points="100,300 400,150 700,300 400,420" fill="#fcfcfc" stroke="#e5e7eb" stroke-width="2"/>
+                            
+                            <!-- Baldosas del Piso (Líneas de Guía Isométricas) -->
+                            <line x1="200" y1="250" x2="500" y2="360" stroke="#f1f5f9" stroke-width="1.5"/>
+                            <line x1="300" y1="200" x2="600" y2="310" stroke="#f1f5f9" stroke-width="1.5"/>
+                            <line x1="300" y1="365" x2="600" y2="255" stroke="#f1f5f9" stroke-width="1.5"/>
+                            <line x1="200" y1="315" x2="500" y2="205" stroke="#f1f5f9" stroke-width="1.5"/>
+
+                            <!-- Muebles/Elementos de la escena (Estilo Isométrico Vectorial) -->
+                            <!-- Mesa de investigación -->
+                            <polygon points="320,190 440,140 500,165 380,215" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1.5"/>
+                            <line x1="320" y1="190" x2="320" y2="230" stroke="#94a3b8" stroke-width="2"/>
+                            <line x1="440" y1="140" x2="440" y2="175" stroke="#94a3b8" stroke-width="2"/>
+                            <line x1="500" y1="165" x2="500" y2="205" stroke="#94a3b8" stroke-width="2"/>
+                            <line x1="380" y1="215" x2="380" y2="255" stroke="#94a3b8" stroke-width="2"/>
+
+                            <!-- Indicio 1: Gran charco de sangre fresca en el piso -->
+                            <path d="M 220,320 Q 250,300 300,320 T 310,360 T 260,370 T 210,340 Z" fill="#b91c1c" fill-opacity="0.9" filter="drop-shadow(0px 3px 3px rgba(0,0,0,0.15))"/>
+                            
+                            <!-- Indicio 2: Mancha seca/costra sobre mesa de madera inerte -->
+                            <ellipse cx="420" cy="175" rx="15" ry="7" fill="#5c0707" fill-opacity="0.9"/>
+                            
+                            <!-- Indicio 3: Proyección dinámica/gota en pared -->
+                            <path d="M 280,180 Q 290,140 295,130 Q 293,125 291,130 Z" fill="#7f1d1d" fill-opacity="0.85"/>
+                            <circle cx="288" cy="190" r="2" fill="#7f1d1d"/>
+                            <circle cx="295" cy="200" r="3" fill="#7f1d1d"/>
+                            <circle cx="305" cy="210" r="1.5" fill="#7f1d1d"/>
+
+                            <!-- Indicio 4: Mancha de arrastre/goteo en alfombra/superficie porosa -->
+                            <polygon points="480,280 580,230 640,260 540,310" fill="#f1f5f9" stroke="#cbd5e1"/>
+                            <path d="M 520,270 Q 540,265 560,275 T 550,290 Z" fill="#991b1b" fill-opacity="0.6"/>
+                            <circle cx="510" cy="275" r="3" fill="#991b1b" fill-opacity="0.6"/>
+                            <circle cx="535" cy="285" r="2" fill="#991b1b" fill-opacity="0.6"/>
+                        </svg>
+
+                        <!-- Botones Hotspots Interactivos Superpuestos Absolutos -->
+                        <button onclick="inspectSpot('charco')" class="absolute top-[72%] left-[32%] w-8 h-8 rounded-full bg-red-600/30 border-2 border-red-500 flex items-center justify-center text-white font-bold text-xs hotspot-pulse focus:outline-none transition-transform hover:scale-110"
+                            title="Analizar Charco Fresco">
+                            1
+                        </button>
+
+                        <button onclick="inspectSpot('mesa_seca')" class="absolute top-[36%] left-[51%] w-8 h-8 rounded-full bg-red-600/30 border-2 border-red-500 flex items-center justify-center text-white font-bold text-xs hotspot-pulse focus:outline-none transition-transform hover:scale-110"
+                            title="Analizar Mancha en Mesa">
+                            2
+                        </button>
+
+                        <button onclick="inspectSpot('pared')" class="absolute top-[32%] left-[36%] w-8 h-8 rounded-full bg-red-600/30 border-2 border-red-500 flex items-center justify-center text-white font-bold text-xs hotspot-pulse focus:outline-none transition-transform hover:scale-110"
+                            title="Analizar Sangre en Pared">
+                            3
+                        </button>
+
+                        <button onclick="inspectSpot('alfombra')" class="absolute top-[60%] left-[68%] w-8 h-8 rounded-full bg-red-600/30 border-2 border-red-500 flex items-center justify-center text-white font-bold text-xs hotspot-pulse focus:outline-none transition-transform hover:scale-110"
+                            title="Analizar Mancha en Alfombra">
+                            4
+                        </button>
+                    </div>
+
+                    <div class="text-center text-xs text-gray-400 mt-2">
+                        *Haz clic en los números sobre la escena del crimen para simular el protocolo de levantamiento.
+                    </div>
+                </div>
+
+                <!-- Panel de Diagnóstico Lateral Interactiva -->
+                <div class="bg-white border border-rose-100 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-2 border-b border-rose-50 pb-3">
+                            <span class="p-1 bg-cyan-50 text-cyan-600 rounded-md"><i data-lucide="microscope" class="w-4 h-4"></i></span>
+                            <h4 class="font-bold text-gray-900 text-sm">Monitor de Recolección</h4>
+                        </div>
+
+                        <!-- Estado inicial del monitor -->
+                        <div id="monitorEmpty" class="text-center py-12 space-y-3">
+                            <div class="inline-flex p-3 bg-rose-50 text-rose-500 rounded-full">
+                                <i data-lucide="map-pin" class="w-6 h-6 animate-bounce"></i>
+                            </div>
+                            <p class="text-xs text-gray-500 leading-relaxed">
+                                Selecciona una herramienta forense en la parte superior y haz clic en uno de los focos de indicio en la escena para procesar la muestra.
+                            </p>
+                        </div>
+
+                        <!-- Tarjeta dinámica de información del indicio inspectado -->
+                        <div id="monitorActive" class="hidden space-y-4 animate-fade-in">
+                            <div class="bg-rose-50/50 p-3 rounded-xl border border-rose-100">
+                                <span class="text-[10px] font-extrabold uppercase text-rose-600 tracking-widest" id="spotType">INDICIO DETECTADO</span>
+                                <h5 class="font-extrabold text-gray-900 text-base" id="spotTitle">Muestra de Sangre Líquida</h5>
+                                <p class="text-xs text-gray-600 mt-1" id="spotDescription">Charco de abundantes dimensiones ubicado sobre baldosas de material no poroso.</p>
+                            </div>
+
+                            <!-- Simulación de acción y resultado -->
+                            <div class="space-y-2">
+                                <span class="text-xs font-bold text-gray-500">Resultado de Aplicación:</span>
+                                <div id="recoleccionFeedback" class="p-3.5 rounded-xl text-xs border">
+                                    <!-- Aquí se insertará dinámicamente el resultado de usar la herramienta sobre la muestra -->
+                                </div>
+                            </div>
+
+                            <!-- Checklist interactivo obligatorio antes de embalar -->
+                            <div class="bg-gray-50 p-3 rounded-xl space-y-2">
+                                <span class="text-xs font-bold text-gray-700 block">Checklist de Aseguramiento:</span>
+                                <label class="flex items-center gap-2 text-xs text-gray-600 cursor-pointer">
+                                    <input type="checkbox" id="checkFoto" class="rounded border-gray-300 text-rose-600 focus:ring-rose-500" onchange="checkChecklist()">
+                                    <span>Fijación fotográfica con testigo métrico</span>
+                                </label>
+                                <label class="flex items-center gap-2 text-xs text-gray-600 cursor-pointer">
+                                    <input type="checkbox" id="checkEpp" class="rounded border-gray-300 text-rose-600 focus:ring-rose-500" onchange="checkChecklist()">
+                                    <span>Uso de guantes nuevos de nitrilo (sin talco)</span>
+                                </label>
+                                <label class="flex items-center gap-2 text-xs text-gray-600 cursor-pointer">
+                                    <input type="checkbox" id="checkLote" class="rounded border-gray-300 text-rose-600 focus:ring-rose-500" onchange="checkChecklist()">
+                                    <span>Registro del número de lote en contenedor</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botón para procesar y certificar cadena -->
+                    <button id="btnEmbalar" disabled onclick="embeledSample()" class="w-full py-3 px-4 mt-4 bg-gray-200 text-gray-400 font-bold text-xs rounded-xl transition-all cursor-not-allowed uppercase tracking-wider flex items-center justify-center gap-2">
+                        <i data-lucide="package-check" class="w-4 h-4"></i> Embalar y Rotular Indicio
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: TARJETAS INTERACTIVAS (FLIP CARDS - 10 EN TOTAL) -->
+        <section class="space-y-6">
+            <div class="space-y-1">
+                <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                    <span class="p-1.5 bg-rose-100 text-rose-700 rounded-lg"><i data-lucide="copy" class="w-5 h-5"></i></span> 2. Fichas de Protocolo: 10 Reglas de Oro de Preservación
+                </h3>
+                <p class="text-sm text-gray-500">Da clic sobre las tarjetas para darles la vuelta y descubrir el fundamento científico clave para el campo laboral real.</p>
+            </div>
+
+            <!-- Grid de Tarjetas de 8 a 10 (Tenemos exactamente 10 tarjetas tridimensionales con iconografía temática en vez de números planos) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Tarjeta 1 (Prohibido el Plástico) -->
+                <div class="h-64 perspective-1000 group cursor-pointer" onclick="toggleCard(this)">
+                    <div class="relative w-full h-full preserve-3d flip-transition shadow-xs rounded-xl border border-rose-100">
+                        <!-- Frente -->
+                        <div class="absolute inset-0 backface-hidden bg-white p-5 flex flex-col justify-between rounded-xl">
+                            <div class="flex justify-between items-center w-full">
+                                <div class="p-2 bg-rose-50 text-rose-600 rounded-xl">
+                                    <i data-lucide="ban" class="w-5 h-5"></i>
+                                </div>
+                                <span class="text-[10px] font-extrabold text-gray-400 tracking-widest uppercase">Protocolo 01</span>
+                            </div>
+                            <div class="space-y-2">
+                                <h4 class="font-extrabold text-sm text-gray-900 leading-tight">Prohibido el Plástico</h4>
+                                <p class="text-xs text-gray-500">¿Por qué nunca se guarda una muestra húmeda en plástico?</p>
+                            </div>
+                            <span class="text-[11px] font-semibold text-rose-500 flex items-center gap-1">Ver respuesta <i data-lucide="rotate-3d" class="w-3.5 h-3.5"></i></span>
+                        </div>
+                        <!-- Reverso -->
+                        <div class="absolute inset-0 backface-hidden bg-rose-900 text-white p-5 flex flex-col justify-between rounded-xl rotate-y-180">
+                            <span class="text-[10px] font-bold text-rose-300">FUNDAMENTO</span>
+                            <p class="text-xs leading-relaxed text-rose-50">
+                                El plástico retiene humedad. Esto crea un ambiente de incubación que desata la proliferación inmediata de bacterias y hongos, destruyendo por completo las hebras de ADN.
+                            </p>
+                            <span class="text-[10px] font-bold text-rose-300">¡Usar bolsas o cajas de papel!</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2 (Muestras Secas) -->
+                <div class="h-64 perspective-1000 group cursor-pointer" onclick="toggleCard(this)">
+                    <div class="relative w-full h-full preserve-3d flip-transition shadow-xs rounded-xl border border-rose-100">
+                        <!-- Frente -->
+                        <div class="absolute inset-0 backface-hidden bg-white p-5 flex flex-col justify-between rounded-xl">
+                            <div class="flex justify-between items-center w-full">
+                                <div class="p-2 bg-rose-50 text-rose-600 rounded-xl">
+                                    <i data-lucide="scissors" class="w-5 h-5"></i>
+                                </div>
+                                <span class="text-[10px] font-extrabold text-gray-400 tracking-widest uppercase">Protocolo 02</span>
+                            </div>
+                            <div class="space-y-2">
+                                <h4 class="font-extrabold text-sm text-gray-900 leading-tight">Muestras Secas</h4>
+                                <p class="text-xs text-gray-500">¿Cómo levantar sangre ya deshidratada en un soporte duro?</p>
+                            </div>
+                            <span class="text-[11px] font-semibold text-rose-500 flex items-center gap-1">Ver respuesta <i data-lucide="rotate-3d" class="w-3.5 h-3.5"></i></span>
+                        </div>
+                        <!-- Reverso -->
+                        <div class="absolute inset-0 backface-hidden bg-rose-900 text-white p-5 flex flex-col justify-between rounded-xl rotate-y-180">
+                            <span class="text-[10px] font-bold text-rose-300">FUNDAMENTO</span>
+                            <p class="text-xs leading-relaxed text-rose-50">
+                                Se realiza un raspado con bisturí estéril directo en un sobre de papel doblado (farmacia) o se recupera usando un hisopo ligeramente humedecido exclusivamente con agua destilada estéril.
+                            </p>
+                            <span class="text-[10px] font-bold text-rose-300">Evitar solución salina.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3 (Uso de la Jeringa) -->
+                <div class="h-64 perspective-1000 group cursor-pointer" onclick="toggleCard(this)">
+                    <div class="relative w-full h-full preserve-3d flip-transition shadow-xs rounded-xl border border-rose-100">
+                        <!-- Frente -->
+                        <div class="absolute inset-0 backface-hidden bg-white p-5 flex flex-col justify-between rounded-xl">
+                            <div class="flex justify-between items-center w-full">
+                                <div class="p-2 bg-rose-50 text-rose-600 rounded-xl">
+                                    <i data-lucide="syringe" class="w-5 h-5"></i>
+                                </div>
+                                <span class="text-[10px] font-extrabold text-gray-400 tracking-widest uppercase">Protocolo 03</span>
+                            </div>
+                            <div class="space-y-2">
+                                <h4 class="font-extrabold text-sm text-gray-900 leading-tight">Uso de la Jeringa</h4>
+                                <p class="text-xs text-gray-500">¿Cuándo se justifica succionar sangre con jeringa?</p>
+                            </div>
+                            <span class="text-[11px] font-semibold text-rose-500 flex items-center gap-1">Ver respuesta <i data-lucide="rotate-3d" class="w-3.5 h-3.5"></i></span>
+                        </div>
+                        <!-- Reverso -->
+                        <div class="absolute inset-0 backface-hidden bg-rose-900 text-white p-5 flex flex-col justify-between rounded-xl rotate-y-180">
+                            <span class="text-[10px] font-bold text-rose-300">FUNDAMENTO</span>
+                            <p class="text-xs leading-relaxed text-rose-50">
+                                Únicamente en charcos profundos muy abundantes y limpios. Debe ser muy ocasional para evitar succionar suciedad de la superficie, sedimentos o agua de limpieza contaminante.
+                            </p>
+                            <span class="text-[10px] font-bold text-rose-300">Envasar rápido en tubo morado.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 4 (Tubos Anticoagulantes) -->
+                <div class="h-64 perspective-1000 group cursor-pointer" onclick="toggleCard(this)">
+                    <div class="relative w-full h-full preserve-3d flip-transition shadow-xs rounded-xl border border-rose-100">
+                        <!-- Frente -->
+                        <div class="absolute inset-0 backface-hidden bg-white p-5 flex flex-col justify-between rounded-xl">
+                            <div class="flex justify-between items-center w-full">
+                                <div class="p-2 bg-rose-50 text-rose-600 rounded-xl">
+                                    <i data-lucide="beaker" class="w-5 h-5"></i>
+                                </div>
+                                <span class="text-[10px] font-extrabold text-gray-400 tracking-widest uppercase">Protocolo 04</span>
+                            </div>
+                            <div class="space-y-2">
+                                <h4 class="font-extrabold text-sm text-gray-900 leading-tight">Tubos Anticoagulantes</h4>
+                                <p class="text-xs text-gray-500">¿Qué tipo de tubo de ensayo se emplea en sangre líquida?</p>
+                            </div>
+                            <span class="text-[11px] font-semibold text-rose-500 flex items-center gap-1">Ver respuesta <i data-lucide="rotate-3d" class="w-3.5 h-3.5"></i></span>
+                        </div>
+                        <!-- Reverso -->
+                        <div class="absolute inset-0 backface-hidden bg-rose-900 text-white p-5 flex flex-col justify-between rounded-xl rotate-y-180">
+                            <span class="text-[10px] font-bold text-rose-300">FUNDAMENTO</span>
+                            <p class="text-xs leading-relaxed text-rose-50">
+                                Tubos con anticoagulante EDTA (tapón morado). El EDTA preserva perfectamente la integridad de la membrana celular de los leucocitos y evita la degradación del ADN.
+                            </p>
+                            <span class="text-[10px] font-bold text-rose-300">Evitar tubos con heparina.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 5 (Secado Controlado) -->
+                <div class="h-64 perspective-1000 group cursor-pointer" onclick="toggleCard(this)">
+                    <div class="relative w-full h-full preserve-3d flip-transition shadow-xs rounded-xl border border-rose-100">
+                        <!-- Frente -->
+                        <div class="absolute inset-0 backface-hidden bg-white p-5 flex flex-col justify-between rounded-xl">
+                            <div class="flex justify-between items-center w-full">
+                                <div class="p-2 bg-rose-50 text-rose-600 rounded-xl">
+                                    <i data-lucide="wind" class="w-5 h-5"></i>
+                                </div>
+                                <span class="text-[10px] font-extrabold text-gray-400 tracking-widest uppercase">Protocolo 05</span>
+                            </div>
+                            <div class="space-y-2">
+                                <h4 class="font-extrabold text-sm text-gray-900 leading-tight">Secado Controlado</h4>
+                                <p class="text-xs text-gray-500">¿Cómo se secan las prendas de vestir mojadas con sangre?</p>
+                            </div>
+                            <span class="text-[11px] font-semibold text-rose-500 flex items-center gap-1">Ver respuesta <i data-lucide="rotate-3d" class="w-3.5 h-3.5"></i></span>
+                        </div>
+                        <!-- Reverso -->
+                        <div class="absolute inset-0 backface-hidden bg-rose-900 text-white p-5 flex flex-col justify-between rounded-xl rotate-y-180">
+                            <span class="text-[10px] font-bold text-rose-300">FUNDAMENTO</span>
+                            <p class="text-xs leading-relaxed text-rose-50">
+                                Colgándolas en un soporte de papel en un cuarto cerrado sin corrientes forzadas, a temperatura ambiente y fuera de la luz directa del sol (los rayos UV destruyen el ADN).
+                            </p>
+                            <span class="text-[10px] font-bold text-rose-300">Papel abajo para goteos.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 6 (Testigo Métrico) -->
+                <div class="h-64 perspective-1000 group cursor-pointer" onclick="toggleCard(this)">
+                    <div class="relative w-full h-full preserve-3d flip-transition shadow-xs rounded-xl border border-rose-100">
+                        <!-- Frente -->
+                        <div class="absolute inset-0 backface-hidden bg-white p-5 flex flex-col justify-between rounded-xl">
+                            <div class="flex justify-between items-center w-full">
+                                <div class="p-2 bg-rose-50 text-rose-600 rounded-xl">
+                                    <i data-lucide="ruler" class="w-5 h-5"></i>
+                                </div>
+                                <span class="text-[10px] font-extrabold text-gray-400 tracking-widest uppercase">Protocolo 06</span>
+                            </div>
+                            <div class="space-y-2">
+                                <h4 class="font-extrabold text-sm text-gray-900 leading-tight">Testigo Métrico</h4>
+                                <p class="text-xs text-gray-500">¿Por qué es obligatorio fijar y medir antes de levantar?</p>
+                            </div>
+                            <span class="text-[11px] font-semibold text-rose-500 flex items-center gap-1">Ver respuesta <i data-lucide="rotate-3d" class="w-3.5 h-3.5"></i></span>
+                        </div>
+                        <!-- Reverso -->
+                        <div class="absolute inset-0 backface-hidden bg-rose-900 text-white p-5 flex flex-col justify-between rounded-xl rotate-y-180">
+                            <span class="text-[10px] font-bold text-rose-300">FUNDAMENTO</span>
+                            <p class="text-xs leading-relaxed text-rose-50">
+                                Porque permite reconstruir posteriormente en juicio la posición del agresor y de la víctima a través del cálculo geométrico del ángulo de impacto basado en las dimensiones reales.
+                            </p>
+                            <span class="text-[10px] font-bold text-rose-300">Indispensable en reconstrucción.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 7 (Cadena de Custodia) -->
+                <div class="h-64 perspective-1000 group cursor-pointer" onclick="toggleCard(this)">
+                    <div class="relative w-full h-full preserve-3d flip-transition shadow-xs rounded-xl border border-rose-100">
+                        <!-- Frente -->
+                        <div class="absolute inset-0 backface-hidden bg-white p-5 flex flex-col justify-between rounded-xl">
+                            <div class="flex justify-between items-center w-full">
+                                <div class="p-2 bg-rose-50 text-rose-600 rounded-xl">
+                                    <i data-lucide="clipboard-list" class="w-5 h-5"></i>
+                                </div>
+                                <span class="text-[10px] font-extrabold text-gray-400 tracking-widest uppercase">Protocolo 07</span>
+                            </div>
+                            <div class="space-y-2">
+                                <h4 class="font-extrabold text-sm text-gray-900 leading-tight">Cadena de Custodia</h4>
+                                <p class="text-xs text-gray-500">¿Qué contiene la etiqueta de embalaje inviolable?</p>
+                            </div>
+                            <span class="text-[11px] font-semibold text-rose-500 flex items-center gap-1">Ver respuesta <i data-lucide="rotate-3d" class="w-3.5 h-3.5"></i></span>
+                        </div>
+                        <!-- Reverso -->
+                        <div class="absolute inset-0 backface-hidden bg-rose-900 text-white p-5 flex flex-col justify-between rounded-xl rotate-y-180">
+                            <span class="text-[10px] font-bold text-rose-300">FUNDAMENTO</span>
+                            <p class="text-xs leading-relaxed text-rose-50">
+                                Firma del perito, fecha/hora exacta de recolección, localización precisa (GPS/coordenadas) y número de carpeta de investigación. Cualquier vacío legal invalida la prueba.
+                            </p>
+                            <span class="text-[10px] font-bold text-rose-300">Garantía de mismidad.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 8 (Temperatura Óptima) -->
+                <div class="h-64 perspective-1000 group cursor-pointer" onclick="toggleCard(this)">
+                    <div class="relative w-full h-full preserve-3d flip-transition shadow-xs rounded-xl border border-rose-100">
+                        <!-- Frente -->
+                        <div class="absolute inset-0 backface-hidden bg-white p-5 flex flex-col justify-between rounded-xl">
+                            <div class="flex justify-between items-center w-full">
+                                <div class="p-2 bg-rose-50 text-rose-600 rounded-xl">
+                                    <i data-lucide="snowflake" class="w-5 h-5"></i>
+                                </div>
+                                <span class="text-[10px] font-extrabold text-gray-400 tracking-widest uppercase">Protocolo 08</span>
+                            </div>
+                            <div class="space-y-2">
+                                <h4 class="font-extrabold text-sm text-gray-900 leading-tight">Temperatura Óptima</h4>
+                                <p class="text-xs text-gray-500">¿Cómo se trasladan y almacenan las muestras hemáticas?</p>
+                            </div>
+                            <span class="text-[11px] font-semibold text-rose-500 flex items-center gap-1">Ver respuesta <i data-lucide="rotate-3d" class="w-3.5 h-3.5"></i></span>
+                        </div>
+                        <!-- Reverso -->
+                        <div class="absolute inset-0 backface-hidden bg-rose-900 text-white p-5 flex flex-col justify-between rounded-xl rotate-y-180">
+                            <span class="text-[10px] font-bold text-rose-300">FUNDAMENTO</span>
+                            <p class="text-xs leading-relaxed text-rose-50">
+                                Las muestras de sangre líquida deben refrigerarse inmediatamente a una temperatura de 4°C (nunca congelarse directamente de golpe para evitar la lisis masiva de eritrocitos).
+                            </p>
+                            <span class="text-[10px] font-bold text-rose-300">Traslado en nevera portátil.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 9 (Muestras en Alfombras) -->
+                <div class="h-64 perspective-1000 group cursor-pointer" onclick="toggleCard(this)">
+                    <div class="relative w-full h-full preserve-3d flip-transition shadow-xs rounded-xl border border-rose-100">
+                        <!-- Frente -->
+                        <div class="absolute inset-0 backface-hidden bg-white p-5 flex flex-col justify-between rounded-xl">
+                            <div class="flex justify-between items-center w-full">
+                                <div class="p-2 bg-rose-50 text-rose-600 rounded-xl">
+                                    <i data-lucide="layers" class="w-5 h-5"></i>
+                                </div>
+                                <span class="text-[10px] font-extrabold text-gray-400 tracking-widest uppercase">Protocolo 09</span>
+                            </div>
+                            <div class="space-y-2">
+                                <h4 class="font-extrabold text-sm text-gray-900 leading-tight">Muestras en Alfombras</h4>
+                                <p class="text-xs text-gray-500">¿Cómo levantar manchas en tela/alfombras porosas?</p>
+                            </div>
+                            <span class="text-[11px] font-semibold text-rose-500 flex items-center gap-1">Ver respuesta <i data-lucide="rotate-3d" class="w-3.5 h-3.5"></i></span>
+                        </div>
+                        <!-- Reverso -->
+                        <div class="absolute inset-0 backface-hidden bg-rose-900 text-white p-5 flex flex-col justify-between rounded-xl rotate-y-180">
+                            <span class="text-[10px] font-bold text-rose-300">FUNDAMENTO</span>
+                            <p class="text-xs leading-relaxed text-rose-50">
+                                Debe recortarse el fragmento completo de alfombra ensangrentada si es viable, embalarse en papel, o bien levantarse con hisopo húmedo si el soporte no puede ser dañado/cortado.
+                            </p>
+                            <span class="text-[10px] font-bold text-rose-300">Priorizar el recorte físico.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 10 (Sellos e Inviolabilidad) -->
+                <div class="h-64 perspective-1000 group cursor-pointer" onclick="toggleCard(this)">
+                    <div class="relative w-full h-full preserve-3d flip-transition shadow-xs rounded-xl border border-rose-100">
+                        <!-- Frente -->
+                        <div class="absolute inset-0 backface-hidden bg-white p-5 flex flex-col justify-between rounded-xl">
+                            <div class="flex justify-between items-center w-full">
+                                <div class="p-2 bg-rose-50 text-rose-600 rounded-xl">
+                                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                                </div>
+                                <span class="text-[10px] font-extrabold text-gray-400 tracking-widest uppercase">Protocolo 10</span>
+                            </div>
+                            <div class="space-y-2">
+                                <h4 class="font-extrabold text-sm text-gray-900 leading-tight">Sellos e Inviolabilidad</h4>
+                                <p class="text-xs text-gray-500">¿Cómo se firma un embalaje para garantizar integridad?</p>
+                            </div>
+                            <span class="text-[11px] font-semibold text-rose-500 flex items-center gap-1">Ver respuesta <i data-lucide="rotate-3d" class="w-3.5 h-3.5"></i></span>
+                        </div>
+                        <!-- Reverso -->
+                        <div class="absolute inset-0 backface-hidden bg-rose-900 text-white p-5 flex flex-col justify-between rounded-xl rotate-y-180">
+                            <span class="text-[10px] font-bold text-rose-300">FUNDAMENTO</span>
+                            <p class="text-xs leading-relaxed text-rose-50">
+                                Se coloca cinta de seguridad y la firma del perito debe atravesar la unión de la cinta y el sobre de papel, asegurando que si se abre se rompa inmediatamente el trazo gráfico.
+                            </p>
+                            <span class="text-[10px] font-bold text-rose-300">Garantía contra manipulación.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: CUESTIONARIO DE CASOS REALES Y EVALUACIÓN COMPLETA DE 10 PREGUNTAS -->
+        <section class="bg-white border border-rose-100 rounded-2xl p-6 sm:p-8 shadow-sm space-y-8">
+            <div class="space-y-1 border-b border-rose-50 pb-4">
+                <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                    <span class="p-1.5 bg-rose-100 text-rose-700 rounded-lg"><i data-lucide="award" class="w-5 h-5"></i></span> 3. Casos Reales Aplicados (Evaluación Profesional - 10 Reactivos)
+                </h3>
+                <p class="text-sm text-gray-500">Resuelve las situaciones de litigación y peritaje real. Justifica científicamente cada decisión.</p>
+            </div>
+
+            <!-- Contenedor de Cuestionario -->
+            <div id="quizContainer" class="space-y-6">
+                <!-- Tarjeta de Pregunta Dinámica -->
+                <div class="bg-gray-50 rounded-xl p-5 border border-gray-100 space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span id="questionCounter" class="text-xs font-extrabold text-rose-600 uppercase tracking-wider">Pregunta 1 de 10</span>
+                        <span id="scoreText" class="text-xs font-bold text-gray-500">Aciertos: 0/10</span>
+                    </div>
+                    <h4 id="questionTitle" class="font-extrabold text-gray-900 text-base leading-relaxed">
+                        Cargando caso...
+                    </h4>
+                    <p id="questionContext" class="text-xs text-gray-500 leading-relaxed italic bg-white p-3 rounded-lg border border-gray-100">
+                        Cargando contexto pericial...
+                    </p>
+
+                    <!-- Opciones de Respuesta -->
+                    <div id="optionsContainer" class="grid grid-cols-1 gap-3 pt-2">
+                        <!-- Botones de opciones generados por JS -->
+                    </div>
+
+                    <!-- Caja de Retroalimentación en tiempo real -->
+                    <div id="feedbackBox" class="hidden p-4 rounded-xl text-xs space-y-2 border">
+                        <div class="flex items-center gap-2 font-bold text-sm" id="feedbackStatus">
+                            <!-- Estado (Correcto/Incorrecto) -->
+                        </div>
+                        <p id="feedbackExplanation" class="leading-relaxed">
+                            <!-- Explicación -->
+                        </p>
+                        <button id="btnNextQuestion" onclick="nextQuestion()" class="mt-2 px-4 py-2 bg-rose-600 text-white font-bold rounded-lg hover:bg-rose-700 transition-all">
+                            Siguiente Caso
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESULTADOS FINALES Y BOTONES DE INTEGRACIÓN DE LA PLATAFORMA (Oculto inicialmente) -->
+            <div id="resultsPanel" class="hidden text-center py-8 space-y-8 animate-fade-in border-t border-rose-100 pt-8">
+                <div class="max-w-md mx-auto space-y-3">
+                    <div class="inline-flex p-4 bg-emerald-50 text-emerald-600 rounded-full">
+                        <i data-lucide="check-circle-2" class="w-12 h-12"></i>
+                    </div>
+                    <h4 class="text-2xl font-extrabold text-gray-900">¡Lección 3 Completada!</h4>
+                    <p class="text-sm text-gray-600">
+                        Has analizado con éxito el embalaje de indicios y resuelto todos los casos de litigación forense de Cadena de Custodia.
+                    </p>
+                    <div class="p-4 bg-rose-50 rounded-xl border border-rose-100 text-rose-900">
+                        <span class="text-xs font-bold text-rose-600 block">Tu Calificación Final:</span>
+                        <span id="finalScoreText" class="text-3xl font-black">10 / 10 Aciertos</span>
+                    </div>
+                </div>
+
+                <!-- LOS TRES BOTONES MANDATORIOS DE NAVEGACIÓN -->
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
+                    </button>
+                    <button onclick="restartQuiz()" class="w-full md:w-auto px-6 py-3.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 font-bold text-xs rounded-xl uppercase tracking-wider transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-arrow-rotate-right"></i> Reintentar Módulo
+                </button>
+                    </button>
+                    <!-- Botón 2: Regresar a la página de los temarios -->
+                    <form action="temario.html"> <button> Regresar al Temario</button>
+                    </form>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal de Navegación de Integración para el Entorno de Desarrollo -->
+    <div id="navigationModal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 space-y-4 shadow-xl border border-rose-50">
+            <div class="flex items-center gap-3 text-rose-600 border-b border-rose-50 pb-3">
+                <i data-lucide="info" class="w-6 h-6"></i>
+                <h4 id="modalTitle" class="font-extrabold text-gray-900 text-base">Navegación</h4>
+            </div>
+            <p id="modalDescription" class="text-xs text-gray-600 leading-relaxed">
+                Mensaje de integración del framework.
+            </p>
+            <div class="flex justify-end pt-2">
+                <button onclick="closeNavigationModal()" class="px-4 py-2 bg-rose-600 text-white font-bold text-xs rounded-lg hover:bg-rose-700 transition-all">
+                    Entendido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts de Control Lógico -->
+    <script>
+        // Inicializar iconos de Lucide
+        lucide.createIcons();
+
+        // --- ESTADOS DE LA APLICACIÓN ---
+        let currentTool = 'hisopo';
+        let activeSpot = null;
+        let checklistState = {
+            foto: false,
+            epp: false,
+            lote: false
+        };
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let selectedOptions = Array(10).fill(null); // Registrar respuestas del usuario para las 10 preguntas
+
+        // Muestras del Simulador Virtual
+        const spotsData = {
+            charco: {
+                title: 'Charco de Sangre Fresca y Líquida',
+                type: 'INDICIO DE CARÁCTER LÍQUIDO',
+                description: 'Aproximadamente 45 ml de sangre fresca depositados sobre baldosas de cerámica del piso de la cocina.',
+                rules: {
+                    jeringa: {
+                        success: true,
+                        msg: '¡EXCELENTE! Has usado la jeringa estéril de aspiración para extraer la muestra limpia de sedimentos. Recuerda verterla inmediatamente en un tubo de ensayo con anticoagulante EDTA (Tapón Morado).',
+                        class: 'bg-emerald-50 border-emerald-200 text-emerald-800'
+                    },
+                    hisopo: {
+                        success: false,
+                        msg: 'PROTOCOLO SUB-ÓPTIMO. Usar hisopo en un volumen tan abundante de sangre líquida es ineficiente y no garantiza la recolección óptima del perfil de ADN concentrado.',
+                        class: 'bg-amber-50 border-amber-200 text-amber-800'
+                    },
+                    bisturi: {
+                        success: false,
+                        msg: 'ERROR GRAVE. Intentar realizar un raspado con bisturí en una muestra líquida solo dispersará la muestra en la baldosa provocando contaminación.',
+                        class: 'bg-red-50 border-red-200 text-red-800'
+                    }
+                }
+            },
+            mesa_seca: {
+                title: 'Costra de Sangre Seca sobre Mesa de Madera',
+                type: 'INDICIO SECO EN SOPORTE INERTE',
+                description: 'Goteo estático que se ha coagulado y deshidratado por completo sobre la superficie barnizada de la mesa.',
+                rules: {
+                    bisturi: {
+                        success: true,
+                        msg: '¡EXCELENTE DECISIÓN! Al ser una superficie dura e impermeable (madera barnizada), el raspado con bisturí sobre un sobre de papel estéril doblado en farmacia es ideal para capturar la costra.',
+                        class: 'bg-emerald-50 border-emerald-200 text-emerald-800'
+                    },
+                    hisopo: {
+                        success: true,
+                        msg: 'CORRECTO. Puedes humedecer ligeramente el hisopo con AGUA DESTILADA ESTÉRIL (nunca con solución salina) para levantar la mancha por fricción.',
+                        class: 'bg-emerald-50 border-emerald-200 text-emerald-800'
+                    },
+                    jeringa: {
+                        success: false,
+                        msg: 'ERROR TOTAL. La jeringa de aspiración de aguja es inútil frente a un indicio sólido deshidratado. Arriesgas romper la aguja o contaminar.',
+                        class: 'bg-red-50 border-red-200 text-red-800'
+                    }
+                }
+            },
+            pared: {
+                title: 'Salpicaduras Dinámicas en Pared de Yeso',
+                type: 'PATRÓN POR PROYECCIÓN EN SUPERFICIE ABSORBENTE',
+                description: 'Micro-salpicaduras alargadas en forma de lágrimas sobre pintura de yeso porosa de la habitación.',
+                rules: {
+                    hisopo: {
+                        success: true,
+                        msg: '¡EXCELENTE! Al ser una pared de yeso poroso altamente reactivo, el hisopado húmedo (con agua destilada estéril) es la única técnica que levanta los eritrocitos sin arrastrar cal del yeso.',
+                        class: 'bg-emerald-50 border-emerald-200 text-emerald-800'
+                    },
+                    bisturi: {
+                        success: false,
+                        msg: 'ERROR. Si raspas la pared con bisturí, levantarás una gran cantidad de yeso y pintura pulverizada. Esto inhibirá químicamente las pruebas de amplificación de ADN por PCR en el laboratorio.',
+                        class: 'bg-red-50 border-red-200 text-red-800'
+                    },
+                    jeringa: {
+                        success: false,
+                        msg: 'ERROR. La jeringa no puede succionar las gotas fijadas de forma porosa en la pared de yeso.',
+                        class: 'bg-red-50 border-red-200 text-red-800'
+                    }
+                }
+            },
+            alfombra: {
+                title: 'Mancha en Alfombra de Fibra Sintética',
+                type: 'INDICIO DE ABSORCIÓN EN TEXTIL',
+                description: 'Manchas de goteo pasivo embebidas en las profundidades de las fibras porosas de la alfombra del recinto.',
+                rules: {
+                    hisopo: {
+                        success: true,
+                        msg: 'MÉTODO DE CONTINGENCIA CORRECTO. Si la alfombra no se puede recortar o es de un bien valioso inamovible, se utiliza hisopo humedecido con agua destilada para recuperar el material por transferencia.',
+                        class: 'bg-emerald-50 border-emerald-200 text-emerald-800'
+                    },
+                    bisturi: {
+                        success: false,
+                        msg: 'ERROR. Raspar fibras sintéticas con bisturí solo deshilachará el tejido sin capturar la sangre y puede contaminar la muestra con hilos de poliéster.',
+                        class: 'bg-red-50 border-red-200 text-red-800'
+                    },
+                    jeringa: {
+                        success: false,
+                        msg: 'ERROR TOTAL. La sangre ya se ha filtrado en las fibras y la succión es físicamente inviable.',
+                        class: 'bg-red-50 border-red-200 text-red-800'
+                    }
+                }
+            }
+        };
+
+        // Banco de 10 Preguntas Calibradas
+        const quizQuestions = [{
+            title: "Caso de Homicidio en Zona Húmeda:",
+            context: "El perito recolecta una playera ensangrentada que aún se encuentra húmeda en el lugar de los hechos. Por la prisa del resguardo, la coloca inmediatamente en una bolsa de plástico sellada térmicamente. Al llegar al laboratorio central 36 horas después, se reporta que la prueba de ADN es nula. ¿Cuál es la explicación científica que el perito debe rendir?",
+            options: [{
+                text: "El plástico reaccionó químicamente con la hemoglobina bloqueando la polimerasa.",
+                correct: false,
+                feedback: "Incorrecto. El plástico es químicamente inerte en estas condiciones; no bloquea los reactivos de PCR por contacto directo."
+            }, {
+                text: "La humedad sellada catalizó la proliferación de hongos y bacterias que degradaron el ADN.",
+                correct: true,
+                feedback: "¡Correcto! El sellado plástico retuvo la humedad, estimulando el crecimiento microbiológico que destruyó las cadenas de ADN en horas."
+            }, {
+                text: "La luz UV acumulada dentro del embalaje plástico incineró los leucocitos de la muestra.",
+                correct: false,
+                feedback: "Incorrecto. Aunque la luz UV degrada el ADN, el factor destructor acelerado en bolsas cerradas húmedas es biológico (hongos y bacterias)."
+            }]
+        }, {
+            title: "Levantamiento en Superficies Porosas de Yeso:",
+            context: "Estás procesando salpicaduras dinámicas de sangre en una pared de yeso rústico. Si raspas la superficie con una hoja de bisturí para recolectar el polvo de pintura y yeso, ¿qué interferencia técnica estás introduciendo?",
+            options: [{
+                text: "El calcio y minerales del yeso actúan como inhibidores de la polimerasa (PCR) en el laboratorio.",
+                correct: true,
+                feedback: "¡Excelente análisis! Los compuestos químicos del yeso y la pintura actúan como potentes inhibidores de la enzima Taq polimerasa durante el proceso de PCR, arruinando el perfil genético."
+            }, {
+                text: "El raspado provoca lisis celular instantánea haciendo imposible realizar pruebas presuntivas.",
+                correct: false,
+                feedback: "Incorrecto. Las pruebas de Kastle-Meyer o Luminol detectan el grupo hemo libre, por lo que la ruptura física de células no bloquea estas reacciones."
+            }, {
+                text: "Las costras en el yeso se desintegran perdiendo las propiedades de las proteínas de precipitina.",
+                correct: false,
+                feedback: "Incorrecto. La fragmentación física de la muestra no altera la especificidad inmunológica de las proteínas animales/humanas."
+            }]
+        }, {
+            title: "Elección del Anticoagulante en Campo:",
+            context: "Durante una inspección ocular encuentras un charco profundo de sangre fresca en el suelo de un vehículo. Decides succionarla con una jeringa estéril de aspiración. ¿En qué contenedor debes depositarla para asegurar que el ADN se conserve en óptimas condiciones para el análisis del perfil genético?",
+            options: [{
+                text: "En un tubo de ensayo de tapón rojo (seco, sin aditivos) para favorecer la coagulación natural.",
+                correct: false,
+                feedback: "Incorrecto. Dejar que coagule en tubo rojo dificulta enormemente la extracción limpia de los leucocitos en el laboratorio."
+            }, {
+                text: "En un tubo de tapón verde con Heparina, pues mantiene la sangre fluida para el laboratorio.",
+                correct: false,
+                feedback: "Incorrecto. La heparina es un inhibidor directo de los procesos de amplificación del ADN por PCR en el análisis genético forense."
+            }, {
+                text: "En un tubo de tapón morado con EDTA, ya que preserva la morfología de las células sanguíneas.",
+                correct: true,
+                feedback: "¡Exacto! El EDTA (Etilendiaminotetraacetato) estabiliza la membrana celular y quelata iones metálicos que podrían degradar el ADN, sin interferir ni inhibir la amplificación por PCR."
+            }]
+        }, {
+            title: "Impugnación de Defensa por Cadena de Custodia:",
+            context: "En el juicio oral, la defensa del acusado de homicidio solicita la nulidad de la prueba de sangre levantada en la escena debido a que la firma del perito en el sobre de papel estaba sobreimpresa solo en la parte central, sin tocar la cinta adhesiva de seguridad. ¿Cuál es el argumento legal válido para esta exclusión probatoria?",
+            options: [{
+                text: "La falta de coincidencia estética de la rúbrica impide validar la identidad del recolector.",
+                correct: false,
+                feedback: "Incorrecto. No es un problema de estética, sino de la garantía física de inviolabilidad de la muestra."
+            }, {
+                text: "Se rompe la garantía de mismidad, al ser físicamente viable abrir el sobre por el borde sin alterar la firma.",
+                correct: true,
+                feedback: "¡Brillante! El sello de seguridad cruzado garantiza que el embalaje no fue violado ni sustituido antes de ingresar al almacén de indicios."
+            }, {
+                text: "El perito tiene prohibido usar tinta ordinaria no forense para rotular los indicios de ADN.",
+                correct: false,
+                feedback: "Incorrecto. La tinta ordinaria es perfectamente válida siempre que cumpla con el protocolo de colocación y cruzado de seguridad."
+            }]
+        }, {
+            title: "Temperatura de Traslado de Sangre Líquida:",
+            context: "Un perito de campo recupera un tubo morado con sangre fresca. Con el afán de evitar la putrefacción rápida durante un traslado de 8 horas bajo el sol, decide congelarla rápidamente a -20°C en una nevera con hielo seco. ¿Por qué se considera esto una mala práctica según la medicina forense?",
+            options: [{
+                text: "La congelación abrupta y descontrolada provoca lisis de los glóbulos blancos, dificultando la extracción del material genético nuclear.",
+                correct: true,
+                feedback: "¡Correcto! El enfriamiento descontrolado por debajo de 0°C rompe físicamente las membranas de los leucocitos (lisis celular), liberando enzimas endógenas (nucleasas) que fragmentan el ADN nuclear y arruinan la perfilación."
+            }, {
+                text: "A -20°C el EDTA se cristaliza y corta mecánicamente las cadenas polipeptídicas de la hemoglobina.",
+                correct: false,
+                feedback: "Incorrecto. El EDTA no daña mecánicamente a las proteínas de esta manera; el daño se da a nivel osmótico/celular."
+            }, {
+                text: "La congelación inactiva el Luminol aplicado previamente en el laboratorio.",
+                correct: false,
+                feedback: "Incorrecto. El luminol se aplica en el laboratorio de manera independiente y no tiene relación con la temperatura de traslado inicial de la muestra."
+            }]
+        }, {
+            title: "Secado de Prendas Empapadas en Escena:",
+            context: "Se encuentra una playera de algodón empapada en sangre húmeda en un callejón durante un día lluvioso. ¿Cómo debe procesarse antes de su embalaje final si el laboratorio central está a 10 horas de distancia?",
+            options: [{
+                text: "Exprimirla vigorosamente y secarla con una secadora portátil de aire caliente a máxima potencia.",
+                correct: false,
+                feedback: "Incorrecto. El calor excesivo y directo desnaturaliza las proteínas celulares y destruye irreparablemente el ADN para fines de PCR."
+            }, {
+                text: "Someterla a secado natural a temperatura ambiente en un área ventilada protegida del sol, colocando papel limpio debajo para recuperar goteos.",
+                correct: true,
+                feedback: "¡Excelente! El secado lento y a la sombra preserva la viabilidad celular y genética sin catalizar la putrefacción microbiológica provocada por el calor o la humedad estancada."
+            }, {
+                text: "Embalarla inmediatamente mojada utilizando papel aluminio hermético de doble capa.",
+                correct: false,
+                feedback: "Incorrecto. El papel aluminio no evita la descomposición anaeróbica si la muestra se encuentra completamente mojada."
+            }]
+        }, {
+            title: "Levantamiento en Alfombras de Gran Valor:",
+            context: "Se localiza una mancha de sangre seca sobre una alfombra persa de gran valor. El dueño del inmueble amenaza con demandar si se recorta el fragmento. ¿Cuál es el protocolo pericial idóneo alternativo?",
+            options: [{
+                text: "Realizar un raspado con bisturí aplicando fuerza para levantar las fibras tiñendo la muestra.",
+                correct: false,
+                feedback: "Incorrecto. Raspar fibras de lana con bisturí mezcla hilos con costra de sangre y arruina la muestra de laboratorio."
+            }, {
+                text: "Levantar la muestra por frotación empleando un hisopo estéril ligeramente humedecido con agua destilada.",
+                correct: true,
+                feedback: "¡Correcto! Es el método de contingencia aprobado. Permite rehidratar la sangre y transferirla por capilaridad a las fibras de algodón del hisopo sin dañar la alfombra."
+            }, {
+                text: "Aplicar reactivo químico Kastle-Meyer para disolver la costra y recolectarla con pipeta.",
+                correct: false,
+                feedback: "Incorrecto. Kastle-Meyer es una prueba de orientación presuntiva destructiva; no se usa para recolectar indicios biológicos."
+            }]
+        }, {
+            title: "La Reconstrucción Trigonométrica del Ángulo:",
+            context: "La defensa de un acusado impugna la validez técnica de la reconstrucción reconstructiva de salpicaduras hemáticas en una pared debido a que el perito omitió la colocación de un testigo métrico en las fotografías macro. ¿Cuál es el sustento físico de esta objeción?",
+            options: [{
+                text: "Sin el testigo métrico es imposible determinar el factor de escala real para calcular el ancho y largo de la gota, anulando la fórmula trigonométrica del ángulo de impacto (Seno A = Ancho/Largo).",
+                correct: true,
+                feedback: "¡Brillante! El ángulo de impacto se calcula con trigonometría básica (Ancho de la elipse dividido por la Longitud). Sin un testigo métrico de referencia exacta, la escala matemática se deforma en la foto y el cálculo geométrico es inútil para el juez."
+            }, {
+                text: "El testigo métrico sirve únicamente para calibrar los colores del reactivo químico fluorescente.",
+                correct: false,
+                feedback: "Incorrecto. El color de la sangre no influye en la reconstrucción angular geométrica de proyección dinámica."
+            }, {
+                text: "La falta de escala impide certificar mediante microscopio si la sangre es humana o de ave.",
+                correct: false,
+                feedback: "Incorrecto. La determinación de origen se hace mediante reactivos inmunológicos (precipitina), no por la foto a escala con testigo métrico."
+            }]
+        }, {
+            title: "Preservación de Trazabilidad frente a Humedad:",
+            context: "Un perito rotula un sobre de papel con bolígrafo ordinario de tinta borrable húmeda. Al meter el indicio en la nevera, el hielo se derrite y el agua disuelve parcialmente los datos escritos de la etiqueta. ¿Qué principio fundamental se ha vulnerado?",
+            options: [{
+                text: "El principio de Mismidad y Garantía de Trazabilidad de la Cadena de Custodia por riesgo de confusión de muestras.",
+                correct: true,
+                feedback: "¡Exacto! Cualquier alteración, borradura o ilegibilidad de la etiqueta de identificación rompe el eslabón de correspondencia indudable del indicio, invalidando su admisión legal en juicio."
+            }, {
+                text: "El principio de especificidad de la polimerización enzimática in vitro.",
+                correct: false,
+                feedback: "Incorrecto. El borrado de tinta en el exterior del sobre no interfiere físicamente con los reactivos de la PCR en el laboratorio."
+            }, {
+                text: "La ley de Boyle-Mariotte sobre la presión de gases en contenedores cerrados.",
+                correct: false,
+                feedback: "Incorrecto. La ley de gases no tiene relación con el rotulado e identificación de los sobres de papel de la cadena de custodia."
+            }]
+        }, {
+            title: "Contaminación Cruzada por EPP:",
+            context: "Un criminalista recolecta tres indicios hemáticos distintos en la misma escena utilizando el mismo par de guantes de nitrilo para ahorrar insumos. ¿Qué fenómeno científico se produce y cómo afecta al dictamen de perfilación genética?",
+            options: [{
+                text: "Se produce transferencia cruzada de ADN de un indicio a otro, contaminando las muestras y arrojando perfiles genéticos mixtos falsos en el laboratorio.",
+                correct: true,
+                feedback: "¡Absolutamente correcto! Los guantes acumulan células epiteliales y eritrocitos microscópicos con cada contacto. Al no cambiarlos entre cada muestra, el perito transfiere material biológico (contaminación por arrastre), destruyendo la individualización de los sospechosos."
+            }, {
+                text: "Los guantes de nitrilo absorben la hemoglobina bloqueando las reacciones químicas de Kastle-Meyer.",
+                correct: false,
+                feedback: "Incorrecto. El nitrilo no absorbe la hemoglobina de forma que inactive las pruebas de colorimetría catalítica."
+            }, {
+                text: "La polimerasa se inhibe de manera irreversible por la fricción estática del nitrilo.",
+                correct: false,
+                feedback: "Incorrecto. La fricción estática no tiene ningún efecto en la inhibición enzimática de los cebadores de PCR."
+            }]
+        }];
+
+        // --- FUNCIONES DEL SIMULADOR VIRTUAL (SECCIÓN 1) ---
+        function selectTool(tool) {
+            currentTool = tool;
+
+            // Actualizar interfaz visual de botones
+            document.querySelectorAll('.tool-btn').forEach(btn => {
+                btn.classList.remove('bg-rose-600', 'text-white');
+                btn.classList.add('text-gray-600', 'hover:bg-gray-50');
+            });
+
+            const activeBtn = document.getElementById(`tool-${tool}`);
+            activeBtn.classList.remove('text-gray-600', 'hover:bg-gray-50');
+            activeBtn.classList.add('bg-rose-600', 'text-white');
+
+            // Actualizar etiqueta descriptiva
+            const toolNames = {
+                hisopo: 'Hisopo + H2O Destilada',
+                jeringa: 'Jeringa de Aspiración',
+                bisturi: 'Raspado (Bisturí)'
+            };
+            document.getElementById('activeToolText').textContent = toolNames[tool];
+
+            // Re-evaluar si hay un spot activo seleccionado
+            if (activeSpot) {
+                inspectSpot(activeSpot);
+            }
+        }
+
+        function inspectSpot(spotId) {
+            activeSpot = spotId;
+            const spot = spotsData[spotId];
+            const rule = spot.rules[currentTool];
+
+            // Mostrar el monitor activo y ocultar el vacío
+            document.getElementById('monitorEmpty').classList.add('hidden');
+            document.getElementById('monitorActive').classList.remove('hidden');
+
+            // Actualizar datos en pantalla
+            document.getElementById('spotType').textContent = spot.type;
+            document.getElementById('spotTitle').textContent = spot.title;
+            document.getElementById('spotDescription').textContent = spot.description;
+
+            // Formatear retroalimentación
+            const feedbackContainer = document.getElementById('recoleccionFeedback');
+            feedbackContainer.className = `p-3.5 rounded-xl text-xs border ${rule.class}`;
+
+            // Icono según estatus
+            const icon = rule.success ? '<i data-lucide="check-circle" class="w-4 h-4 inline mr-1"></i>' : '<i data-lucide="alert-triangle" class="w-4 h-4 inline mr-1"></i>';
+            feedbackContainer.innerHTML = `<p>${icon} <strong>${rule.success ? 'Protocolo Recomendado' : 'Alerta de Contaminación'}:</strong> ${rule.msg}</p>`;
+
+            // Reiniciar y habilitar checklist
+            document.getElementById('checkFoto').checked = false;
+            document.getElementById('checkEpp').checked = false;
+            document.getElementById('checkLote').checked = false;
+            checklistState = {
+                foto: false,
+                epp: false,
+                lote: false
+            };
+
+            // Deshabilitar botón de embalaje hasta que el checklist esté listo
+            updateEmbalarButton(false);
+
+            // Actualizar iconos dinamicos dentro del contenedor nuevo
+            lucide.createIcons();
+        }
+
+        function checkChecklist() {
+            checklistState.foto = document.getElementById('checkFoto').checked;
+            checklistState.epp = document.getElementById('checkEpp').checked;
+            checklistState.lote = document.getElementById('checkLote').checked;
+
+            const spot = spotsData[activeSpot];
+            const rule = spot.rules[currentTool];
+
+            // Se habilita si el checklist está completo Y la herramienta es exitosa/correcta
+            const isAllChecked = checklistState.foto && checklistState.epp && checklistState.lote;
+            updateEmbalarButton(isAllChecked && rule.success);
+        }
+
+        function updateEmbalarButton(enabled) {
+            const btn = document.getElementById('btnEmbalar');
+            if (enabled) {
+                btn.removeAttribute('disabled');
+                btn.className = "w-full py-3 px-4 mt-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl transition-all shadow-md hover:shadow-lg uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer";
+            } else {
+                btn.setAttribute('disabled', 'true');
+                btn.className = "w-full py-3 px-4 mt-4 bg-gray-200 text-gray-400 font-bold text-xs rounded-xl transition-all cursor-not-allowed uppercase tracking-wider flex items-center justify-center gap-2";
+            }
+        }
+
+        function embeledSample() {
+            // Mostrar modal de confirmación de embalaje e incrementar progreso
+            const modal = document.getElementById('navigationModal');
+            document.getElementById('modalTitle').textContent = "Indicio Registrado Exitosamente";
+            document.getElementById('modalDescription').textContent = "Has generado la etiqueta de Cadena de Custodia número EXP-M3-" + Math.floor(Math.random() * 90000 + 10000) + ". El indicio está listo para traslado bajo refrigeración de 4°C.";
+            modal.classList.remove('hidden');
+
+            // Incrementar progreso a 50% si estaba en 20%
+            if (document.getElementById('lessonProgress').style.width === "20%") {
+                document.getElementById('lessonProgress').style.width = "50%";
+                document.getElementById('progressText').textContent = "50%";
+            }
+
+            // Limpiar simulador lateral
+            document.getElementById('monitorEmpty').classList.remove('hidden');
+            document.getElementById('monitorActive').classList.add('hidden');
+            updateEmbalarButton(false);
+            activeSpot = null;
+        }
+
+        // --- FUNCIONES DE TARJETAS FLIP (SECCIÓN 2) ---
+        function toggleCard(cardElement) {
+            const innerCard = cardElement.querySelector('.preserve-3d');
+            innerCard.classList.toggle('rotate-y-180');
+        }
+
+        // --- FUNCIONES DEL CUESTIONARIO (SECCIÓN 3) ---
+        function loadQuestion(index) {
+            const q = quizQuestions[index];
+            document.getElementById('questionCounter').textContent = `Pregunta ${index + 1} de 10`;
+            document.getElementById('questionTitle').textContent = q.title;
+            document.getElementById('questionContext').textContent = q.context;
+
+            const container = document.getElementById('optionsContainer');
+            container.innerHTML = ''; // Limpiar opciones
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-xl border border-rose-100 bg-white hover:bg-rose-50/50 transition-all text-xs font-semibold text-gray-700 hover:text-gray-900 shadow-xs flex items-start gap-3";
+                btn.innerHTML = `
+                    <span class="w-5 h-5 flex items-center justify-center rounded-full bg-rose-100 text-rose-800 font-bold text-[10px] shrink-0 mt-0.5">${String.fromCharCode(65 + idx)}</span>
+                    <span class="leading-relaxed">${opt.text}</span>
+                `;
+                btn.onclick = () => selectOption(idx);
+                container.appendChild(btn);
+            });
+
+            // Ocultar caja de retroalimentación
+            document.getElementById('feedbackBox').classList.add('hidden');
+        }
+
+        function selectOption(optIndex) {
+            const q = quizQuestions[currentQuestionIndex];
+            const opt = q.options[optIndex];
+            selectedOptions[currentQuestionIndex] = optIndex;
+
+            const feedbackBox = document.getElementById('feedbackBox');
+            const statusDiv = document.getElementById('feedbackStatus');
+            const explanationP = document.getElementById('feedbackExplanation');
+
+            feedbackBox.classList.remove('hidden');
+
+            if (opt.correct) {
+                statusDiv.className = "flex items-center gap-2 font-bold text-sm text-emerald-800";
+                statusDiv.innerHTML = '<i data-lucide="check-circle-2" class="w-5 h-5"></i> Dictamen Correcto';
+                feedbackBox.className = "p-4 rounded-xl text-xs space-y-2 border border-emerald-200 bg-emerald-50/50";
+                explanationP.textContent = opt.feedback;
+                // Sumar acierto
+                score++;
+            } else {
+                statusDiv.className = "flex items-center gap-2 font-bold text-sm text-rose-800";
+                statusDiv.innerHTML = '<i data-lucide="x-circle" class="w-5 h-5"></i> Dictamen Incorrecto';
+                feedbackBox.className = "p-4 rounded-xl text-xs space-y-2 border border-rose-200 bg-rose-50/50";
+                explanationP.textContent = opt.feedback;
+            }
+
+            // Deshabilitar todos los botones de opciones para evitar re-selección
+            document.querySelectorAll('#optionsContainer button').forEach(btn => {
+                btn.disabled = true;
+                btn.classList.add('opacity-60', 'cursor-not-allowed');
+            });
+
+            document.getElementById('scoreText').textContent = `Aciertos: ${score}/10`;
+            lucide.createIcons();
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizQuestions.length) {
+                // Calcular progreso intermedio de preguntas
+                let currentPercent = 50 + Math.floor((currentQuestionIndex / quizQuestions.length) * 50);
+                document.getElementById('lessonProgress').style.width = currentPercent + "%";
+                document.getElementById('progressText').textContent = currentPercent + "%";
+                loadQuestion(currentQuestionIndex);
+            } else {
+                // Final del examen
+                document.getElementById('quizContainer').classList.add('hidden');
+                document.getElementById('resultsPanel').classList.remove('hidden');
+                document.getElementById('finalScoreText').textContent = `${score} / 10 Aciertos`;
+
+                // Progreso al 100%
+                document.getElementById('lessonProgress').style.width = "100%";
+                document.getElementById('progressText').textContent = "100%";
+            }
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            selectedOptions = Array(10).fill(null);
+            document.getElementById('quizContainer').classList.remove('hidden');
+            document.getElementById('resultsPanel').classList.add('hidden');
+            document.getElementById('scoreText').textContent = `Aciertos: 0/10`;
+
+            // Restablecer progreso a la etapa de simulador
+            document.getElementById('lessonProgress').style.width = "50%";
+            document.getElementById('progressText').textContent = "50%";
+
+            loadQuestion(0);
+        }
+
+        // --- FUNCIONES DE INTEGRACIÓN DEL TEMARIO PRINCIPAL (MODALES) ---
+        function goToSyllabus() {
+            const modal = document.getElementById('navigationModal');
+            document.getElementById('modalTitle').textContent = "Regresando al Temario Principal";
+            document.getElementById('modalDescription').textContent = "Redirección en progreso... En la implementación final de tu proyecto, esta acción se conectará con el módulo 'temario.html' o tu ruta de backend de estudiantes.";
+            modal.classList.remove('hidden');
+        }
+
+        function goToNextModule() {
+            const modal = document.getElementById('navigationModal');
+            document.getElementById('modalTitle').textContent = "Guardando Progreso Académico";
+            document.getElementById('modalDescription').textContent = "Felicidades. Has completado exitosamente la Unidad Temática de Hematología Forense. Tu calificación y reporte de avance han sido enviados al panel de evaluación docente.";
+            modal.classList.remove('hidden');
+        }
+
+        function closeNavigationModal() {
+            document.getElementById('navigationModal').classList.add('hidden');
+        }
+
+        // --- ARRANQUE INICIAL ---
+        window.onload = function() {
+            loadQuestion(0);
+        }
+    </script>
+</body>
+
+</html>

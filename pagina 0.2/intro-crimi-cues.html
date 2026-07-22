@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación: Introducción a la Criminalística | El Asesino de tu Carrera</title>
+    <link rel="stylesheet" href="styles/intro-crimi-cues.css">
+    <link rel="icon" type="image/jpeg" href="img/logo.jpeg">
+
+    <!-- Tailwind CSS para layouts fluidos, modernos y completamente adaptables -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome para iconos de alta calidad relacionados con el ámbito penal y científico -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts: Plus Jakarta Sans (interfaz limpia) y JetBrains Mono (estética analítica) -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Configuración personalizada de Tailwind CSS para acoplar la paleta cromática forense -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        forensicRed: {
+                            50: '#fff1f1',
+                            100: '#ffe1e1',
+                            200: '#fecaca',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                            950: '#450a0a',
+                        },
+                        forensicCyan: {
+                            50: '#ecfeff',
+                            100: '#cffafe',
+                            600: '#0891b2',
+                            700: '#0e7490',
+                        },
+                        forensicLilac: {
+                            50: '#faf5ff',
+                            100: '#f3e8ff',
+                            600: '#9333ea',
+                            700: '#7e22ce',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="text-slate-900 min-h-screen flex flex-col selection:bg-red-600 selection:text-white">
+
+    <!-- Header / Barra de Navegación superior -->
+    <header class="border-b border-slate-200 bg-white/95 backdrop-blur sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+
+            <!-- Bloque de Identificación Izquierda -->
+            <div class="flex items-center space-x-3">
+                <!-- Espacio para el Logo de la Institución -->
+                <div class="bg-gradient-to-tr from-red-600 to-red-800 text-white p-2.5 rounded-xl shadow-md flex items-center justify-center w-10 h-10">
+                    <i class="fa-solid fa-fingerprint text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="text-sm sm:text-base font-extrabold text-slate-900 tracking-tight">El asesino de tu carrera</h1>
+                    <a class="text-xs font-bold uppercase tracking-widest text-red-600" href="temario.html">Regresar al temario</a>˚ ༘♡ ⋆｡˚ ❀
+                    <a class="text-xs font-bold uppercase tracking-widest text-red-600" href="intro-crimi.html">Página anterior</a>
+
+                </div>
+            </div>
+
+            <!-- Bloque de Progreso Derecha -->
+            <div class="flex items-center space-x-4">
+                <span class="hidden md:inline-block text-xs text-slate-500 font-medium">Progreso del Examen:</span>
+                <div class="w-24 sm:w-36 bg-slate-100 h-2.5 rounded-full overflow-hidden border border-slate-200">
+                    <div id="quizProgressBar" class="bg-gradient-to-r from-red-500 via-red-600 to-purple-600 h-full w-[10%] transition-all duration-500"></div>
+                </div>
+                <span class="text-xs font-bold text-red-600 bg-red-50 px-2.5 py-1 rounded-md" id="progressText">10%</span>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 py-8 space-y-8">
+
+        <!-- Banner de Bienvenida y Propósito Académico -->
+        <div class="bg-gradient-to-br from-white via-slate-50 to-red-50/20 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-forensic relative overflow-hidden">
+            <div class="absolute -right-16 -top-16 w-48 h-48 bg-red-200/20 rounded-full blur-3xl"></div>
+            <div class="absolute -left-16 -bottom-16 w-48 h-48 bg-purple-200/10 rounded-full blur-3xl"></div>
+
+            <div class="max-w-2xl relative z-10 space-y-3">
+                <span class="bg-red-100 text-red-700 text-xs font-extrabold px-3 py-1.5 rounded-full uppercase tracking-wider border border-red-200 inline-block">
+                    Módulo 1: Introducción a la Criminalística
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                    Cuestionario de <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-purple-700">Acreditación Teórica</span>
+                </h2>
+                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                    Estimado estudiante, es momento de someter a prueba tu retención conceptual. Este examen interactivo consta de <strong>10 reactivos teóricos fundamentales</strong> extraídos directamente de tus apuntes de clase. Al responder, recibirás
+                    retroalimentación síncrona de manera inmediata.
+                </p>
+                <div class="flex flex-wrap gap-2.5 pt-1.5">
+                    <span class="flex items-center space-x-1 text-[11px] text-slate-600 bg-white shadow-xs px-3 py-1.5 rounded-xl border border-slate-200">
+                        <i class="fa-solid fa-book text-red-500"></i>
+                        <span class="font-bold">10 Preguntas Teóricas</span>
+                    </span>
+                    <span class="flex items-center space-x-1 text-[11px] text-slate-600 bg-white shadow-xs px-3 py-1.5 rounded-xl border border-slate-200">
+                        <i class="fa-solid fa-brain text-purple-500"></i>
+                        <span class="font-bold">Tutor Virtual Académico</span>
+                    </span>
+                    <span class="flex items-center space-x-1 text-[11px] text-slate-600 bg-white shadow-xs px-3 py-1.5 rounded-xl border border-slate-200">
+                        <i class="fa-solid fa-square-poll-vertical text-cyan-500"></i>
+                        <span class="font-bold">Retroalimentación síncrona</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta del Cuestionario Dinámico -->
+        <section class="space-y-6" id="quizCardSection">
+
+            <div id="questionCard" class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-forensic space-y-6 transition-all duration-300">
+
+                <!-- Encabezado de Pregunta (Frecuencia, Dificultad, e Indicadores) -->
+                <div class="flex flex-col space-y-2 border-b border-slate-100 pb-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-red-600 uppercase tracking-widest mono" id="questionNumTracker">Reactivo 1 de 10</span>
+                        <span class="text-[10px] font-extrabold px-2.5 py-1 bg-red-50 text-red-700 rounded-md border border-red-100 self-start animate-pulse" id="questionCategory">
+                            DIFERENCIA TEÓRICA
+                        </span>
+                    </div>
+                    <h3 class="text-base sm:text-lg font-extrabold text-slate-900 leading-snug" id="questionBody">
+                        Cargando pregunta teórica...
+                    </h3>
+                </div>
+
+                <!-- Contenedor de Opciones de Respuesta -->
+                <div class="grid grid-cols-1 gap-3.5" id="optionsWrapper">
+                    <!-- Las opciones se inyectan dinámicamente mediante JavaScript -->
+                </div>
+
+                <!-- Ventana de Retroalimentación del Tutor Virtual (Escondida por defecto) -->
+                <div id="tutorFeedbackBox" class="hidden rounded-2xl p-4 sm:p-5 transition-all duration-300 animate-slide-in border">
+                    <!-- El contenido del tutor se genera con base en la elección del usuario -->
+                </div>
+
+                <!-- Barra de Navegación del Examen (Control de Flujo) -->
+                <div class="flex items-center justify-between border-t border-slate-100 pt-4 mt-6">
+                    <div class="flex items-center space-x-2 text-xs text-slate-500">
+                        <i class="fa-solid fa-circle-check text-slate-400"></i>
+                        <span id="scoreCounterText">Aciertos: 0 de 10</span>
+                    </div>
+                    <button id="nextQuestionButton" onclick="advanceQuestion()" class="hidden px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md hover:shadow-lg flex items-center space-x-2">
+                        <span>Siguiente Reactivo</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Panel de Resultados de Acreditación (Escondido por defecto) -->
+            <div id="resultsPanel" class="hidden bg-white border-2 border-red-100 rounded-3xl p-8 text-center space-y-6 shadow-forensic relative overflow-hidden">
+                <div class="absolute -right-20 -top-20 w-64 h-64 bg-red-500/5 rounded-full blur-3xl"></div>
+
+                <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-red-50 border border-red-100 text-red-600 text-3xl shadow-sm glow-pulse-red">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+
+                <div class="space-y-2">
+                    <h3 class="text-2xl font-extrabold text-slate-900 tracking-tight">Evaluación Concluida</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto leading-relaxed" id="resultsDescription">
+                        Analizando dictamen final de competencias teóricas...
+                    </p>
+                </div>
+
+                <!-- Marcador Numérico Central de Aciertos -->
+                <div class="inline-block px-8 py-4 bg-slate-50 border border-slate-200 rounded-2xl">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase block tracking-wider mb-1">Puntuación Lograda</span>
+                    <span class="text-4xl font-extrabold text-slate-900" id="finalResultScore">0 / 10</span>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- SECCIÓN DE LOS BOTONES SOLICITADOS CON COMENTARIOS PARA CONEXIÓN DE PÁGINAS -->
+                <!-- ========================================================================= -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-4 max-w-2xl mx-auto">
+
+                    <!-- BOTÓN 1: Volver a iniciar el cuestionario / formulario -->
+                    <!-- Lógica interna del script: llama a restartQuiz() para borrar estado y comenzar de nuevo -->
+                    <button onclick="restartQuiz()" class="w-full sm:w-auto px-5 py-3 bg-white border border-slate-200 text-slate-700 hover:text-slate-900 hover:bg-slate-50 font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-xs flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-rotate-left text-red-600"></i>
+                        <span>Reiniciar Cuestionario</span>
+                    </button>
+
+                    <!-- BOTÓN 2: Regresar a la lección anterior (Módulo de Introducción a la Criminalística) -->
+                    <!-- REEMPLAZAR "introduccion_criminalistica.html" con la ruta física de la página teórica de origen -->
+                    <a href="intro-crimi.html" class="w-full sm:w-auto px-5 py-3 bg-red-600 hover:bg-red-500 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-book-open"></i>
+                        <span>Regresar a la Lección</span>
+                    </a>
+
+                    <!-- BOTÓN 3: Regresar al cuestionario o Temario General -->
+                    <!-- REEMPLAZAR "temario.html" con la ruta física de la página del temario general de la carrera -->
+                    <a href="temario.html" class="w-full sm:w-auto px-5 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-list-check text-purple-600"></i>
+                        <span>Volver al Temario</span>
+                    </a>
+
+                </div>
+                <!-- ========================================================================= -->
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer / Pie de página institucional -->
+    <footer class="border-t border-slate-200 bg-white py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0 text-xs text-slate-500">
+            <div>
+                <span>• Ingeniería en Sistemas Computacionales</span>
+            </div>
+            <div class="flex space-x-6 font-medium text-slate-400">
+                <span>"El asesino de tu carrera" © 2026</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. BANCO DE REACTIVOS FORENSES BASADOS ESTRICTAMENTE EN "INTRO-CRIMI" ---
+        // Se evita que la respuesta correcta sea la más larga mediante edición y balance estricto.
+        const forensicQuestions = [{
+            id: 1,
+            category: "DISTINCIÓN CONCEPTUAL",
+            title: "Según la regla de oro estudiada, ¿cuál es el objeto de estudio específico de la Criminología que la diferencia de la Criminalística?",
+            options: {
+                A: "El análisis físico de las evidencias materiales del lugar de intervención.",
+                B: "Las causas socio-psicológicas de la conducta desviada y el análisis del delincuente.",
+                C: "La fijación planimétrica de los indicios biológicos en la escena del suceso."
+            },
+            correct: "B",
+            feedback: {
+                A: "Incorrecto. El análisis físico-químico de las evidencias y la reconstrucción técnica pertenecen a la Criminalística.",
+                B: "¡Excelente! La Criminología se enfoca en el 'por qué' (conductas, delincuente, víctima y sociedad) mediante ciencias sociales, mientras la Criminalística estudia el 'cómo, cuándo, dónde y quién' con ciencias naturales.",
+                C: "Incorrecto. La fijación planimétrica y la recolección física de indicios biológicos son procedimientos operativos puramente criminalísticos."
+            }
+        }, {
+            id: 2,
+            category: "PRINCIPIO DE LOCARD",
+            title: "En la ecuación matemática del Principio de Locard ($E = C \\cap S$), ¿qué representa específicamente la variable $E$?",
+            options: {
+                A: "El estado mental de culpabilidad del criminal durante la conducta.",
+                B: "La fuerza de fricción mecánica que se produce al haber contacto directo.",
+                C: "La transferencia de material o evidencia física producida por el contacto."
+            },
+            correct: "C",
+            feedback: {
+                A: "Incorrecto. Los aspectos subjetivos o psicológicos no forman parte de esta ecuación reconstructiva física del contacto material.",
+                B: "Incorrecto. Aunque la fricción física es el medio mecánico, la variable E representa directamente la evidencia transferida.",
+                C: "¡Perfecto! La variable E representa la evidencia o transferencia mutua de materiales microscópicos que se produce en la intersección del criminal ($C$) con la escena ($S$)."
+            }
+        }, {
+            id: 3,
+            category: "ETAPA EMPÍRICA",
+            title: "¿Cuál fue la aportación del pionero Song Ci durante la etapa empírica de la investigación forense en el siglo XIII?",
+            options: {
+                A: "Redactar la primera guía técnica sobre balística comparativa y cotejo microscópico.",
+                B: "Crear el sistema biométrico antropométrico para clasificar las dimensiones óseas.",
+                C: "Escribir el primer tratado forense sistemático para discernir accidentes de asesinatos."
+            },
+            correct: "C",
+            feedback: {
+                A: "Incorrecto. La balística comparativa es un desarrollo del siglo XX, consolidado por Calvin Goddard.",
+                B: "Incorrecto. El sistema antropométrico fue desarrollado por Alphonse Bertillon en el siglo XIX.",
+                C: "¡Excelente! Song Ci escribió \"The Washing Away of Wrongs\", considerado el primer tratado forense sistemático de la historia, sentando bases de patología y entomología empíricas."
+            }
+        }, {
+            id: 4,
+            category: "TOXICOLOGÍA",
+            title: "¿Por qué hito histórico se considera a Mathieu Orfila como el \"Padre de la Toxicología\" en 1814?",
+            options: {
+                A: "Por inventar el microscopio de comparación para detectar marcas de percusión.",
+                B: "Por publicar el primer tratado científico de venenos y detectar arsénico en tejidos.",
+                C: "Por descubrir la técnica de absorción atómica sin flama para residuos de plomo."
+            },
+            correct: "B",
+            feedback: {
+                A: "Incorrecto. El microscopio de comparación para marcas de percusión balística es un aporte de Calvin Goddard.",
+                B: "¡Es correcto! Orfila publicó el primer tratado científico de venenos e implementó el análisis químico analítico para demostrar la presencia de arsénico en tejidos orgánicos humanos.",
+                C: "Incorrecto. La absorción atómica sin flama es una técnica física moderna de alta sensibilidad, ajena a la época de Orfila."
+            }
+        }, {
+            id: 5,
+            category: "IDENTIFICACIÓN BIOMÉTRICA",
+            title: "Además del Bertillonaje (medición del cuerpo), ¿qué técnica introdujo Alphonse Bertillon para la identificación criminal?",
+            options: {
+                A: "El fichaje dactiloscópico mediante el uso de la clasificación de crestas y deltas.",
+                B: "El uso de espectroscopia analítica de absorción atómica para residuos del disparo.",
+                C: "La fotografía forense estandarizada de frente y perfil con escala métrica."
+            },
+            correct: "C",
+            feedback: {
+                A: "Incorrecto. El fichaje dactiloscópico y su sistema práctico fue aportación de Juan Vucetich en 1892.",
+                B: "Incorrecto. La espectroscopia de absorción atómica es una tecnología moderna del siglo XX.",
+                C: "¡Excelente! Bertillon estandarizó el fichaje fotográfico policial de frente y perfil, e incorporó el uso de referencias métricas en la fotografía forense."
+            }
+        }, {
+            id: 6,
+            category: "DACTILOSCOPÍA",
+            title: "¿Cuál fue el logro operativo más trascendental del sistema dactiloscópico de Juan Vucetich en Argentina en 1892?",
+            options: {
+                A: "Resolver el caso Francisca Rojas, logrando la primera condena mundial basada en huellas.",
+                B: "Fundar el primer laboratorio forense policial especializado de la Europa Occidental.",
+                C: "Publicar el manual judicial para unificar la física y la química de la escena."
+            },
+            correct: "A",
+            feedback: {
+                A: "¡Correcto! Juan Vucetich resolvió el caso de Francisca Rojas en 1892, logrando la primera condena de homicidio en el mundo basada puramente en dactiloscopía.",
+                B: "Incorrecto. El primer laboratorio criminalístico de la policía fue fundado por Edmond Locard en Lyon, Francia, en 1910.",
+                C: "Incorrecto. La unificación sistemática de la ciencia natural en un manual judicial fue obra de Hans Gross en 1893."
+            }
+        }, {
+            id: 7,
+            category: "SISTEMATIZACIÓN CIENTÍFICA",
+            title: "¿De qué manera Hans Gross logró unificar la investigación criminal en su célebre obra de 1893?",
+            options: {
+                A: "Formulando el principio matemático del intercambio inevitable de microfibras.",
+                B: "Integrando múltiples ciencias naturales en un manual sistemático de Criminalística.",
+                C: "Diseñando el microscopio de comparación para el análisis balístico reconstructivo."
+            },
+            correct: "B",
+            feedback: {
+                A: "Incorrecto. El principio de intercambio inevitable fue formulado posteriormente por Edmond Locard.",
+                B: "¡Perfecto! En su \"Manual del Juez de Instrucción\", Hans Gross unificó la física, química, biología y medicina forense dándole oficialmente el nombre de \"Criminalística\".",
+                C: "Incorrecto. El microscopio de comparación balística fue introducido por Calvin Goddard en la década de 1920."
+            }
+        }, {
+            id: 8,
+            category: "HISTORIA INSTITUCIONAL",
+            title: "Además de formular el principio de intercambio, ¿qué hito institucional de 1910 se le atribuye a Edmond Locard?",
+            options: {
+                A: "Publicar \"The Washing Away of Wrongs\", fundando la medicina legal sistemática.",
+                B: "Consolidar el sistema antropométrico de medición ósea de sospechosos reincidentes.",
+                C: "Fundar el primer laboratorio de criminalística de la policía del mundo en Lyon."
+            },
+            correct: "C",
+            feedback: {
+                A: "Incorrecto. Ese tratado del siglo XIII pertenece al pionero chino Song Ci.",
+                B: "Incorrecto. El bertillonaje o antropometría fue diseñado por Alphonse Bertillon.",
+                C: "¡Es correcto! Edmond Locard fundó en Lyon el primer laboratorio forense policial del mundo, materializando la ciencia en un espacio práctico de investigación."
+            }
+        }, {
+            id: 9,
+            category: "RUTA METODOLÓGICA",
+            title: "De acuerdo con la ruta metodológica de 5 pasos, ¿qué técnica se utiliza en el primer paso para localizar indicios sin alterarlos?",
+            options: {
+                A: "El resguardo continuo mediante firmas notariales en la cadena de custodia.",
+                B: "Métodos de rastreo geométrico en espiral, franjas o cuadrículas en la escena.",
+                C: "El procesamiento con reactivos químicos selectivos e instrumentación de laboratorio."
+            },
+            correct: "B",
+            feedback: {
+                A: "Incorrecto. El registro ininterrumpido de firmas pertenece a la etapa posterior de Cadena de Custodia.",
+                B: "¡Acierto! El primer paso es Búsqueda y Localización, el cual exige el uso de métodos sistemáticos de rastreo geométrico (espiral, franjas, cuadrículas) para no pasar por alto ni alterar ningún indicio.",
+                C: "Incorrecto. El procesamiento instrumental y reactivo químico es propio del cuarto paso, correspondiente al Análisis de Laboratorio."
+            }
+        }, {
+            id: 10,
+            category: "PAPEL EN EL TRIBUNAL",
+            title: "¿Cuál es el objetivo final de la formulación y presentación del Dictamen Pericial ante el juez de la causa?",
+            options: {
+                A: "Demostrar las motivaciones delictivas y sociológicas del criminal ante el jurado.",
+                B: "Convertir un indicio material en una verdad científica objetiva que auxilie al juez.",
+                C: "Decidir directamente la culpabilidad jurídica y dictar la sentencia penal del acusado."
+            },
+            correct: "B",
+            feedback: {
+                A: "Incorrecto. Las motivaciones sociológicas delictivas son competencia de la Criminología.",
+                B: "¡Excelente! El objetivo supremo del criminalista es traducir los datos de las evidencias materiales en verdades científicas irrefutables para auxiliar la toma de decisiones judiciales.",
+                C: "Incorrecto. El perito jamás juzga ni condena; su papel técnico se limita estrictamente a la verdad científica del indicio."
+            }
+        }];
+
+        // --- 2. VARIABLES DE CONTROL DE ESTADO (STATE) ---
+        let currentIdx = 0; // Índice de la pregunta actual
+        let accumulatedScore = 0; // Cantidad de respuestas correctas
+        let answersLogged = {}; // Registro de respuestas dadas por el estudiante
+
+        // --- 3. FUNCIONES LÓGICAS DEL CUESTIONARIO ---
+
+        // Carga el reactivo correspondiente al índice actual
+        function drawQuestion(idx) {
+            const questionObj = forensicQuestions[idx];
+
+            // Elementos de la interfaz a actualizar
+            const numTracker = document.getElementById('questionNumTracker');
+            const categoryLabel = document.getElementById('questionCategory');
+            const questionBody = document.getElementById('questionBody');
+            const optionsWrapper = document.getElementById('optionsWrapper');
+            const tutorBox = document.getElementById('tutorFeedbackBox');
+            const nextButton = document.getElementById('nextQuestionButton');
+
+            // Actualización de textos en pantalla
+            numTracker.textContent = `Reactivo ${idx + 1} de 10`;
+            categoryLabel.textContent = questionObj.category;
+            questionBody.textContent = questionObj.title;
+
+            // Restablecer el contenedor de retroalimentación y navegación
+            tutorBox.className = "hidden rounded-2xl p-4 sm:p-5 transition-all duration-300 animate-slide-in border";
+            tutorBox.innerHTML = "";
+            nextButton.classList.add('hidden');
+
+            // Inyectar de manera limpia las opciones de respuesta como botones interactivos
+            optionsWrapper.innerHTML = "";
+            Object.entries(questionObj.options).forEach(([key, textValue]) => {
+                const btn = document.createElement('button');
+                btn.className = "option-card w-full text-left p-4 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center justify-between text-xs sm:text-sm text-slate-800 font-medium shadow-sm";
+                btn.onclick = () => processStudentSelection(idx, key);
+
+                // Estructura visual de cada tarjeta de opción
+                btn.innerHTML = `
+                    <span class="pr-4"><strong class="text-red-600 mr-1.5">${key})</strong> ${textValue}</span>
+                    <i class="fa-regular fa-circle text-slate-300 flex-shrink-0 text-base"></i>
+                `;
+                optionsWrapper.appendChild(btn);
+            });
+
+            // Actualizar la barra superior de progreso global
+            updateProgress(idx);
+        }
+
+        // Procesa la selección del estudiante y despliega la retroalimentación síncrona del Tutor
+        function processStudentSelection(questionIdx, selectedKey) {
+            const questionObj = forensicQuestions[questionIdx];
+            const correctKey = questionObj.correct;
+            const optionsWrapper = document.getElementById('optionsWrapper');
+            const buttons = optionsWrapper.querySelectorAll('.option-card');
+            const tutorBox = document.getElementById('tutorFeedbackBox');
+            const nextButton = document.getElementById('nextQuestionButton');
+
+            // Registrar que la pregunta fue contestada
+            answersLogged[questionIdx] = selectedKey;
+
+            // Deshabilitar todas las opciones para evitar manipulaciones posteriores
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.remove('hover:bg-slate-50', 'hover:border-slate-300');
+                btn.classList.add('opacity-50');
+
+                // Encontrar cuál es el identificador (A, B o C) de la opción del botón
+                const parsedKey = btn.querySelector('strong').textContent.replace(')', '').trim();
+                const icon = btn.querySelector('i');
+
+                // Si es la opción correcta, marcarla de color verde clínico
+                if (parsedKey === correctKey) {
+                    btn.className = "option-card w-full text-left p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50/50 text-emerald-900 transition-all flex items-center justify-between text-xs sm:text-sm font-bold shadow-sm";
+                    icon.className = "fa-solid fa-circle-check text-emerald-600 text-lg flex-shrink-0";
+                }
+                // Si el alumno se equivocó en su elección, marcar esa opción errónea en color rojo clínico
+                else if (parsedKey === selectedKey && selectedKey !== correctKey) {
+                    btn.className = "option-card w-full text-left p-4 rounded-2xl border-2 border-red-500 bg-red-50 text-red-950 transition-all flex items-center justify-between text-xs sm:text-sm font-bold shadow-sm";
+                    icon.className = "fa-solid fa-circle-xmark text-red-600 text-lg flex-shrink-0";
+                }
+            });
+
+            // Sumar al puntaje acumulado si la respuesta fue la correcta
+            if (selectedKey === correctKey) {
+                accumulatedScore++;
+            }
+
+            // Actualizar el contador de aciertos en tiempo real en la parte inferior de la tarjeta
+            document.getElementById('scoreCounterText').textContent = `Aciertos: ${accumulatedScore} de 10`;
+
+            // Construir y revelar la retroalimentación basada en lógica forense
+            const hitSuccess = (selectedKey === correctKey);
+
+            // Asignar colores de acuerdo al acierto o error de manera estética y armónica
+            tutorBox.className = `block rounded-2xl p-4 sm:p-5 transition-all duration-300 animate-slide-in border ${
+                hitSuccess 
+                    ? 'bg-emerald-50/70 border-emerald-200 text-emerald-900' 
+                    : 'bg-red-50/70 border-red-200 text-red-950'
+            }`;
+
+            tutorBox.innerHTML = `
+                <div class="flex items-start space-x-3">
+                    <div class="mt-0.5">
+                        ${hitSuccess 
+                            ? '<div class="bg-emerald-100 text-emerald-700 w-6 h-6 rounded-full flex items-center justify-center text-xs"><i class="fa-solid fa-check"></i></div>' 
+                            : '<div class="bg-red-100 text-red-700 w-6 h-6 rounded-full flex items-center justify-center text-xs"><i class="fa-solid fa-xmark"></i></div>'}
+                    </div>
+                    <div class="space-y-1">
+                        <h4 class="text-xs font-extrabold uppercase tracking-widest">${hitSuccess ? 'Tutor Virtual: ¡Dictamen Correcto!' : 'Tutor Virtual: Desviación Teórica'}</h4>
+                        <p class="text-xs leading-relaxed font-medium text-slate-700">${questionObj.feedback[selectedKey]}</p>
+                    </div>
+                </div>
+            `;
+
+            // Revelar el botón de navegación para poder avanzar
+            nextButton.classList.remove('hidden');
+        }
+
+        // Desplaza el flujo del cuestionario a la siguiente pregunta
+        function advanceQuestion() {
+            if (currentIdx < 9) {
+                currentIdx++;
+                drawQuestion(currentIdx);
+            } else {
+                // Al llegar a la décima pregunta, ocultar la tarjeta y desplegar el panel de resultados
+                concludeEvaluation();
+            }
+        }
+
+        // Calcula y renderiza de forma animada el porcentaje de avance
+        function updateProgress(currentStepIndex) {
+            const stepValue = currentStepIndex + 1;
+            const percentage = stepValue * 10;
+
+            // Actualizar la barra y el texto correspondiente
+            document.getElementById('quizProgressBar').style.width = `${percentage}%`;
+            document.getElementById('progressText').textContent = `${percentage}%`;
+        }
+
+        // Concluye la evaluación y compila las estadísticas diagnósticas finales
+        function concludeEvaluation() {
+            // Ocultar la tarjeta de preguntas
+            document.getElementById('questionCard').classList.add('hidden');
+
+            // Obtener elementos del panel final
+            const resultsPanel = document.getElementById('resultsPanel');
+            const scoreDisplay = document.getElementById('finalResultScore');
+            const finalDesc = document.getElementById('resultsDescription');
+
+            // Revelar el panel de resultados
+            resultsPanel.classList.remove('hidden');
+            scoreDisplay.textContent = `${accumulatedScore} / 10`;
+
+            // Personalizar el dictamen académico con base en el puntaje
+            if (accumulatedScore === 10) {
+                finalDesc.innerHTML = `<strong>¡Dictamen Pericial de Excelencia!</strong> Has respondido todos los reactivos de manera impecable. Demuestras un dominio riguroso y absoluto de las diferencias teóricas, el principio de Locard, los hitos de la línea del tiempo y las etapas de la ruta metodológica.`;
+            } else if (accumulatedScore >= 8) {
+                finalDesc.innerHTML = `<strong>Aprobado con Distinción.</strong> Tu nivel de retención es sobresaliente. Posees un excelente criterio para diferenciar indicios, teorías y aportaciones históricas. Repasa los pequeños errores de retroalimentación para perfeccionar tu perfil académico.`;
+            } else if (accumulatedScore >= 6) {
+                finalDesc.innerHTML = `<strong>Aprobado Técnico.</strong> Conoces las bases y los hitos de la ciencia forense, pero cometiste desviaciones en conceptos fundamentales del temario de clase. Te recomendamos repasar los temas de dactiloscopía e historia forense.`;
+            } else {
+                finalDesc.innerHTML = `<strong>Evaluación No Acreditada.</strong> Has cometido demasiados fallos en conceptos teóricos de clase. Es obligatorio que estudies nuevamente los apuntes conceptuales de la lección antes de volver a presentarte al examen.`;
+            }
+
+            // Desplazar la pantalla con suavidad hacia el panel final de resultados
+            resultsPanel.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Restablece de forma completa el estado del cuestionario para iniciar de nuevo
+        function restartQuiz() {
+            currentIdx = 0;
+            accumulatedScore = 0;
+            answersLogged = {};
+
+            // Ocultar el panel de resultados y revelar la tarjeta de preguntas
+            document.getElementById('resultsPanel').classList.add('hidden');
+            document.getElementById('questionCard').classList.remove('hidden');
+
+            // Restablecer los textos e indicadores
+            document.getElementById('scoreCounterText').textContent = `Aciertos: 0 de 10`;
+
+            // Volver a cargar la primera pregunta
+            drawQuestion(currentIdx);
+        }
+
+        // --- 4. ARRANQUE AUTOMÁTICO AL CARGAR LA PÁGINA ---
+        window.onload = function() {
+            // Inicializar el cuestionario en el reactivo número uno
+            drawQuestion(currentIdx);
+        }
+    </script>
+
+</body>
+
+</html>

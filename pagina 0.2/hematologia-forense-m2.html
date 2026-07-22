@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 2: Hematología Reconstructora | Geometría del Crimen</title>
+    <link rel="stylesheet" href="styles/hematologia-forense-m2.css">
+    <link rel="icon" type="image/jpeg" href="img/logo.jpeg">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+
+
+</head>
+
+<body class="text-slate-800 antialiased min-h-screen bg-slate-50/50">
+
+    <!-- Header Principal -->
+    <header class="bg-white border-b border-slate-100 sticky top-0 z-50 shadow-sm backdrop-blur-md bg-white/90">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center text-white shadow-lg shadow-red-600/20">
+                    <i class="fa-solid fa-droplet text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-extrabold text-slate-900 tracking-tight">El asesino de tu carrera</h1>
+                    <a class="text-xs font-bold uppercase tracking-widest text-red-600" href="temario.html">Regresar al temario</a>
+                </div>
+            </div>
+            <!-- Barra de Progreso General -->
+            <div class="hidden md:flex items-center space-x-4">
+                <div class="text-right">
+                    <span class="text-xs text-slate-500 font-medium block">Progreso en el Módulo</span>
+                    <span id="progressText" class="text-sm font-bold text-slate-800">0% completado</span>
+                </div>
+                <div class="w-32 bg-slate-100 h-2 rounded-full overflow-hidden">
+                    <div id="progressBar" class="bg-gradient-to-r from-red-500 to-red-700 h-full w-0 transition-all duration-500"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <!-- Banner de Bienvenida Teórica -->
+        <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-100 shadow-sm flex flex-col lg:flex-row items-center gap-8">
+            <div class="flex-1 space-y-4">
+                <span class="px-3 py-1 bg-red-50 text-red-700 text-xs font-bold rounded-full tracking-wide uppercase">
+                    Física Forense Aplicada
+                </span>
+                <h2 class="text-3xl font-extrabold text-slate-900 leading-tight">Módulo 2: Hematología Reconstructora</h2>
+                <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                    La física detrás de una gota de sangre es implacable. Su volumen, velocidad de caída, fricción con el aire y el ángulo de impacto contra una superficie dictan de forma exacta la forma de la mancha resultante. Como criminalistas, nuestro trabajo es aplicar
+                    la trigonometría inversa para transformar manchas de sangre estáticas en vectores tridimensionales dinámicos.
+                </p>
+                <div class="flex flex-wrap gap-4 text-xs font-semibold text-slate-500 pt-2">
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-calculator text-red-500"></i> Trigonometría Forense</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-compass text-cyan-500"></i> Vectores de Trayectoria</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-microscope text-purple-500"></i> Análisis de Superficies</span>
+                </div>
+            </div>
+            <div class="w-full lg:w-1/3 bg-slate-50 p-6 rounded-2xl border border-slate-100 space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-cyan-100 text-cyan-700 flex items-center justify-center font-bold text-sm">
+                        !
+                    </div>
+                    <h3 class="font-bold text-slate-800 text-sm">Regla de Oro Reconstructora</h3>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    "La cola o satélites de una mancha de sangre alargada siempre señalan hacia la dirección de su movimiento." Un error aquí arruinaría por completo la reconstrucción de la trayectoria del agresor.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- SECCIÓN 1: EL SIMULADOR FÍSICO HIPERREALISTA -->
+        <section class="space-y-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <span class="text-xs font-bold text-red-600 uppercase tracking-widest">Laboratorio Virtual</span>
+                    <h3 class="text-2xl font-extrabold text-slate-900 tracking-tight">Simulador Balístico Forense de Manchas</h3>
+                </div>
+                <p class="text-xs text-slate-500 max-w-md">
+                    Modifica los parámetros físicos reales para observar el comportamiento dinámico de la trayectoria (3D) y el impacto resultante de la mancha (2D).
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Panel de Controles Físicos -->
+                <div class="lg:col-span-4 bg-white p-6 rounded-3xl border border-slate-100 shadow-sm flex flex-col justify-between space-y-6">
+                    <div class="space-y-6">
+                        <div class="border-b border-slate-100 pb-3">
+                            <h4 class="font-bold text-slate-900 flex items-center gap-2">
+                                <i class="fa-solid fa-sliders text-red-600"></i> Parámetros de Impacto
+                            </h4>
+                        </div>
+
+                        <!-- Slider: Ángulo de impacto -->
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <label class="font-bold text-slate-700">Ángulo de Impacto (α)</label>
+                                <span id="angleVal" class="font-mono text-red-600 font-bold">45°</span>
+                            </div>
+                            <input id="angleSlider" type="range" min="10" max="90" value="45" class="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-red-600">
+                            <div class="flex justify-between text-[10px] text-slate-400">
+                                <span>Agudo (10°)</span>
+                                <span>Recto (90°)</span>
+                            </div>
+                        </div>
+
+                        <!-- Slider: Altura de caída -->
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <label class="font-bold text-slate-700">Altura de Caída</label>
+                                <span id="heightVal" class="font-mono text-red-600 font-bold">1.2 m</span>
+                            </div>
+                            <input id="heightSlider" type="range" min="10" max="300" value="120" class="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-red-600">
+                            <div class="flex justify-between text-[10px] text-slate-400">
+                                <span>Baja (0.1 m)</span>
+                                <span>Alta (3.0 m)</span>
+                            </div>
+                        </div>
+
+                        <!-- Selector: Dirección del movimiento -->
+                        <div class="space-y-2">
+                            <label class="block text-xs font-bold text-slate-700">Dirección del Movimiento (Vector de Impacto)</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                <button onclick="setDirection('L2R')" id="dirL2R" class="direction-btn py-2 px-1 rounded-xl border text-[10px] md:text-xs font-semibold transition-all flex items-center justify-center gap-1.5 bg-slate-900 text-white border-slate-900">
+                                    <i class="fa-solid fa-arrow-right"></i> Izq. a Der.
+                                </button>
+                                <button onclick="setDirection('R2L')" id="dirR2L" class="direction-btn py-2 px-1 rounded-xl border text-[10px] md:text-xs font-semibold transition-all flex items-center justify-center gap-1.5 bg-white text-slate-700 border-slate-200 hover:bg-slate-50">
+                                    <i class="fa-solid fa-arrow-left"></i> Der. a Izq.
+                                </button>
+                                <button onclick="setDirection('FREEFALL')" id="dirFree" class="direction-btn py-2 px-1 rounded-xl border text-[10px] md:text-xs font-semibold transition-all flex items-center justify-center gap-1.5 bg-white text-slate-700 border-slate-200 hover:bg-slate-50">
+                                    <i class="fa-solid fa-arrow-down"></i> Caída Libre
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Selector de Superficie de Impacto -->
+                        <div class="space-y-2">
+                            <label class="block text-xs font-bold text-slate-700">Rugosidad de la Superficie (Soporte)</label>
+                            <select id="surfaceSelect" onchange="updateSim()" class="w-full text-xs font-semibold p-2.5 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-red-500">
+                                <option value="smooth">Vidrio o Baldosa Lisa (Baja distorsión)</option>
+                                <option value="semi">Madera Cepillada (Espículas moderadas)</option>
+                                <option value="rough">Concreto Rugoso o Ladrillo (Satélites y espículas altas)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Botón de Disparo de Prueba -->
+                    <button onclick="triggerDrop()" class="w-full py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all shadow-lg shadow-red-600/10 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-crosshairs"></i> Disparar Gota de Prueba
+                    </button>
+                </div>
+
+                <!-- Visor Gráfico Dual: Trayectoria 3D y Impacto 2D -->
+                <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <!-- Panel Izquierdo: Simulación de Vuelo (3D de precisión) -->
+                    <div class="bg-slate-950 p-4 rounded-3xl border border-slate-800 shadow-sm flex flex-col justify-between relative overflow-hidden h-[400px]">
+                        <!-- Grid decorativo de fondo científico -->
+                        <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 20px 20px;"></div>
+
+                        <div class="flex justify-between items-center z-10">
+                            <span class="text-[10px] font-mono text-cyan-400 uppercase tracking-widest"><i class="fa-solid fa-cube"></i> Trayectoria Balística (Vuelo 3D)</span>
+                            <span class="text-[9px] font-mono text-slate-500">Eje de simulación X/Y/Z</span>
+                        </div>
+
+                        <!-- Canvas de Trayectoria -->
+                        <div class="flex-1 flex items-center justify-center relative">
+                            <canvas id="trajectoryCanvas" class="w-full h-full max-h-[300px] pointer-events-none"></canvas>
+                        </div>
+
+                        <div class="text-[11px] font-mono text-slate-400 bg-slate-900/50 p-2.5 rounded-xl border border-slate-800/80 z-10">
+                            <span class="text-cyan-400 font-bold block mb-0.5">LECTURAS DEL VECTOR:</span> Altura: <span id="telemetryHeight">1.20</span>m | Ángulo: <span id="telemetryAngle">45</span>° | Vel. estimada: <span id="telemetryVel">4.8</span>                            m/s
+                        </div>
+                    </div>
+
+                    <!-- Panel Derecho: Visor de Mancha Generada (Morfología) -->
+                    <div class="bg-white p-4 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between relative overflow-hidden h-[400px]">
+                        <div class="flex justify-between items-center z-10">
+                            <span class="text-[10px] font-bold text-red-600 uppercase tracking-widest"><i class="fa-solid fa-circle"></i> Morfología de la Mancha Resultante (2D)</span>
+                            <span class="text-[9px] font-mono text-slate-400">Escala de Laboratorio: 1 div = 1 mm</span>
+                        </div>
+
+                        <!-- Canvas de la gota de sangre -->
+                        <div class="flex-1 flex items-center justify-center relative">
+                            <!-- Retícula cuadriculada milimétrica forense -->
+                            <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px); background-size: 15px 15px;"></div>
+
+                            <canvas id="stainCanvas" class="z-10 pointer-events-none"></canvas>
+                        </div>
+
+                        <div class="text-[11px] font-mono text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100 z-10">
+                            <span class="text-red-700 font-bold block mb-0.5">ANÁLISIS DE DIMENSIONES:</span> Ancho (W): <span id="calcWidth">0.00</span> mm | Longitud (L): <span id="calcLength">0.00</span> mm | Relación: <span id="calcRatio">0.00</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECCIÓN 2: LAS FÓRMULAS EXPLICADAS EN LIBRETA DE CAMPO -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+
+            <!-- Bloque Explicativo Teórico de la Libreta -->
+            <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
+                <div>
+                    <span class="text-xs font-bold text-red-600 uppercase tracking-widest">Procedimiento Forense</span>
+                    <h3 class="text-2xl font-extrabold text-slate-900 tracking-tight">Cálculo Matemático de Impacto</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mt-4">
+                        En el campo laboral real, no contamos con softwares mágicos inmediatos. El perito debe usar un calibrador digital (pie de rey) para medir con extrema precisión la mancha.
+                    </p>
+                    <p class="text-slate-600 text-sm leading-relaxed mt-2">
+                        La longitud medida <strong>jamás debe incluir la cola o los satélites</strong> de la gota, únicamente el cuerpo elíptico principal. De lo contrario, el ángulo calculado será falso.
+                    </p>
+                </div>
+
+                <div class="bg-red-50/50 border-l-4 border-red-500 p-4 rounded-xl space-y-2">
+                    <span class="text-xs font-bold text-red-800 uppercase tracking-wider block">¿Por qué Arco Seno (arcsin)?</span>
+                    <p class="text-xs text-red-950 leading-relaxed">
+                        Al proyectarse en diagonal, la trayectoria de la gota forma un triángulo rectángulo donde el ancho de la mancha equivale al cateto opuesto (el diámetro original de la gota esférica en vuelo) y la longitud medida equivale a la hipotenusa. Por ello, la
+                        relación matemática es la inversa de la función trigonométrica del seno.
+                    </p>
+                </div>
+            </div>
+
+            <!-- La Libreta de Campo Física (Estilo Boceto) -->
+            <div class="lg:col-span-7 libreta-hoja rounded-2xl p-6 md:p-8 border border-amber-200/50 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-center border-b-2 border-red-200 pb-3 mb-6">
+                        <span class="text-xs font-bold text-slate-500 tracking-widest uppercase font-mono">Dossier Criminalístico: Anotaciones de Campo</span>
+                        <span class="text-xs font-bold text-red-600 font-mono">Caso #902-12</span>
+                    </div>
+
+                    <div class="space-y-6 text-slate-900">
+                        <!-- Dibujo esquemático simplificado en CSS de cómo medir la gota -->
+                        <div class="flex items-center gap-6 bg-amber-50/40 p-4 rounded-xl border border-amber-200/50">
+                            <!-- Esqueleto de la gota dibujada con vectores -->
+                            <div class="relative w-36 h-20 flex items-center justify-center bg-white rounded-lg border border-slate-200/80">
+                                <!-- Retícula borrosa -->
+                                <div class="absolute inset-0 opacity-[0.05]" style="background-image: linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px); background-size: 8px 8px;"></div>
+
+                                <svg class="w-full h-full" viewBox="0 0 144 80">
+                                    <!-- Gotita alargada simulada en boceto -->
+                                    <ellipse cx="60" cy="40" rx="30" ry="12" fill="#8a0303" transform="rotate(-15, 60, 40)" />
+                                    <!-- Cola apuntando a la derecha -->
+                                    <path d="M 88 32 C 105 32, 120 40, 120 40 C 120 40, 105 45, 88 43 Z" fill="#8a0303" />
+                                    <!-- Satélites -->
+                                    <circle cx="128" cy="41" r="3" fill="#8a0303" />
+                                    <circle cx="134" cy="43" r="1.5" fill="#8a0303" />
+                                    
+                                    <!-- Reglas o acotaciones dibujadas tipo libreta -->
+                                    <line x1="30" y1="18" x2="90" y2="18" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="3 3"/>
+                                    <line x1="30" y1="14" x2="30" y2="22" stroke="#3b82f6" stroke-width="1.5" />
+                                    <line x1="90" y1="14" x2="90" y2="22" stroke="#3b82f6" stroke-width="1.5" />
+                                    <text x="45" y="12" fill="#3b82f6" font-size="8" font-family="JetBrains Mono" font-weight="bold">Longitud (L)</text>
+                                    
+                                    <line x1="15" y1="28" x2="15" y2="52" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3 3"/>
+                                    <line x1="11" y1="28" x2="19" y2="28" stroke="#10b981" stroke-width="1.5" />
+                                    <line x1="11" y1="52" x2="19" y2="52" stroke="#10b981" stroke-width="1.5" />
+                                    <text x="3" y="65" fill="#10b981" font-size="8" font-family="JetBrains Mono" font-weight="bold">Ancho (W)</text>
+                                </svg>
+                            </div>
+
+                            <div class="space-y-1">
+                                <span class="text-xs font-bold text-slate-800 uppercase block tracking-wider">¿Cómo medir correctamente?</span>
+                                <p class="text-xs text-slate-700 leading-relaxed font-sans">
+                                    Mide el ancho máximo transversal de la elipse. Mide el largo máximo longitudinal desde el punto de inicio hasta el borde final del cuerpo elíptico (excluyendo la cola).
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Fórmula de Balthazard explicada en libreta -->
+                        <div class="space-y-3 font-sans">
+                            <span class="text-xs font-bold text-slate-500 tracking-wide uppercase font-mono block">Fórmula de Balthazard (Sustitución Básica):</span>
+
+                            <div class="bg-amber-100/30 p-4 rounded-xl border border-amber-200/60 font-mono text-sm space-y-2">
+                                <p class="text-slate-800 font-bold text-base">Ángulo de Impacto (α) = ArcoSeno ( Ancho / Longitud )</p>
+                                <p class="text-slate-600 text-xs">O de forma simplificada: α = sen⁻¹( W / L )</p>
+                            </div>
+
+                            <span class="text-xs font-bold text-slate-500 tracking-wide uppercase font-mono block">Ejemplo Práctico de Campo:</span>
+                            <div class="text-xs space-y-1.5 pl-2 border-l-2 border-amber-300 font-mono text-slate-700">
+                                <p>1. Medición de la mancha hallada en pared de madera:</p>
+                                <p class="pl-3">- Ancho (W) medido: <span class="font-bold text-emerald-700">4.5 mm</span></p>
+                                <p class="pl-3">- Longitud (L) medida: <span class="font-bold text-blue-700">9.0 mm</span></p>
+                                <p>2. Operación de la Relación:</p>
+                                <p class="pl-3">Relación = W / L = 4.5 / 9.0 = <span class="font-bold">0.500</span></p>
+                                <p>3. Despeje Trigonométrico:</p>
+                                <p class="pl-3">Ángulo (α) = sen⁻¹(0.500) = <span class="font-bold text-red-700">30.00°</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-[11px] text-amber-900/60 font-mono pt-6 border-t border-amber-200/50">
+                    * Nota: Si la división (W/L) resulta mayor a 1, el cálculo es imposible. Verifica que no estés invirtiendo los valores de ancho y longitud.
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- SECCIÓN 3: LAS 8 FLASHCARDS INTERACTIVAS -->
+        <section class="space-y-6">
+            <div>
+                <span class="text-xs font-bold text-red-600 uppercase tracking-widest">Fundamentos del Análisis</span>
+                <h3 class="text-2xl font-extrabold text-slate-900 tracking-tight">8 Factores Clave de Diagnóstico Hematológico</h3>
+                <p class="text-slate-500 text-sm mt-1">Toca o pasa el cursor sobre cada tarjeta digital para ver la fundamentación científica detallada necesaria para el campo real.</p>
+            </div>
+
+            <!-- Grid de Flashcards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Card 1: Mecanismo Pasivo -->
+                <div class="flip-card h-64 perspective-1000 cursor-pointer" onclick="toggleCard(this)">
+                    <div class="flip-card-inner relative w-full h-full transition-transform duration-500">
+                        <div class="flip-card-front absolute inset-0 bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between shadow-sm">
+                            <div class="w-12 h-12 rounded-xl bg-red-50 text-red-700 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-droplet"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <h4 class="font-extrabold text-slate-900 text-sm">Patrón de Sangre Pasiva</h4>
+                                <p class="text-xs text-slate-500 line-clamp-3">Mecanismo dominado de forma única por la acción de la fuerza de gravedad.</p>
+                            </div>
+                            <span class="text-[10px] text-red-600 font-bold uppercase tracking-wider flex items-center gap-1">Voltear <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back absolute inset-0 bg-red-950 text-white rounded-2xl p-5 flex flex-col justify-between shadow-md">
+                            <div class="space-y-2">
+                                <span class="text-[10px] text-red-400 font-bold uppercase">Fundamento Forense</span>
+                                <p class="text-xs leading-relaxed text-slate-200">
+                                    Gotas formadas por goteo simple debido a gravedad. Al caer verticalmente a 90° sobre una superficie plana, producen un patrón de mancha perfectamente circular. No tienen vector de movimiento horizontal inicial.
+                                </p>
+                            </div>
+                            <span class="text-[9px] text-slate-400 font-mono">Gravedad simple | Estático</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Mecanismo de Proyección -->
+                <div class="flip-card h-64 perspective-1000 cursor-pointer" onclick="toggleCard(this)">
+                    <div class="flip-card-inner relative w-full h-full transition-transform duration-500">
+                        <div class="flip-card-front absolute inset-0 bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between shadow-sm">
+                            <div class="w-12 h-12 rounded-xl bg-red-50 text-red-700 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-burst"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <h4 class="font-extrabold text-slate-900 text-sm">Patrón por Proyección</h4>
+                                <p class="text-xs text-slate-500 line-clamp-3">Manchas generadas bajo fuerza externa (golpes, disparo, fuerza centrífuga).</p>
+                            </div>
+                            <span class="text-[10px] text-red-600 font-bold uppercase tracking-wider flex items-center gap-1">Voltear <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back absolute inset-0 bg-red-950 text-white rounded-2xl p-5 flex flex-col justify-between shadow-md">
+                            <div class="space-y-2">
+                                <span class="text-[10px] text-red-400 font-bold uppercase">Fundamento Forense</span>
+                                <p class="text-xs leading-relaxed text-slate-200">
+                                    Salpicaduras dinámicas (Impact Spatter). El tamaño de la mancha varía según la velocidad del impacto: Alta velocidad (niebla fina,
+                                    <1mm, ej. disparos) o Media velocidad (manchas de 1 a 4mm, ej. martillazos). </p>
+                            </div>
+                            <span class="text-[9px] text-slate-400 font-mono">Energía Cinética Externa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Mecanismo de Transferencia -->
+                <div class="flip-card h-64 perspective-1000 cursor-pointer" onclick="toggleCard(this)">
+                    <div class="flip-card-inner relative w-full h-full transition-transform duration-500">
+                        <div class="flip-card-front absolute inset-0 bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between shadow-sm">
+                            <div class="w-12 h-12 rounded-xl bg-red-50 text-red-700 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-fingerprint"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <h4 class="font-extrabold text-slate-900 text-sm">Patrón de Transferencia</h4>
+                                <p class="text-xs text-slate-500 line-clamp-3">Contacto directo entre un objeto húmedo con sangre y un soporte limpio.</p>
+                            </div>
+                            <span class="text-[10px] text-red-600 font-bold uppercase tracking-wider flex items-center gap-1">Voltear <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back absolute inset-0 bg-red-950 text-white rounded-2xl p-5 flex flex-col justify-between shadow-md">
+                            <div class="space-y-2">
+                                <span class="text-[10px] text-red-400 font-bold uppercase">Fundamento Forense</span>
+                                <p class="text-xs leading-relaxed text-slate-200">
+                                    Incluye huellas de manos, pisadas o el arrastre de ropa. Al frotar contra una superficie, se pueden identificar patrones de barrido ("swipe") o limpieza ("wipe"), lo que permite rastrear la manipulación de la escena.
+                                </p>
+                            </div>
+                            <span class="text-[9px] text-slate-400 font-mono">Contacto físico directo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Ángulo e Inclinación -->
+                <div class="flip-card h-64 perspective-1000 cursor-pointer" onclick="toggleCard(this)">
+                    <div class="flip-card-inner relative w-full h-full transition-transform duration-500">
+                        <div class="flip-card-front absolute inset-0 bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between shadow-sm">
+                            <div class="w-12 h-12 rounded-xl bg-red-50 text-red-700 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-ruler-combined"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <h4 class="font-extrabold text-slate-900 text-sm">Geometría del Impacto</h4>
+                                <p class="text-xs text-slate-500 line-clamp-3">Relación del ángulo con la forma elíptica o de lágrima de la mancha.</p>
+                            </div>
+                            <span class="text-[10px] text-red-600 font-bold uppercase tracking-wider flex items-center gap-1">Voltear <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back absolute inset-0 bg-red-950 text-white rounded-2xl p-5 flex flex-col justify-between shadow-md">
+                            <div class="space-y-2">
+                                <span class="text-[10px] text-red-400 font-bold uppercase">Fundamento Forense</span>
+                                <p class="text-xs leading-relaxed text-slate-200">
+                                    A 90° la gota es redonda. Conforme el ángulo decrece (más agudo, ej. 20°), la gota se alarga gradualmente adquiriendo una silueta similar a un cometa o lágrima, donde la "punta" señala la dirección del viaje.
+                                </p>
+                            </div>
+                            <span class="text-[9px] text-slate-400 font-mono">Comportamiento Trigonométrico</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Área de Convergencia (2D) -->
+                <div class="flip-card h-64 perspective-1000 cursor-pointer" onclick="toggleCard(this)">
+                    <div class="flip-card-inner relative w-full h-full transition-transform duration-500">
+                        <div class="flip-card-front absolute inset-0 bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between shadow-sm">
+                            <div class="w-12 h-12 rounded-xl bg-red-50 text-red-700 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-crosshairs"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <h4 class="font-extrabold text-slate-900 text-sm">Punto de Convergencia</h4>
+                                <p class="text-xs text-slate-500 line-clamp-3">Método bidimensional para ubicar el origen espacial en un plano plano.</p>
+                            </div>
+                            <span class="text-[10px] text-red-600 font-bold uppercase tracking-wider flex items-center gap-1">Voltear <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back absolute inset-0 bg-red-950 text-white rounded-2xl p-5 flex flex-col justify-between shadow-md">
+                            <div class="space-y-2">
+                                <span class="text-[10px] text-red-400 font-bold uppercase">Fundamento Forense</span>
+                                <p class="text-xs leading-relaxed text-slate-200">
+                                    Se trazan líneas rectas a través de los ejes longitudinales de múltiples manchas hacia atrás (origen). El cruce común de estas líneas determina la ubicación bidimensional de la fuente de sangrado original.
+                                </p>
+                            </div>
+                            <span class="text-[9px] text-slate-400 font-mono">Trazado bidimensional</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6: Área de Origen (3D) -->
+                <div class="flip-card h-64 perspective-1000 cursor-pointer" onclick="toggleCard(this)">
+                    <div class="flip-card-inner relative w-full h-full transition-transform duration-500">
+                        <div class="flip-card-front absolute inset-0 bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between shadow-sm">
+                            <div class="w-12 h-12 rounded-xl bg-red-50 text-red-700 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-arrows-up-to-line"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <h4 class="font-extrabold text-slate-900 text-sm">Punto de Origen 3D</h4>
+                                <p class="text-xs text-slate-500 line-clamp-3">Cálculo de la altura física (Z) de la cabeza o cuerpo en el momento del impacto.</p>
+                            </div>
+                            <span class="text-[10px] text-red-600 font-bold uppercase tracking-wider flex items-center gap-1">Voltear <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back absolute inset-0 bg-red-950 text-white rounded-2xl p-5 flex flex-col justify-between shadow-md">
+                            <div class="space-y-2">
+                                <span class="text-[10px] text-red-400 font-bold uppercase">Fundamento Forense</span>
+                                <p class="text-xs leading-relaxed text-slate-200">
+                                    Combinando el área de convergencia 2D con el ángulo de impacto de cada gota individual, calculamos la altura (H = d * tan(α)), estableciendo si la víctima fue herida de pie, de rodillas o tirada en el suelo.
+                                </p>
+                            </div>
+                            <span class="text-[9px] text-slate-400 font-mono">Z-Axis Reconstruction</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7: Satélites y Espículas -->
+                <div class="flip-card h-64 perspective-1000 cursor-pointer" onclick="toggleCard(this)">
+                    <div class="flip-card-inner relative w-full h-full transition-transform duration-500">
+                        <div class="flip-card-front absolute inset-0 bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between shadow-sm">
+                            <div class="w-12 h-12 rounded-xl bg-red-50 text-red-700 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-circle-nodes"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <h4 class="font-extrabold text-slate-900 text-sm">Satélites y Proyecciones</h4>
+                                <p class="text-xs text-slate-500 line-clamp-3">Elementos secundarios de la mancha que asisten en la dirección de viaje.</p>
+                            </div>
+                            <span class="text-[10px] text-red-600 font-bold uppercase tracking-wider flex items-center gap-1">Voltear <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back absolute inset-0 bg-red-950 text-white rounded-2xl p-5 flex flex-col justify-between shadow-md">
+                            <div class="space-y-2">
+                                <span class="text-[10px] text-red-400 font-bold uppercase">Fundamento Forense</span>
+                                <p class="text-xs leading-relaxed text-slate-200">
+                                    Al impactar, la tensión superficial se rompe proyectando diminutas gotas periféricas. Las espículas (espinas que quedan pegadas al centro) y satélites (gotas aisladas adelante) apuntan siempre al movimiento vector.
+                                </p>
+                            </div>
+                            <span class="text-[9px] text-slate-400 font-mono">Microfísica del impacto</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8: Textura de Superficie -->
+                <div class="flip-card h-64 perspective-1000 cursor-pointer" onclick="toggleCard(this)">
+                    <div class="flip-card-inner relative w-full h-full transition-transform duration-500">
+                        <div class="flip-card-front absolute inset-0 bg-white border border-slate-200 rounded-2xl p-5 flex flex-col justify-between shadow-sm">
+                            <div class="w-12 h-12 rounded-xl bg-red-50 text-red-700 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-mountain"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <h4 class="font-extrabold text-slate-900 text-sm">Textura del Soporte</h4>
+                                <p class="text-xs text-slate-500 line-clamp-3">El factor distorsionador que altera la veracidad del cálculo si se pasa por alto.</p>
+                            </div>
+                            <span class="text-[10px] text-red-600 font-bold uppercase tracking-wider flex items-center gap-1">Voltear <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back absolute inset-0 bg-red-950 text-white rounded-2xl p-5 flex flex-col justify-between shadow-md">
+                            <div class="space-y-2">
+                                <span class="text-[10px] text-red-400 font-bold uppercase">Fundamento Forense</span>
+                                <p class="text-xs leading-relaxed text-slate-200">
+                                    Una superficie lisa conserva los bordes perfectos permitiendo el cálculo preciso de Balthazard. Superficies absorbentes, alfombras o concreto poroso rompen la mancha de forma descontrolada arruinando la geometría.
+                                </p>
+                            </div>
+                            <span class="text-[9px] text-slate-400 font-mono">Material del Soporte</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- SECCIÓN 4: CUESTIONARIO DE CASOS FORENSES DE CAMPO REAL -->
+        <section class="bg-white p-6 md:p-8 rounded-3xl border border-slate-100 shadow-sm space-y-6">
+            <div class="border-b border-slate-100 pb-5">
+                <span class="text-xs font-bold text-red-600 uppercase tracking-widest">Examen de Certificación Virtual</span>
+                <h3 class="text-2xl font-extrabold text-slate-900 tracking-tight">Resolución de Casos Criminalísticos</h3>
+                <p class="text-slate-500 text-sm mt-1">
+                    Enfréntate a situaciones de peritaje real. Tus deducciones deben basarse estrictamente en la física y matemática de la hematología reconstructora.
+                </p>
+            </div>
+
+            <!-- Alerta interna de validación (Sustituto de alert nativo) -->
+            <div id="validationWarning" class="hidden rounded-xl p-4 bg-amber-50 border border-amber-200 text-amber-900 flex items-center gap-3">
+                <i class="fa-solid fa-triangle-exclamation text-amber-600 text-lg"></i>
+                <span class="text-xs font-semibold">Por favor, selecciona una de las opciones técnicas propuestas para registrar tu dictamen pericial.</span>
+            </div>
+
+            <!-- Contenedor del Quiz Dinámico -->
+            <div id="quizContainer" class="space-y-6">
+                <!-- La pregunta se inyectará aquí de forma dinámica -->
+            </div>
+
+            <!-- Contenedor de Retroalimentación de Respuesta -->
+            <div id="feedbackContainer" class="hidden rounded-2xl p-5 border transition-all duration-300">
+                <!-- El mensaje de éxito o fallo se cargará aquí -->
+            </div>
+
+            <!-- Navegación del Examen / Acciones finales -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-slate-100">
+                <span id="quizCounter" class="text-xs font-bold text-slate-500 font-mono">Pregunta 1 de 10</span>
+
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button id="actionBtn" onclick="checkAnswer()" class="w-full sm:w-auto px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl uppercase tracking-wider transition-all">
+                        Validar Diagnóstico
+                    </button>
+                </div>
+            </div>
+
+            <!-- Botones de Navegación Final (Ocultos hasta terminar el quiz) -->
+            <div id="finalActions" class="hidden border-t border-slate-100 pt-6 flex flex-col md:flex-row items-center justify-center gap-4">
+                <!--<button onclick="goToSyllabus()" class="w-full md:w-auto px-6 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl uppercase tracking-wider transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-list-ul"></i> Volver al Temario
+                </button>-->
+                <button onclick="restartQuiz()" class="w-full md:w-auto px-6 py-3.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 font-bold text-xs rounded-xl uppercase tracking-wider transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-arrow-rotate-right"></i> Reintentar Módulo
+                </button>
+                </button>
+                <!-- Botón 2: Regresar a la página de los temarios -->
+                <form action="temario.html"> <button> Regresar al Temario</button>
+                </form>
+
+                <!-- Botón 3: Avanzar al Siguiente Módulo -->
+                <form action="hematologia-forense-m3.html"> <button>Siguente módulo</button>
+                </form>
+                <!--<button onclick="goToNextModule()" class="w-full md:w-auto px-6 py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-xl uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-600/10">
+                    Siguiente Módulo: Balística <i class="fa-solid fa-chevron-right"></i>
+                </button>-->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal de simulación de navegación -->
+    <div id="navigationModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center z-[100] p-4 hidden">
+        <div class="bg-white rounded-3xl p-6 max-w-md w-full border border-slate-100 space-y-4 shadow-xl">
+            <div class="w-12 h-12 rounded-2xl bg-cyan-50 text-cyan-700 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-circle-info"></i>
+            </div>
+            <div class="space-y-1">
+                <h4 id="modalTitle" class="text-lg font-bold text-slate-900">Navegación del Proyecto</h4>
+                <p id="modalDescription" class="text-xs text-slate-600 leading-relaxed">
+                    Esta acción simula la conexión con otra sección de tu plataforma educativa.
+                </p>
+            </div>
+            <div class="flex justify-end pt-2">
+                <button onclick="closeNavigationModal()" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl uppercase tracking-wide transition-all">
+                    Entendido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script de Simulación Física y Lógica -->
+    <script>
+        // --- 1. LÓGICA DE ESTADO DEL SIMULADOR ---
+        let simState = {
+            angle: 45,
+            height: 1.2,
+            direction: 'L2R', // 'L2R', 'R2L', o 'FREEFALL'
+            surface: 'smooth'
+        };
+
+        // Elementos UI del Simulador
+        const angleSlider = document.getElementById('angleSlider');
+        const heightSlider = document.getElementById('heightSlider');
+        const angleVal = document.getElementById('angleVal');
+        const heightVal = document.getElementById('heightVal');
+
+        const telemetryHeight = document.getElementById('telemetryHeight');
+        const telemetryAngle = document.getElementById('telemetryAngle');
+        const telemetryVel = document.getElementById('telemetryVel');
+
+        const calcWidth = document.getElementById('calcWidth');
+        const calcLength = document.getElementById('calcLength');
+        const calcRatio = document.getElementById('calcRatio');
+
+        // Canvases
+        const trajCanvas = document.getElementById('trajectoryCanvas');
+        const stainCanvas = document.getElementById('stainCanvas');
+        const trajCtx = trajCanvas.getContext('2d');
+        const stainCtx = stainCanvas.getContext('2d');
+
+        // Configuración de dimensiones para evitar estiramientos de canvas
+        function resizeCanvases() {
+            trajCanvas.width = trajCanvas.parentElement.clientWidth;
+            trajCanvas.height = trajCanvas.parentElement.clientHeight || 280;
+            stainCanvas.width = 180;
+            stainCanvas.height = 180;
+            updateSim();
+        }
+
+        // --- 2. ACTUALIZACIÓN DEL SIMULADOR ---
+        function updateSim() {
+            simState.angle = parseInt(angleSlider.value);
+            simState.height = parseFloat((heightSlider.value / 100).toFixed(2));
+
+            // Actualizar lecturas de textos numéricos
+            angleVal.textContent = simState.angle + '°';
+            heightVal.textContent = simState.height + ' m';
+
+            // Cálculos físicos teóricos
+            // Velocidad de impacto final (Vf² = 2 * g * h)
+            const g = 9.81;
+            const velocity = Math.sqrt(2 * g * simState.height).toFixed(1);
+
+            // Telemetría
+            telemetryHeight.textContent = simState.height.toFixed(2);
+            telemetryAngle.textContent = simState.angle;
+            telemetryVel.textContent = velocity;
+
+            // Dimensionamiento teórico de la gota para Balthazard (elipse)
+            // Diámetro de gota estándar en vuelo = 4.0mm
+            const baseDiameter = 4.0;
+            const angleRad = (simState.angle * Math.PI) / 180;
+
+            // Ancho es constante al diámetro original, largo se estira por el ángulo
+            const width = baseDiameter;
+            const length = baseDiameter / Math.sin(angleRad);
+
+            calcWidth.textContent = width.toFixed(2);
+            calcLength.textContent = length.toFixed(2);
+            calcRatio.textContent = (width / length).toFixed(3);
+
+            drawTrajectory();
+            drawStain(width, length);
+        }
+
+        // Cambiar la dirección del movimiento
+        function setDirection(dir) {
+            simState.direction = dir;
+            document.querySelectorAll('.direction-btn').forEach(btn => {
+                btn.classList.remove('bg-slate-900', 'text-white', 'border-slate-900');
+                btn.classList.add('bg-white', 'text-slate-700', 'border-slate-200');
+            });
+
+            const selectedBtn = document.getElementById(
+                dir === 'L2R' ? 'dirL2R' : (dir === 'R2L' ? 'dirR2L' : 'dirFree')
+            );
+            selectedBtn.classList.remove('bg-white', 'text-slate-700', 'border-slate-200');
+            selectedBtn.classList.add('bg-slate-900', 'text-white', 'border-slate-900');
+
+            // Si es Caída Libre, bloqueamos el ángulo en 90 grados y deshabilitamos el slider
+            if (dir === 'FREEFALL') {
+                angleSlider.value = 90;
+                angleSlider.disabled = true;
+            } else {
+                angleSlider.disabled = false;
+            }
+
+            updateSim();
+        }
+
+        // --- 3. RENDERS GRÁFICOS ---
+        function drawTrajectory() {
+            trajCtx.clearRect(0, 0, trajCanvas.width, trajCanvas.height);
+
+            const w = trajCanvas.width;
+            const h = trajCanvas.height;
+
+            // Dibujar suelo en perspectiva 3D
+            trajCtx.strokeStyle = '#334155';
+            trajCtx.lineWidth = 1;
+            trajCtx.beginPath();
+            trajCtx.moveTo(w * 0.1, h * 0.85);
+            trajCtx.lineTo(w * 0.9, h * 0.85);
+            trajCtx.stroke();
+
+            // Lógica específica para Caída Libre (90° vertical pura hacia el suelo)
+            if (simState.direction === 'FREEFALL') {
+                const impactX = w * 0.5;
+                const impactY = h * 0.85;
+                const originX = w * 0.5;
+                const originY = h * 0.25;
+
+                // Dibujar origen de la gota
+                trajCtx.fillStyle = '#ef4444';
+                trajCtx.beginPath();
+                trajCtx.arc(originX, originY, 5, 0, Math.PI * 2);
+                trajCtx.fill();
+
+                // Línea discontinua vertical pura
+                trajCtx.strokeStyle = 'rgba(6, 182, 212, 0.4)';
+                trajCtx.lineWidth = 1.5;
+                trajCtx.setLineDash([4, 4]);
+                trajCtx.beginPath();
+                trajCtx.moveTo(originX, originY);
+                trajCtx.lineTo(impactX, impactY);
+                trajCtx.stroke();
+                trajCtx.setLineDash([]);
+
+                // Vector indicador de impacto
+                trajCtx.strokeStyle = '#06b6d4';
+                trajCtx.lineWidth = 2;
+                trajCtx.beginPath();
+                trajCtx.moveTo(impactX, impactY - 40);
+                trajCtx.lineTo(impactX, impactY);
+                trajCtx.stroke();
+
+                // Punta de flecha hacia el suelo
+                trajCtx.fillStyle = '#06b6d4';
+                trajCtx.beginPath();
+                trajCtx.moveTo(impactX - 5, impactY - 10);
+                trajCtx.lineTo(impactX + 5, impactY - 10);
+                trajCtx.lineTo(impactX, impactY);
+                trajCtx.closePath();
+                trajCtx.fill();
+
+                // Texto informativo
+                trajCtx.fillStyle = '#06b6d4';
+                trajCtx.font = '10px JetBrains Mono';
+                trajCtx.fillText(`α = 90° (Caída Libre)`, impactX + 15, impactY - 20);
+                return;
+            }
+
+            // Dibujar la pared o plano de impacto vertical para L2R y R2L
+            const impactX = simState.direction === 'L2R' ? w * 0.75 : w * 0.25;
+            trajCtx.strokeStyle = '#475569';
+            trajCtx.lineWidth = 2;
+            trajCtx.beginPath();
+            trajCtx.moveTo(impactX, h * 0.15);
+            trajCtx.lineTo(impactX, h * 0.85);
+            trajCtx.stroke();
+
+            // Dibujar origen de la gota
+            const originX = simState.direction === 'L2R' ? w * 0.15 : w * 0.85;
+            const originY = h * 0.4;
+            trajCtx.fillStyle = '#ef4444';
+            trajCtx.beginPath();
+            trajCtx.arc(originX, originY, 4, 0, Math.PI * 2);
+            trajCtx.fill();
+
+            // Dibujar curva parabólica de trayectoria
+            trajCtx.strokeStyle = 'rgba(6, 182, 212, 0.4)';
+            trajCtx.lineWidth = 1.5;
+            trajCtx.setLineDash([4, 4]);
+            trajCtx.beginPath();
+            trajCtx.moveTo(originX, originY);
+
+            // Punto de impacto en la pared
+            const impactY = h * 0.65;
+            const controlX = (originX + impactX) / 2;
+            const controlY = originY - 40; // curvatura física de parábola
+            trajCtx.quadraticCurveTo(controlX, controlY, impactX, impactY);
+            trajCtx.stroke();
+            trajCtx.setLineDash([]);
+
+            // Dibujar el vector del ángulo de impacto
+            trajCtx.strokeStyle = '#06b6d4';
+            trajCtx.lineWidth = 2;
+            trajCtx.beginPath();
+            trajCtx.moveTo(impactX, impactY);
+
+            const vectorLen = 50;
+            const angleRad = (simState.angle * Math.PI) / 180;
+            const mult = simState.direction === 'L2R' ? -1 : 1;
+
+            const dx = mult * vectorLen * Math.cos(angleRad);
+            const dy = -vectorLen * Math.sin(angleRad);
+
+            trajCtx.lineTo(impactX + dx, impactY + dy);
+            trajCtx.stroke();
+
+            // Dibujar arco indicador de ángulo
+            trajCtx.strokeStyle = '#e2e8f0';
+            trajCtx.lineWidth = 1;
+            trajCtx.beginPath();
+            const startAngle = simState.direction === 'L2R' ? Math.PI : 0;
+            const endAngle = simState.direction === 'L2R' ? Math.PI - angleRad : angleRad;
+            trajCtx.arc(impactX, impactY, 20, startAngle, endAngle, simState.direction === 'L2R');
+            trajCtx.stroke();
+
+            // Texto de etiqueta de ángulo
+            trajCtx.fillStyle = '#06b6d4';
+            trajCtx.font = '10px JetBrains Mono';
+            trajCtx.fillText(`α = ${simState.angle}°`, impactX + (mult * 35) - 10, impactY - 10);
+        }
+
+        // Render 2: Dibujar la gota 2D hiperrealista
+        function drawStain(w, l) {
+            stainCtx.clearRect(0, 0, stainCanvas.width, stainCanvas.height);
+
+            const cx = stainCanvas.width / 2;
+            const cy = stainCanvas.height / 2;
+
+            // Escalar de milímetros de física forense a píxeles de pantalla
+            const scale = 14;
+            const pxW = w * scale;
+            const pxL = l * scale;
+
+            // Determinar la rotación de la gota según la dirección
+            let rotation = 0;
+            if (simState.direction === 'R2L') {
+                rotation = Math.PI;
+            } else if (simState.direction === 'FREEFALL') {
+                // En caída libre sobre suelo plano, el impacto es vertical uniforme (forma circular a 90°)
+                rotation = 0;
+            }
+
+            stainCtx.save();
+            stainCtx.translate(cx, cy);
+            stainCtx.rotate(rotation);
+
+            // Gradiente realista de sangre coagulada/húmeda
+            const bloodGrad = stainCtx.createRadialGradient(-pxL * 0.1, 0, 1, 0, 0, pxL * 0.5);
+            bloodGrad.addColorStop(0, '#9a0303');
+            bloodGrad.addColorStop(0.6, '#5a0000');
+            bloodGrad.addColorStop(1, '#2a0000');
+
+            stainCtx.fillStyle = bloodGrad;
+
+            // Dibujar cuerpo elíptico principal
+            stainCtx.beginPath();
+            stainCtx.ellipse(0, 0, pxL / 2, pxW / 2, 0, 0, Math.PI * 2);
+            stainCtx.fill();
+
+            // LÓGICA DE SATÉLITES Y COLA (A mayor agudeza de ángulo, mayor es la cola)
+            if (simState.angle < 85 && simState.direction !== 'FREEFALL') {
+                const tailFactor = (90 - simState.angle) / 90; // 0 a 1
+                const tailLength = (pxL / 2) * tailFactor * 1.5;
+
+                // Dibujar cola triangular/curva apuntando en la dirección del viaje (hacia adelante)
+                stainCtx.beginPath();
+                stainCtx.moveTo(0, -pxW / 4);
+                // Curva hacia la punta de la cola
+                stainCtx.quadraticCurveTo(pxL / 3, -pxW / 5, pxL / 2 + tailLength, 0);
+                stainCtx.quadraticCurveTo(pxL / 3, pxW / 5, 0, pxW / 4);
+                stainCtx.closePath();
+                stainCtx.fill();
+
+                // Dibujar espículas y satélites según el tipo de superficie seleccionada
+                const surface = document.getElementById('surfaceSelect').value;
+                if (surface !== 'smooth') {
+                    const count = surface === 'rough' ? 12 : 5;
+                    stainCtx.fillStyle = '#4a0000';
+
+                    for (let i = 0; i < count; i++) {
+                        // Espículas en los bordes traseros y laterales
+                        const angle = Math.PI + (Math.random() - 0.5) * 2;
+                        const espicLen = (pxW / 2) * (surface === 'rough' ? 0.4 : 0.2);
+                        const startX = (pxL / 2) * Math.cos(angle);
+                        const startY = (pxW / 2) * Math.sin(angle);
+                        const endX = startX + espicLen * Math.cos(angle);
+                        const endY = startY + espicLen * Math.sin(angle);
+
+                        stainCtx.strokeStyle = '#4a0000';
+                        stainCtx.lineWidth = 1.5;
+                        stainCtx.beginPath();
+                        stainCtx.moveTo(startX, startY);
+                        stainCtx.lineTo(endX, endY);
+                        stainCtx.stroke();
+                    }
+
+                    if (surface === 'rough') {
+                        // Gotitas satélites secundarias eyectadas hacia el frente
+                        stainCtx.fillStyle = '#3a0000';
+                        for (let j = 0; j < 6; j++) {
+                            const satX = (pxL / 2) + tailLength + 15 + Math.random() * 25;
+                            const satY = (Math.random() - 0.5) * 15;
+                            const satRad = 1 + Math.random() * 2;
+
+                            stainCtx.beginPath();
+                            stainCtx.arc(satX, satY, satRad, 0, Math.PI * 2);
+                            stainCtx.fill();
+                        }
+                    }
+                }
+            } else if (simState.direction === 'FREEFALL' || simState.angle >= 85) {
+                // Para impactos a 90° o caída libre, las espículas y satélites se dispersan radialmente a 360°
+                const surface = document.getElementById('surfaceSelect').value;
+                if (surface !== 'smooth') {
+                    const count = surface === 'rough' ? 16 : 8;
+                    stainCtx.strokeStyle = '#4a0000';
+                    stainCtx.lineWidth = 1.5;
+
+                    for (let i = 0; i < count; i++) {
+                        const angle = (i * Math.PI * 2) / count + (Math.random() - 0.5) * 0.3;
+                        const espicLen = (pxW / 2) * (surface === 'rough' ? 0.35 : 0.15);
+                        const startX = (pxW / 2) * Math.cos(angle);
+                        const startY = (pxW / 2) * Math.sin(angle);
+                        const endX = startX + espicLen * Math.cos(angle);
+                        const endY = startY + espicLen * Math.sin(angle);
+
+                        stainCtx.beginPath();
+                        stainCtx.moveTo(startX, startY);
+                        stainCtx.lineTo(endX, endY);
+                        stainCtx.stroke();
+                    }
+
+                    if (surface === 'rough') {
+                        // Satélites concéntricos distribuidos uniformemente a 360°
+                        stainCtx.fillStyle = '#3a0000';
+                        for (let j = 0; j < 8; j++) {
+                            const angle = (j * Math.PI * 2) / 8 + (Math.random() - 0.5) * 0.5;
+                            const dist = (pxW / 2) + 12 + Math.random() * 15;
+                            const satX = dist * Math.cos(angle);
+                            const satY = dist * Math.sin(angle);
+                            const satRad = 1 + Math.random() * 1.5;
+
+                            stainCtx.beginPath();
+                            stainCtx.arc(satX, satY, satRad, 0, Math.PI * 2);
+                            stainCtx.fill();
+                        }
+                    }
+                }
+            }
+
+            stainCtx.restore();
+        }
+
+        // Simular efecto de disparo interactivo
+        function triggerDrop() {
+            let offset = 0;
+            const interval = setInterval(() => {
+                offset += 4;
+                if (offset > 40) {
+                    clearInterval(interval);
+                    updateSim();
+                } else {
+                    // Animación de parpadeo temporal sobre el canvas
+                    stainCtx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+                    stainCtx.fillRect(0, 0, stainCanvas.width, stainCanvas.height);
+                }
+            }, 30);
+        }
+
+        // Escuchar cambios en sliders
+        angleSlider.addEventListener('input', updateSim);
+        heightSlider.addEventListener('input', updateSim);
+
+
+        // --- 4. LÓGICA DE LAS FLASHCARDS ---
+        function toggleCard(cardElement) {
+            cardElement.classList.toggle('flipped');
+        }
+
+
+        // --- 5. LÓGICA DEL CUESTIONARIO FORENSE (10 PREGUNTAS) ---
+        const quizData = [{
+            caseNumber: "CASO PERICIAL #012-A",
+            scenario: "En una escena en interior, encuentras un patrón de salpicaduras de sangre sobre un muro de yeso pulido y liso. El perito auxiliar mide una gota y registra un ancho (W) de 3.0 mm y una longitud (L) total de 6.0 mm (incluyendo la pequeña cola). ¿Es correcto este diagnóstico?",
+            options: [{
+                text: "Sí, la medición es perfecta y el ángulo resultante es exactamente de 30° de impacto.",
+                correct: false
+            }, {
+                text: "No, medir incluyendo la cola distorsiona la proporción real del elipse; el ángulo real calculado será menor al correcto.",
+                correct: true
+            }, {
+                text: "No, en muros verticales el ángulo de impacto siempre es constante a 90° debido a la gravedad terrestre.",
+                correct: false
+            }, {
+                text: "La medición es correcta pero la fórmula debe usar la función coseno en lugar de arcoseno para muros.",
+                correct: false
+            }],
+            feedbackSuccess: "¡Excelente diagnóstico! Como perito experto, sabes que incluir la cola en la longitud estira artificialmente la proporción de la elipse, produciendo un cálculo trigonométrico erróneo.",
+            feedbackError: "Incorrecto. Analiza el método de medición: la cola de arrastre o cometa representa el volumen eyectado tras el choque inicial, no el volumen de la gota en suspensión. Medir con cola sesga la hipotenusa."
+        }, {
+            caseNumber: "CASO PERICIAL #104-F",
+            scenario: "Durante la inspección de un homicidio con arma blanca, hallas un patrón con forma de arco repetitivo en el techo de la habitación. Las manchas son de tamaño medio (entre 2 y 4 mm) y tienen colas largas de dirección opuesta al agresor. ¿Qué tipo de patrón es?",
+            options: [{
+                text: "Patrón de goteo pasivo generado mientras la víctima se desplazaba herida por la habitación.",
+                correct: false
+            }, {
+                text: "Patrón de escurrimiento por gravedad simple que fluye a través de las vigas del techo.",
+                correct: false
+            }, {
+                text: "Patrón de proyección por sacudimiento (Cast-Off), causado por la inercia del arma ensangrentada al blandirse hacia atrás.",
+                correct: true
+            }, {
+                text: "Patrón de contacto por transferencia directa de la ropa ensangrentada del agresor al saltar.",
+                correct: false
+            }],
+            feedbackSuccess: "¡Brillante! El patrón de 'Cast-Off' ocurre cuando la sangre sale despedida de un objeto en movimiento (como un cuchillo o bate) por fuerza centrífuga durante el movimiento oscilante hacia atrás.",
+            feedbackError: "Incorrecto. Las manchas en arco repetitivo en techos indican movimiento dinámico de un arma oscilando en el aire. El goteo pasivo no puede vencer la gravedad para saltar al techo."
+        }, {
+            caseNumber: "CASO PERICIAL #077-C",
+            scenario: "En la solapa del abrigo de un sospechoso se detecta un patrón de manchas extremadamente diminutas (diámetros menores a 1 mm), casi invisibles a simple vista, con forma de fina niebla. El sospechoso afirma que es transferencia por cargar un bulto de carne. ¿Qué revela la física forense?",
+            options: [{
+                text: "El sospechoso dice la verdad; la carne cruda genera microgoteo por capilaridad al ser cargada.",
+                correct: false
+            }, {
+                text: "Es un patrón de impacto de alta velocidad, típico de una herida por proyectil de arma de fuego o exhalación forzada de sangre.",
+                correct: true
+            }, {
+                text: "Se trata de un patrón de transferencia pasiva por lavado incompleto de prendas.",
+                correct: false
+            }, {
+                text: "Indica goteo de baja altura (menor a 10 cm) sobre tela absorbente.",
+                correct: false
+            }],
+            feedbackSuccess: "¡Correcto! El tamaño menor a 1.0 mm (fina niebla) requiere una gran cantidad de energía cinética para romper la tensión superficial de la sangre de ese modo. Es característico de disparos o trauma respiratorio severo.",
+            feedbackError: "Incorrecto. Cargar carne cruda o tener un contacto pasivo genera manchas de transferencia grandes o escurrimientos, nunca una dispersión en forma de micro-niebla presurizada."
+        }, {
+            caseNumber: "CASO PERICIAL #220-X",
+            scenario: "En un pasillo estrecho, se detectan dos tipos de manchas: una mancha húmeda con bordes barridos longitudinalmente por un objeto limpio (Wipe), y otra mancha donde un objeto ensangrentado rozó una pared limpia (Swipe). ¿Por qué es vital diferenciar 'Swipe' de 'Wipe'?",
+            options: [{
+                text: "No tiene importancia real; ambas indican transferencia y se procesan exactamente igual en los tribunales.",
+                correct: false
+            }, {
+                text: "Permite establecer la cronología de los hechos: 'Wipe' prueba que ya había sangre en la pared antes de que pasara el objeto.",
+                correct: true
+            }, {
+                text: "Permite medir el grupo sanguíneo exacto mediante el análisis morfológico de la fricción.",
+                correct: false
+            }, {
+                text: "Establece si el arma utilizada era de fuego o blanca según la densidad de la mancha barrida.",
+                correct: false
+            }],
+            feedbackSuccess: "¡Excelente razonamiento forense! El análisis de Wipe demuestra la preexistencia del sangrado antes de la alteración de la escena (ejemplo: la víctima sangró y luego el agresor intentó limpiar el rastro o arrastró un cuerpo).",
+            feedbackError: "Incorrecto. Diferenciar Swipe y Wipe es crucial para la línea de tiempo. Si es Wipe, la sangre ya estaba depositada y seca o húmeda en la pared cuando un cuerpo u objeto limpio pasó sobre ella y la alteró."
+        }, {
+            caseNumber: "CASO PERICIAL #312-B",
+            scenario: "Durante un levantamiento por homicidio en un baño, observas un rastro continuo en la pared azulejada con picos ondulantes repetitivos de gran volumen y pequeñas proyecciones en forma de 'V' invertida descendentes. ¿Cuál es el origen dinámico de este patrón?",
+            options: [{
+                text: "Goteo pasivo desde la mano de la víctima mientras caminaba buscando el espejo.",
+                correct: false
+            }, {
+                text: "Patrón de proyección arterial directa (Spurting), donde la presión del sistema cardiovascular produce una eyección pulsátil síncrona con el latido del corazón.",
+                correct: true
+            }, {
+                text: "Un patrón de transferencia estática por frotamiento con una prenda de lana saturada.",
+                correct: false
+            }, {
+                text: "Efecto provocado al usar químicos de limpieza corrosivos sobre sangre seca en posición vertical.",
+                correct: false
+            }],
+            feedbackSuccess: "¡Excepcional! El patrón de proyección arterial es inconfundible debido a las fluctuaciones y la onda rítmica (picos y valles) que emulan de forma gráfica los ciclos de sístole y diástole cardíacos.",
+            feedbackError: "Incorrecto. La ondulación con variaciones rítmicas de altura y volumen es la firma balística de una arteria seccionada eyectando sangre a chorros bajo presión cardíaca activa."
+        }, {
+            caseNumber: "CASO PERICIAL #405-D",
+            scenario: "Al inspeccionar un gran patrón denso de salpicaduras en una alfombra, observas un área limpia en forma de cuña, libre de manchas y de contornos definidos. ¿Qué principio criminalístico se aplica a este hallazgo?",
+            options: [{
+                text: "Se trata de un patrón de vacío (Void Pattern), lo que demuestra que un objeto o persona estuvo interpuesto bloqueando las gotas y fue retirado posteriormente.",
+                correct: true
+            }, {
+                text: "Indica que esa zona específica de la alfombra tenía una película hidrofóbica que repelió el plasma.",
+                correct: false
+            }, {
+                text: "Demuestra que el agresor usó ácido para limpiar selectivamente esa sección precisa.",
+                correct: false
+            }, {
+                text: "Es una anomalía física donde las gotas repelieron su propia carga estática en vuelo.",
+                correct: false
+            }],
+            feedbackSuccess: "¡Impecable análisis! El patrón de vacío actúa como una 'sombra' física. Nos ayuda a recrear la presencia, tamaño e incluso la posición de un elemento intermedio (u obstáculo) que bloqueó la trayectoria de la sangre antes de abandonar la escena.",
+            feedbackError: "Incorrecto. Cuando hay un contorno limpio y delimitado en medio de salpicaduras densas, se determina como vacío. Significa que un obstáculo físico (objeto o persona) detuvo el vuelo de la sangre y luego fue movido."
+        }, {
+            caseNumber: "CASO PERICIAL #518-H",
+            scenario: "Hallas una mancha circular en una mesa. Al examinarla con lupa de campo, descubres que el centro de la gota está limpio debido a un barrido físico posterior, pero el anillo o perímetro exterior se conserva seco y oscuro. ¿Cómo interpretas este fenómeno?",
+            options: [{
+                text: "La sangre fue adulterada previamente con solventes para simular antigüedad.",
+                correct: false
+            }, {
+                text: "Es un proceso de 'esqueletización', lo que prueba que la mancha comenzó a secarse en sus bordes periféricos durante minutos y luego sufrió una alteración física directa.",
+                correct: true
+            }, {
+                text: "Determina que la víctima padecía anemia severa, acelerando la pérdida de humedad interna.",
+                correct: false
+            }, {
+                text: "Es una mancha de transferencia estática producida exclusivamente por suelas de calzado deportivo.",
+                correct: false
+            }],
+            feedbackSuccess: "¡Magnífico diagnóstico! La esqueletización es un excelente marcador cronológico. Prueba que la gota original permaneció inmóvil el tiempo mínimo requerido para iniciar su secado periférico (usualmente de 2 a 5 minutos) antes de ser arrastrada.",
+            feedbackError: "Incorrecto. Al secarse por evaporación, el borde periférico más delgado de una mancha de sangre se solidifica primero. Si la mancha es perturbada después de unos minutos, el borde seco ('esqueleto') resiste el raspado, marcando su forma original."
+        }, {
+            caseNumber: "CASO PERICIAL #621-M",
+            scenario: "En el suelo de concreto liso de un garaje se observa una mancha de sangre densa rodeada de satélites circulares diminutos perfectamente concéntricos distribuidos uniformemente en 360 grados de forma simétrica. ¿Qué comportamiento describe este rastro?",
+            options: [{
+                text: "La víctima corría despavorida mientras huía del agresor.",
+                correct: false
+            }, {
+                text: "La víctima estuvo estática en un punto fijo, sangrando verticalmente a 90° sobre una acumulación o charco de sangre preexistente.",
+                correct: true
+            }, {
+                text: "El cuerpo fue arrastrado en círculos concéntricos para alterar la posición original.",
+                correct: false
+            }, {
+                text: "Representa un impacto balístico de alta velocidad que ingresó directamente en la losa del garaje.",
+                correct: false
+            }],
+            feedbackSuccess: "¡Perfecto! Cuando múltiples gotas de sangre caen de forma vertical y a 90° sobre una mancha líquida preexistente en el suelo, rompen la tensión superficial del líquido acumulado y eyectan satélites radiales simétricos en todas direcciones.",
+            feedbackError: "Incorrecto. Un goteo en movimiento lineal produce elipses alargadas con colas orientadas hacia el trayecto. Los satélites simétricos concéntricos a 360° demuestran una fuente de goteo pasivo totalmente estática."
+        }, {
+            caseNumber: "CASO PERICIAL #733-Y",
+            scenario: "Al aplicar trigonometría forense (Balthazard) en manchas halladas en una pared vertical a la altura del hombro, obtienes un ángulo calculado de impacto de 90° exactos. ¿Qué concluyes sobre la trayectoria física de vuelo original de la sangre?",
+            options: [{
+                text: "Las gotas caían verticalmente de arriba hacia abajo de forma pasiva raspando la superficie.",
+                correct: false
+            }, {
+                text: "El vector de vuelo de la sangre era enteramente horizontal y perpendicular a la pared, lo que sugiere una fuerza de proyección directa hacia el muro.",
+                correct: true
+            }, {
+                text: "Es geométricamente imposible que impacten a 90° en una pared; el cálculo pericial contiene errores analíticos.",
+                correct: false
+            }, {
+                text: "Demuestra que el agresor intentó lavar la pared en sentido vertical de abajo hacia arriba de forma sistemática.",
+                correct: false
+            }],
+            feedbackSuccess: "¡Deducción geométrica impecable! Si el ángulo de impacto respecto al plano vertical es de 90°, significa que el vector de viaje de la gota coincidió de manera exacta con la normal de la superficie de la pared, viajando de forma horizontal y frontal a ella.",
+            feedbackError: "Incorrecto. Si las gotas descendieran por gravedad vertical, rozarían la pared formando elipses extremadamente agudas. Un impacto frontal a 90° en una pared indica un vuelo perpendicular y horizontal."
+        }, {
+            caseNumber: "CASO PERICIAL #844-Z",
+            scenario: "Al procesar manchas dispersas en una mesa frente a un sillón, notas que las gotas presentan microburbujas en su interior que al secarse dejaron espacios circulares internos vacíos muy finos. Su tono es más claro y diluido. ¿A qué se atribuye?",
+            options: [{
+                text: "Sangre espirada (expulsada por boca o nariz), donde el flujo de aire pulmonar se mezcla con la sangre, creando burbujas de aire que dejan vacíos característicos al reventar.",
+                correct: true
+            }, {
+                text: "Sangre que interactuó químicamente con polvo o grasas de la superficie del mueble.",
+                correct: false
+            }, {
+                text: "Sangre proyectada a alta velocidad por un ventilador mecánico encendido.",
+                correct: false
+            }, {
+                text: "Una alteración fisiológica causada por una intoxicación severa con gas helio.",
+                correct: false
+            }],
+            feedbackSuccess: "¡Excelente peritaje! Las manchas de sangre espirada (provenientes de vías respiratorias o pulmones con trauma) se caracterizan por presentar microburbujas de aire exhalado, mucosidad salival y una tonalidad ligeramente diluida.",
+            feedbackError: "Incorrecto. La presencia de burbujas internas que al secarse dejan espacios vacíos anulares, combinada con dilución salival, es el indicador forense por excelencia de sangre espirada bajo trauma pulmonar o traqueal."
+        }];
+
+        let quizIndex = 0;
+        let selectedOptionIndex = null;
+        let completedQuiz = false;
+        let score = 0;
+
+        function loadQuestion(index) {
+            selectedOptionIndex = null;
+            const data = quizData[index];
+            const quizContainer = document.getElementById('quizContainer');
+
+            // Limpiar advertencia de selección y retroalimentaciones
+            document.getElementById('validationWarning').classList.add('hidden');
+            const feedbackContainer = document.getElementById('feedbackContainer');
+            feedbackContainer.classList.add('hidden');
+
+            // Render de la estructura del caso
+            quizContainer.innerHTML = `
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="px-3 py-1 bg-red-100 text-red-800 text-xs font-bold rounded-full tracking-wide">${data.caseNumber}</span>
+                        <span class="text-xs text-slate-400 font-mono"><i class="fa-solid fa-folder-open"></i> Evidencia Física</span>
+                    </div>
+                    <h4 class="text-base font-bold text-slate-900 leading-relaxed">${data.scenario}</h4>
+                    
+                    <div class="grid grid-cols-1 gap-3 pt-2" id="optionsGrid">
+                        ${data.options.map((opt, i) => `
+                            <button onclick="selectOption(${i})" class="option-btn text-left p-4 rounded-xl border border-slate-200 hover:border-slate-300 hover:bg-slate-50/50 transition-all text-xs md:text-sm font-medium flex items-start gap-3">
+                                <span class="w-5 h-5 rounded-full border border-slate-300 flex items-center justify-center text-xs font-mono shrink-0 mt-0.5 text-slate-400 select-none">${String.fromCharCode(65 + i)}</span>
+                                <span class="text-slate-700 leading-relaxed">${opt.text}</span>
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            // Actualizar botones y contadores
+            document.getElementById('quizCounter').textContent = `Pregunta ${index + 1} de ${quizData.length}`;
+            document.getElementById('actionBtn').textContent = "Validar Diagnóstico";
+            document.getElementById('actionBtn').disabled = false;
+            
+            // Actualizar barra de progreso del módulo
+            const percent = Math.round((index / quizData.length) * 100);
+            document.getElementById('progressBar').style.width = percent + '%';
+            document.getElementById('progressText').textContent = `${percent}% completado`;
+        }
+
+        function selectOption(index) {
+            if (completedQuiz) return;
+            selectedOptionIndex = index;
+            document.getElementById('validationWarning').classList.add('hidden');
+            
+            // Remover estilos seleccionados anteriores
+            document.querySelectorAll('.option-btn').forEach((btn, i) => {
+                btn.classList.remove('border-red-600', 'bg-red-50/20');
+                const badge = btn.querySelector('span');
+                badge.classList.remove('bg-red-600', 'text-white', 'border-red-600');
+                badge.classList.add('border-slate-300', 'text-slate-400');
+            });
+
+            // Aplicar estilo de selección al botón actual
+            const activeBtn = document.querySelectorAll('.option-btn')[index];
+            activeBtn.classList.add('border-red-600', 'bg-red-50/20');
+            const activeBadge = activeBtn.querySelector('span');
+            activeBadge.classList.remove('border-slate-300', 'text-slate-400');
+            activeBadge.classList.add('bg-red-600', 'text-white', 'border-red-600');
+        }
+
+        function checkAnswer() {
+            if (selectedOptionIndex === null) {
+                // Mostrar advertencia elegante en vez de usar un alert() molesto
+                document.getElementById('validationWarning').classList.remove('hidden');
+                return;
+            }
+
+            const currentData = quizData[quizIndex];
+            const isCorrect = currentData.options[selectedOptionIndex].correct;
+            const feedbackContainer = document.getElementById('feedbackContainer');
+            
+            // Deshabilitar más clics en opciones
+            document.querySelectorAll('.option-btn').forEach(btn => btn.disabled = true);
+
+            if (isCorrect) {
+                score++;
+                feedbackContainer.className = "rounded-2xl p-5 border bg-emerald-50 border-emerald-200 text-emerald-900 space-y-1 block";
+                feedbackContainer.innerHTML = `
+                    <div class="flex items-center gap-2 font-bold text-sm">
+                        <i class="fa-solid fa-circle-check text-emerald-600 text-base"></i> ¡DICTAMEN TÉCNICO CORRECTO!
+                    </div>
+                    <p class="text-xs leading-relaxed text-emerald-950">${currentData.feedbackSuccess}</p>
+                `;
+            } else {
+                feedbackContainer.className = "rounded-2xl p-5 border bg-red-50 border-red-200 text-red-900 space-y-1 block";
+                feedbackContainer.innerHTML = `
+                    <div class="flex items-center gap-2 font-bold text-sm">
+                        <i class="fa-solid fa-circle-xmark text-red-600 text-base"></i> DISCREPANCIA EN EL ANÁLISIS
+                    </div>
+                    <p class="text-xs leading-relaxed text-red-950">${currentData.feedbackError}</p>
+                `;
+            }
+
+            // Cambiar comportamiento del botón de acción
+            const actionBtn = document.getElementById('actionBtn');
+            if (quizIndex < quizData.length - 1) {
+                actionBtn.textContent = "Siguiente Caso Pericial";
+                actionBtn.setAttribute("onclick", "nextQuestion()");
+            } else {
+                actionBtn.textContent = "Finalizar Certificación";
+                actionBtn.setAttribute("onclick", "finishQuiz()");
+            }
+        }
+
+        function nextQuestion() {
+            quizIndex++;
+            loadQuestion(quizIndex);
+            document.getElementById('actionBtn').setAttribute("onclick", "checkAnswer()");
+        }
+
+        function finishQuiz() {
+            completedQuiz = true;
+            const quizContainer = document.getElementById('quizContainer');
+            const feedbackContainer = document.getElementById('feedbackContainer');
+            feedbackContainer.classList.add('hidden');
+            
+            // Evaluar nota
+            const finalScorePercent = Math.round((score / quizData.length) * 100);
+            
+            // Guardar progreso finalizado en UI
+            document.getElementById('progressBar').style.width = '100%';
+            document.getElementById('progressText').textContent = '100% completado';
+
+            let approvedMsg = "";
+            let approvedIcon = "";
+            if (finalScorePercent >= 70) {
+                approvedIcon = "fa-certificate text-yellow-500";
+                approvedMsg = "¡Felicidades perito! Has demostrado un dominio excelente y riguroso de la física y trigonometría reconstructora aplicada a escenas del crimen reales.";
+            } else {
+                approvedIcon = "fa-triangle-exclamation text-amber-500";
+                approvedMsg = "Certificación pendiente. Te recomendamos repasar los conceptos fundamentales de Balthazard, morfología de satélites y esqueletización antes de reintentar.";
+            }
+
+            quizContainer.innerHTML = `
+                <div class="text-center py-8 space-y-6 max-w-lg mx-auto">
+                    <div class="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center mx-auto shadow-sm text-3xl">
+                        <i class="fa-solid ${approvedIcon}"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <h4 class="text-2xl font-extrabold text-slate-900 tracking-tight">Resultado de la Certificación</h4>
+                        <p class="text-sm text-slate-500">Completaste los 10 casos prácticos de hematología forense.</p>
+                    </div>
+                    
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 flex items-center justify-around divide-x divide-slate-200">
+                        <div class="text-center flex-1">
+                            <span class="text-xs text-slate-500 font-bold uppercase tracking-wider block">Correctas</span>
+                            <span class="text-3xl font-extrabold text-slate-900">${score} / ${quizData.length}</span>
+                        </div>
+                        <div class="text-center flex-1">
+                            <span class="text-xs text-slate-500 font-bold uppercase tracking-wider block">Calificación</span>
+                            <span class="text-3xl font-extrabold text-red-600">${finalScorePercent}%</span>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-slate-600 leading-relaxed">${approvedMsg}</p>
+                </div>
+            `;
+
+            // Ocultar botón de validar diagnóstico
+            document.getElementById('actionBtn').classList.add('hidden');
+            document.getElementById('quizCounter').classList.add('hidden');
+            
+            // Desplegar las tres acciones finales solicitadas
+            document.getElementById('finalActions').classList.remove('hidden');
+        }
+
+        function restartQuiz() {
+            quizIndex = 0;
+            score = 0;
+            completedQuiz = false;
+            document.getElementById('finalActions').classList.add('hidden');
+            document.getElementById('actionBtn').classList.remove('hidden');
+            document.getElementById('quizCounter').classList.remove('hidden');
+            document.getElementById('actionBtn').setAttribute("onclick", "checkAnswer()");
+            loadQuestion(0);
+        }
+
+        // --- 6. MODALES DE NAVEGACIÓN ---
+        function goToSyllabus() {
+            const modal = document.getElementById('navigationModal');
+            document.getElementById('modalTitle').textContent = "Regresando al Temario Principal";
+            document.getElementById('modalDescription').textContent = "Redireccionando a la lista de módulos de Criminalística y Derecho... (En tu proyecto real, vincula este botón con 'index.html' o 'temario.html').";
+            modal.classList.remove('hidden');
+        }
+
+        function goToNextModule() {
+            const modal = document.getElementById('navigationModal');
+            document.getElementById('modalTitle').textContent = "Cargando Módulo 3: Balística Forense";
+            document.getElementById('modalDescription').textContent = "Preparando simuladores de trayectoria de proyectil, micro-estrías de proyectiles bajo microscopio y análisis de residuos de deflagración por absorción atómica.";
+            modal.classList.remove('hidden');
+        }
+
+        function closeNavigationModal() {
+            document.getElementById('navigationModal').classList.add('hidden');
+        }
+
+
+        // --- 7. ARRANQUE AL CARGAR EL DOM ---
+        window.onload = function() {
+            resizeCanvases();
+            window.addEventListener('resize', resizeCanvases);
+            loadQuestion(0);
+        };
+    </script>
+</body>
+
+</html>

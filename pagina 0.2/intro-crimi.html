@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción a la Criminalística | El Asesino de tu Carrera</title>
+    <link rel="stylesheet" href="styles/intro-crimi.css">
+    <link rel="icon" type="image/jpeg" href="img/logo.jpeg">
+
+    <!-- Tailwind CSS para layouts responsivos ultra modernos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome para iconografía forense de alta calidad -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Fuentes Google: Plus Jakarta Sans para la interfaz y Caveat/Just Another Hand para las notas manuscritas -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Configuración personalizada de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        handwritten: ['Caveat', 'cursive'],
+                    },
+                    colors: {
+                        forensicRed: {
+                            50: '#fff1f1',
+                            100: '#ffe1e1',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                            900: '#7f1d1d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-[#fafbfd] text-slate-900 font-sans min-h-screen flex flex-col selection:bg-red-600 selection:text-white">
+
+    <header class="border-b border-slate-200 bg-white/90 backdrop-blur-md sticky top-0 z-50 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+
+            <!-- Espacio para Logo Institucional -->
+            <div class="flex items-center space-x-3">
+                <!-- ========================================== -->
+                <!-- REEMPLAZAR LA SIGUIENTE LÍNEA PARA INTEGRAR EL LOGO (Sustituir el div por <img src="ruta/logo.jpeg" />) -->
+                <div class="bg-gradient-to-tr from-red-600 to-red-800 text-white p-3 rounded-2xl shadow-lg shadow-red-500/20 flex items-center justify-center w-12 h-12">
+                    <i class="fa-solid fa-fingerprint text-2xl animate-pulse"></i>
+                </div>
+                <!-- ========================================== -->
+                <div>
+                    <h1 class="text-lg font-extrabold text-slate-900 tracking-tight leading-none">El asesino de tu carrera</h1>
+                    <a class="text-xs font-bold uppercase tracking-widest text-red-600" href="temario.html">Regresar al temario</a>
+                </div>
+            </div>
+
+            <!-- Indicador de Progreso del Módulo -->
+            <div class="flex items-center space-x-4">
+                <div class="text-right hidden sm:block">
+                    <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Progreso de la Lección</span>
+                    <span class="text-sm font-extrabold text-slate-800" id="progressNumber">0% Completado</span>
+                </div>
+                <div class="w-32 md:w-48 bg-slate-100 h-3 rounded-full overflow-hidden border border-slate-200 p-[2px]">
+                    <div id="progressBar" class="bg-gradient-to-r from-red-500 via-red-600 to-red-800 h-full w-0 rounded-full transition-all duration-700 ease-out"></div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-20">
+
+        <section class="space-y-8">
+            <div class="bg-gradient-to-br from-slate-900 via-red-950 to-slate-900 rounded-3xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden">
+                <div class="absolute -right-20 -top-20 w-80 h-80 bg-red-600/10 rounded-full blur-3xl"></div>
+                <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-red-800/10 rounded-full blur-3xl"></div>
+
+                <div class="relative z-10 max-w-4xl space-y-6">
+
+                    <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight">
+                        La ciencia que desenmascara <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-200">la verdad del suceso</span>
+                    </h2>
+                    <p class="text-slate-300 text-base md:text-lg leading-relaxed">
+                        ¡Bienvenido a la puerta de entrada de tu carrera profesional! <br>En el campo de la justicia, un error conceptual o metodológico invalida cualquier dictamen. <br>Esta lección interactiva está diseñada bajo técnicas de microaprendizaje
+                        para darte las bases reales de tu disciplina sin abrumarte.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Estructura y Secuencia Lógica del Módulo (Mapa de Ruta Visual) -->
+            <div class="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest text-center mb-6">Mapa del Módulo</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
+
+                    <!-- Paso 1 -->
+                    <div class="flex items-center space-x-4 bg-slate-50 p-4 rounded-xl border border-slate-100 shadow-sm">
+                        <div class="w-10 h-10 rounded-lg bg-red-600 text-white flex items-center justify-center font-black">1</div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900">¿Qué es y qué no es?</h4>
+                            <p class="text-[10px] text-slate-500">Diferencias clave</p>
+                        </div>
+                    </div>
+
+                    <!-- Paso 2 -->
+                    <div class="flex items-center space-x-4 bg-slate-50 p-4 rounded-xl border border-slate-100 shadow-sm">
+                        <div class="w-10 h-10 rounded-lg bg-red-600 text-white flex items-center justify-center font-black">2</div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900">¿De dónde viene?</h4>
+                            <p class="text-[10px] text-slate-500">Principio de Locard</p>
+                        </div>
+                    </div>
+
+                    <!-- Paso 3 -->
+                    <div class="flex items-center space-x-4 bg-slate-50 p-4 rounded-xl border border-slate-100 shadow-sm">
+                        <div class="w-10 h-10 rounded-lg bg-red-600 text-white flex items-center justify-center font-black">3</div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900">¿Cómo nació?</h4>
+                            <p class="text-[10px] text-slate-500">Línea del tiempo histórica</p>
+                        </div>
+                    </div>
+
+                    <!-- Paso 4 -->
+                    <div class="flex items-center space-x-4 bg-slate-50 p-4 rounded-xl border border-slate-100 shadow-sm">
+                        <div class="w-10 h-10 rounded-lg bg-red-600 text-white flex items-center justify-center font-black">4</div>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-900">La Ruta al Tribunal</h4>
+                            <p class="text-[10px] text-slate-500">Evaluación de Retención</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-8" id="seccion1">
+            <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-6 gap-4">
+                <div>
+                    <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">
+                        ¿Criminalística o Criminología? <span class="text-red-600">(¡No te confundas!)</span>
+                    </h3>
+                </div>
+                <div class="bg-red-50 text-red-700 text-xs font-semibold px-4 py-2 rounded-xl flex items-center space-x-2">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span>Haz clic sobre las tarjetas para revelar su contenido explicativo.</span>
+                </div>
+            </div>
+
+            <!-- El gancho visual -->
+            <div class="bg-red-50/50 border border-red-100 rounded-3xl p-6 md:p-8 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                <div class="md:col-span-4 flex justify-center">
+                    <!-- Espejo roto vectorizado SVG -->
+                    <svg class="w-32 h-32 text-red-700" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 5L90 30L80 85L20 85L10 30L50 5Z" fill="#fee2e2" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M50 5L45 45L10 30" stroke="currentColor" stroke-width="2"/>
+                        <path d="M45 45L20 85" stroke="currentColor" stroke-width="2"/>
+                        <path d="M45 45L80 85" stroke="currentColor" stroke-width="2"/>
+                        <path d="M45 45L90 30" stroke="currentColor" stroke-width="2"/>
+                        <path d="M45 45L50 95" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="45" cy="45" r="3" fill="currentColor"/>
+                    </svg>
+                </div>
+                <div class="md:col-span-8 space-y-4">
+                    <h4 class="text-lg font-bold text-red-950 uppercase">El gancho visual: El espejo roto de la verdad</h4>
+                    <p class="text-sm text-slate-700 leading-relaxed">
+                        Imagina un espejo roto en la escena de un crimen. Cada fragmento representa un indicio físico. El <strong class="text-red-700">criminalista</strong> es el encargado de recoger los pedazos, medir los ángulos de impacto y usar la
+                        ciencia para reconstruir el espejo para saber <em>cómo</em> se rompió. En cambio, el <strong class="text-slate-900">criminólogo</strong> estudiará las razones psicológicas y sociales por las cuales el sospechoso decidió lanzar
+                        el objeto en primer lugar.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Concepto Didáctico de Oro -->
+            <div class="bg-gradient-to-r from-red-700 to-red-900 text-white rounded-2xl p-6 shadow-xl relative overflow-hidden">
+                <div class="absolute right-4 bottom-4 opacity-10">
+                    <i class="fa-solid fa-lightbulb text-9xl"></i>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <div class="bg-white/20 p-3 rounded-xl mt-1">
+                        <span class="text-2xl">💡</span>
+                    </div>
+                    <div>
+                        <h4 class="text-xs uppercase font-extrabold tracking-widest text-red-200">Regla de oro para tu carrera</h4>
+                        <p class="text-lg md:text-xl font-bold mt-2">
+                            "El criminalista analiza el sitio del suceso y las evidencias; el criminólogo analiza al individuo y a la sociedad."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TARJETAS INTERACTIVAS (FLIP CARDS) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 perspective-1000">
+
+                <!-- Tarjeta 1 -->
+                <div class="flip-card h-64" onclick="toggleFlip(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-3xl text-left">🔬</span>
+                            <div class="text-left mt-4 space-y-2">
+                                <h4 class="text-xs font-bold text-red-600 uppercase tracking-widest">Criminalística</h4>
+                                <h3 class="text-lg font-extrabold text-slate-900">¿Qué busca?</h3>
+                            </div>
+                            <span class="text-xs text-right font-semibold text-slate-400">Ver respuesta <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4 class="text-xs font-bold text-red-200 uppercase tracking-widest text-left">Respuesta</h4>
+                            <p class="text-xs font-medium text-left leading-relaxed mt-2">
+                                Busca la reconstrucción de los hechos de forma objetiva. Responde científicamente al <strong>cómo, cuándo, dónde y quién</strong> de los sucesos a través de las evidencias materiales.
+                            </p>
+                            <span class="text-[10px] text-right text-red-300">Criminalística</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div class="flip-card h-64" onclick="toggleFlip(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-3xl text-left">🧠</span>
+                            <div class="text-left mt-4 space-y-2">
+                                <h4 class="text-xs font-bold text-red-600 uppercase tracking-widest">Criminología</h4>
+                                <h3 class="text-lg font-extrabold text-slate-900">El Enfoque Social</h3>
+                            </div>
+                            <span class="text-xs text-right font-semibold text-slate-400">Ver respuesta <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4 class="text-xs font-bold text-red-200 uppercase tracking-widest text-left">Respuesta</h4>
+                            <p class="text-xs font-medium text-left leading-relaxed mt-2">
+                                Se enfoca en el <strong>por qué</strong> del delito. Estudia las causas de las conductas desviadas, el comportamiento del criminal, su perfil de riesgo y cómo prevenir el impacto social.
+                            </p>
+                            <span class="text-[10px] text-right text-red-300">Criminología</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="flip-card h-64" onclick="toggleFlip(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-3xl text-left">🧪</span>
+                            <div class="text-left mt-4 space-y-2">
+                                <h4 class="text-xs font-bold text-red-600 uppercase tracking-widest">Método de Trabajo</h4>
+                                <h3 class="text-lg font-extrabold text-slate-900">Criminalística</h3>
+                            </div>
+                            <span class="text-xs text-right font-semibold text-slate-400">Ver respuesta <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4 class="text-xs font-bold text-red-200 uppercase tracking-widest text-left">Respuesta</h4>
+                            <p class="text-xs font-medium text-left leading-relaxed mt-2">
+                                Es puramente empírico y natural: aplica leyes de la <strong>física, la química y la biología</strong> para analizar rastros orgánicos e inorgánicos.
+                            </p>
+                            <span class="text-[10px] text-right text-red-300">Ciencias Naturales</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 4 -->
+                <div class="flip-card h-64" onclick="toggleFlip(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-3xl text-left">📊</span>
+                            <div class="text-left mt-4 space-y-2">
+                                <h4 class="text-xs font-bold text-red-600 uppercase tracking-widest">Método de Trabajo</h4>
+                                <h3 class="text-lg font-extrabold text-slate-900">Criminología</h3>
+                            </div>
+                            <span class="text-xs text-right font-semibold text-slate-400">Ver respuesta <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4 class="text-xs font-bold text-red-200 uppercase tracking-widest text-left">Respuesta</h4>
+                            <p class="text-xs font-medium text-left leading-relaxed mt-2">
+                                Es teórico y deductivo: utiliza las <strong>ciencias sociales, la sociología, la psicología forense y la estadística</strong> para proponer políticas públicas de prevención del delito.
+                            </p>
+                            <span class="text-[10px] text-right text-red-300">Ciencias Sociales</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 5 -->
+                <div class="flip-card h-64" onclick="toggleFlip(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-3xl text-left">⚖️</span>
+                            <div class="text-left mt-4 space-y-2">
+                                <h4 class="text-xs font-bold text-red-600 uppercase tracking-widest">Aporte Legal</h4>
+                                <h3 class="text-lg font-extrabold text-slate-900">Prueba vs Teoría</h3>
+                            </div>
+                            <span class="text-xs text-right font-semibold text-slate-400">Ver respuesta <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4 class="text-xs font-bold text-red-200 uppercase tracking-widest text-left">Respuesta</h4>
+                            <p class="text-xs font-medium text-left leading-relaxed mt-2">
+                                El criminalista provee <strong>evidencia física admisible</strong> para dictámenes judiciales. El criminólogo orienta a legisladores y jueces sobre penas y prevención social.
+                            </p>
+                            <span class="text-[10px] text-right text-red-300">Marco Legal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 6 -->
+                <div class="flip-card h-64" onclick="toggleFlip(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-3xl text-left">🔍</span>
+                            <div class="text-left mt-4 space-y-2">
+                                <h4 class="text-xs font-bold text-red-600 uppercase tracking-widest">La Evidencia</h4>
+                                <h3 class="text-lg font-extrabold text-slate-900">¿Qué analiza?</h3>
+                            </div>
+                            <span class="text-xs text-right font-semibold text-slate-400">Ver respuesta <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4 class="text-xs font-bold text-red-200 uppercase tracking-widest text-left">Respuesta</h4>
+                            <p class="text-xs font-medium text-left leading-relaxed mt-2">
+                                La criminalística analiza <strong>indicios materiales</strong> (huellas, ADN, casquillos, fluidos) usando instrumentación de laboratorio de alta especificidad.
+                            </p>
+                            <span class="text-[10px] text-right text-red-300">Rastros Físicos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 7 -->
+                <div class="flip-card h-64" onclick="toggleFlip(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-3xl text-left">👥</span>
+                            <div class="text-left mt-4 space-y-2">
+                                <h4 class="text-xs font-bold text-red-600 uppercase tracking-widest">El Objeto Humano</h4>
+                                <h3 class="text-lg font-extrabold text-slate-900">Estudio Humano</h3>
+                            </div>
+                            <span class="text-xs text-right font-semibold text-slate-400">Ver respuesta <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4 class="text-xs font-bold text-red-200 uppercase tracking-widest text-left">Respuesta</h4>
+                            <p class="text-xs font-medium text-left leading-relaxed mt-2">
+                                La criminología analiza al <strong>sujeto activo (delincuente), pasivo (víctima)</strong> y el entorno social para modelar la conducta desviada o delictiva.
+                            </p>
+                            <span class="text-[10px] text-right text-red-300">Conductas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 8 -->
+                <div class="flip-card h-64" onclick="toggleFlip(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-3xl text-left">🚧</span>
+                            <div class="text-left mt-4 space-y-2">
+                                <h4 class="text-xs font-bold text-red-600 uppercase tracking-widest">Espacio Operativo</h4>
+                                <h3 class="text-lg font-extrabold text-slate-900">¿Dónde actúa?</h3>
+                            </div>
+                            <span class="text-xs text-right font-semibold text-slate-400">Ver respuesta <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4 class="text-xs font-bold text-red-200 uppercase tracking-widest text-left">Respuesta</h4>
+                            <p class="text-xs font-medium text-left leading-relaxed mt-2">
+                                Criminalística actúa en la <strong>escena del suceso</strong> y en el laboratorio forense bajo riguroso resguardo y cadena de custodia científica.
+                            </p>
+                            <span class="text-[10px] text-right text-red-300">Campo y Lab</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 9 -->
+                <div class="flip-card h-64" onclick="toggleFlip(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-3xl text-left">🏢</span>
+                            <div class="text-left mt-4 space-y-2">
+                                <h4 class="text-xs font-bold text-red-600 uppercase tracking-widest">Espacio Operativo</h4>
+                                <h3 class="text-lg font-extrabold text-slate-900">Criminología</h3>
+                            </div>
+                            <span class="text-xs text-right font-semibold text-slate-400">Ver respuesta <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4 class="text-xs font-bold text-red-200 uppercase tracking-widest text-left">Respuesta</h4>
+                            <p class="text-xs font-medium text-left leading-relaxed mt-2">
+                                Actúa en oficinas estatales, centros penitenciarios, juzgados penales y a través de investigaciones sociológicas comunitarias.
+                            </p>
+                            <span class="text-[10px] text-right text-red-300">Institucional</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 10 -->
+                <div class="flip-card h-64" onclick="toggleFlip(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-3xl text-left">🛡️</span>
+                            <div class="text-left mt-4 space-y-2">
+                                <h4 class="text-xs font-bold text-red-600 uppercase tracking-widest">Prevención</h4>
+                                <h3 class="text-lg font-extrabold text-slate-900">¿Cómo previene?</h3>
+                            </div>
+                            <span class="text-xs text-right font-semibold text-slate-400">Ver respuesta <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4 class="text-xs font-bold text-red-200 uppercase tracking-widest text-left">Respuesta</h4>
+                            <p class="text-xs font-medium text-left leading-relaxed mt-2">
+                                Criminología diseña campañas y programas de <strong>prevención social</strong> para evitar el crecimiento delictivo en sectores vulnerables.
+                            </p>
+                            <span class="text-[10px] text-right text-red-300">Preventivo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 11 -->
+                <div class="flip-card h-64" onclick="toggleFlip(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-3xl text-left">🎓</span>
+                            <div class="text-left mt-4 space-y-2">
+                                <h4 class="text-xs font-bold text-red-600 uppercase tracking-widest">Perfil de Egreso</h4>
+                                <h3 class="text-lg font-extrabold text-slate-900">Perito Forense</h3>
+                            </div>
+                            <span class="text-xs text-right font-semibold text-slate-400">Ver respuesta <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4 class="text-xs font-bold text-red-200 uppercase tracking-widest text-left">Respuesta</h4>
+                            <p class="text-xs font-medium text-left leading-relaxed mt-2">
+                                Te capacita como <strong>perito oficial</strong> o asesor técnico en juicio para defender evidencia científica objetiva e inalterable.
+                            </p>
+                            <span class="text-[10px] text-right text-red-300">Criminalística</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 12 -->
+                <div class="flip-card h-64" onclick="toggleFlip(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-3xl text-left">🏛️</span>
+                            <div class="text-left mt-4 space-y-2">
+                                <h4 class="text-xs font-bold text-red-600 uppercase tracking-widest">Perfil de Egreso</h4>
+                                <h3 class="text-lg font-extrabold text-slate-900">Planificador</h3>
+                            </div>
+                            <span class="text-xs text-right font-semibold text-slate-400">Ver respuesta <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4 class="text-xs font-bold text-red-200 uppercase tracking-widest text-left">Respuesta</h4>
+                            <p class="text-xs font-medium text-left leading-relaxed mt-2">
+                                Te enfoca hacia el diseño de políticas de seguridad, investigación penitenciaria, reinserción social y consultoría gubernamental.
+                            </p>
+                            <span class="text-[10px] text-right text-red-300">Criminología</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 13 -->
+                <div class="flip-card h-64" onclick="toggleFlip(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-3xl text-left">💀</span>
+                            <div class="text-left mt-4 space-y-2">
+                                <h4 class="text-xs font-bold text-red-600 uppercase tracking-widest">El Hecho</h4>
+                                <h3 class="text-lg font-extrabold text-slate-900">Post-delito</h3>
+                            </div>
+                            <span class="text-xs text-right font-semibold text-slate-400">Ver respuesta <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4 class="text-xs font-bold text-red-200 uppercase tracking-widest text-left">Respuesta</h4>
+                            <p class="text-xs font-medium text-left leading-relaxed mt-2">
+                                Criminalística actúa <strong>inmediatamente después</strong> del suceso para resguardar la verdad biológica y evitar contaminaciones.
+                            </p>
+                            <span class="text-[10px] text-right text-red-300">Reactivo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 14 -->
+                <div class="flip-card h-64" onclick="toggleFlip(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-3xl text-left">🌐</span>
+                            <div class="text-left mt-4 space-y-2">
+                                <h4 class="text-xs font-bold text-red-600 uppercase tracking-widest">El Hecho</h4>
+                                <h3 class="text-lg font-extrabold text-slate-900">Pre y Post-delito</h3>
+                            </div>
+                            <span class="text-xs text-right font-semibold text-slate-400">Ver respuesta <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4 class="text-xs font-bold text-red-200 uppercase tracking-widest text-left">Respuesta</h4>
+                            <p class="text-xs font-medium text-left leading-relaxed mt-2">
+                                Criminología es <strong>integral</strong>: analiza el fenómeno antes, durante y después para mitigar el impacto antisocial del delincuente.
+                            </p>
+                            <span class="text-[10px] text-right text-red-300">Proactivo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 15 -->
+                <div class="flip-card h-64" onclick="toggleFlip(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-3xl text-left">🎯</span>
+                            <div class="text-left mt-4 space-y-2">
+                                <h4 class="text-xs font-bold text-red-600 uppercase tracking-widest">Especialidades</h4>
+                                <h3 class="text-lg font-extrabold text-slate-900">La Disciplina</h3>
+                            </div>
+                            <span class="text-xs text-right font-semibold text-slate-400">Ver respuesta <i class="fa-solid fa-rotate"></i></span>
+                        </div>
+                        <div class="flip-card-back">
+                            <h4 class="text-xs font-bold text-red-200 uppercase tracking-widest text-left">Respuesta</h4>
+                            <p class="text-xs font-medium text-left leading-relaxed mt-2">
+                                Balística, Documentoscopía, Hematología, Lofoscopía, Medicina forense son áreas de Criminalística. Psicología criminal es de Criminología.
+                            </p>
+                            <span class="text-[10px] text-right text-red-300">Ramas</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="space-y-8" id="seccion2">
+            <div class="border-b border-slate-200 pb-6">
+
+                <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">
+                    El Corazón de la Disciplina: El Principio de Intercambio de Locard
+                </h3>
+            </div>
+
+            <!-- Contenedor Estilo Libreta/Apuntes -->
+            <div class="notebook-paper rounded-3xl p-6 md:p-12 relative overflow-hidden">
+                <div class="absolute -right-16 -top-16 w-32 h-32 bg-yellow-100/40 rounded-full blur-2xl"></div>
+
+                <div class="max-w-4xl mx-auto space-y-8">
+
+                    <!-- Nota amistosa del cuaderno -->
+                    <div class="border-l-4 border-amber-400 pl-4 bg-amber-50/50 p-4 rounded-r-xl">
+                        <span class="text-xs font-black text-amber-700 uppercase tracking-widest">Apuntes Rápidos de Clase</span>
+                        <p class="text-slate-700 text-sm leading-relaxed mt-1">
+                            Este es el pilar indiscutible de toda tu carrera. Fue propuesto por el pionero francés <strong>Edmond Locard</strong>. No necesitas memorizar fórmulas complejas si entiendes el intercambio a nivel de contacto directo.
+                        </p>
+                    </div>
+
+                    <!-- Representación de Fórmula manuscrita con Pastel Fuchsia/Lilac -->
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-6 py-6 border-y border-dashed border-slate-200">
+                        <div class="space-y-3">
+                            <h4 class="text-xs font-extrabold text-purple-600 uppercase tracking-wider">La Expresión Matemática del Crimen:</h4>
+                            <p class="text-slate-600 text-xs max-w-sm">
+                                Si definimos al criminal como un conjunto de materiales <strong class="text-red-600">C</strong> y a la escena del crimen como un conjunto espacial <strong class="text-blue-600">S</strong>, la transferencia de evidencia
+                                <strong class="text-purple-600">E</strong> se produce exactamente en la intersección física de ambos:
+                            </p>
+                        </div>
+
+                        <!-- Pizarrón / Apunte de fórmula -->
+                        <div class="bg-white border-2 border-purple-200 shadow-md rounded-2xl p-6 flex flex-col items-center justify-center min-w-[240px]">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Ecuación de Locard</span>
+                            <div class="text-4xl font-handwritten font-bold text-purple-700 my-4 transform -rotate-1 select-none">
+                                E = C ∩ S
+                            </div>
+                            <div class="flex space-x-2 text-[10px] text-slate-500 font-semibold uppercase">
+                                <span class="text-red-500">C: Criminal</span>
+                                <span>•</span>
+                                <span class="text-blue-500">S: Escena</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Explicación Técnica y Sencilla con pasteles de colores -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                                <h4 class="text-sm font-bold text-emerald-800 uppercase">¿Qué significa didácticamente?</h4>
+                            </div>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                <strong class="text-slate-900">"Siempre que dos objetos entran en contacto, transfieren parte de su material mutuamente".</strong>
+                            </p>
+                            <p class="text-sm text-slate-500 leading-relaxed">
+                                No importa el cuidado del sospechoso ni su inteligencia: el intercambio físico de partículas ocurre a nivel microscópico y subatómico. No se puede evitar.
+                            </p>
+                        </div>
+
+                        <!-- Ejemplo Cotidiano e Ilustraciones Cute Asiáticos -->
+                        <div class="space-y-4 bg-fuchsia-50/50 p-6 rounded-2xl border border-fuchsia-100/50">
+                            <div class="flex items-center space-x-3">
+                                <span class="w-2.5 h-2.5 rounded-full bg-fuchsia-500"></span>
+                                <h4 class="text-sm font-bold text-fuchsia-800 uppercase">Ejemplo Práctico de Campo</h4>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                <strong>El abrazo con un perro:</strong> Si abrazas a un cachorro, te llevas sus pelos en tu suéter y tú le dejas fibras sintéticas de tu ropa. En un suceso real, el criminalista analizará:
+                            </p>
+
+                            <!-- Gráficos Cute SVG -->
+                            <div class="flex justify-around items-center pt-2">
+
+                                <!-- Gatito / Perrito Lindo Cute (Dibujo kawaii) -->
+                                <div class="flex flex-col items-center">
+                                    <svg class="w-16 h-16 text-amber-500" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M50 85C70 85 85 70 85 50C85 30 70 15 50 15C30 15 15 30 15 50C15 70 30 85 50 85Z" fill="#fef3c7" stroke="currentColor" stroke-width="2"/>
+                                        <!-- Orejas Kawaii -->
+                                        <path d="M25 25L15 5L35 18" stroke="currentColor" stroke-width="2" fill="#fef3c7" stroke-linejoin="round"/>
+                                        <path d="M75 25L85 5L65 18" stroke="currentColor" stroke-width="2" fill="#fef3c7" stroke-linejoin="round"/>
+                                        <!-- Ojos con carita feliz -->
+                                        <circle cx="40" cy="45" r="3" fill="#000"/>
+                                        <circle cx="60" cy="45" r="3" fill="#000"/>
+                                        <!-- Chapitas cute rosa -->
+                                        <circle cx="35" cy="52" r="3" fill="#f472b6" opacity="0.6"/>
+                                        <circle cx="65" cy="52" r="3" fill="#f472b6" opacity="0.6"/>
+                                        <!-- Boca tierna -->
+                                        <path d="M47 53C48 55 52 55 53 53" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                    <span class="text-[9px] text-slate-500 mt-1 font-bold">Transfiere Pelos</span>
+                                </div>
+
+                                <div class="text-purple-400 text-xl font-black">✨</div>
+
+                                <!-- Lupa Cute Kawaii -->
+                                <div class="flex flex-col items-center">
+                                    <svg class="w-16 h-16 text-cyan-500" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="45" cy="45" r="25" fill="#ecfeff" stroke="currentColor" stroke-width="3"/>
+                                        <path d="M63 63L85 85" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                                        <circle cx="40" cy="42" r="2" fill="#000"/>
+                                        <circle cx="50" cy="42" r="2" fill="#000"/>
+                                        <path d="M43 48C45 49 47 48 47 48" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                    <span class="text-[9px] text-slate-500 mt-1 font-bold">Rastrea Fibras</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Conclusión contundente -->
+                    <div class="pt-6 border-t border-dashed border-slate-200 text-center">
+                        <p class="text-sm font-bold text-slate-800">
+                            "En un crimen, el asesino siempre se llevará algo de la escena y dejará algo de sí mismo en ella. <span class="text-red-600">La evidencia física jamás miente."</span>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-8" id="seccion3">
+            <div class="border-b border-slate-200 pb-6">
+                <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">
+                    El Nacimiento de la Ciencia Forense
+                </h3>
+                <p class="text-xs text-slate-500 font-semibold mt-2">
+                    💡 <span class="text-red-600">Probablemente te cueste memorizar todo, así que enfócate en los tres personajes más importantes que necesitas conocer para entender cómo nació tu disciplina.</span>
+                </p>
+            </div>
+
+            <!-- Contenedor de la Línea del Tiempo Profesional -->
+            <div class="relative py-12">
+
+                <!-- Línea central punteada -->
+                <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 timeline-line -translate-x-1/2"></div>
+
+                <!-- Hito 1: Ambroise Paré -->
+                <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="md:text-right md:pr-12 pl-12 md:pl-0">
+                        <span class="inline-block bg-slate-100 text-slate-800 text-xs font-bold px-3 py-1 rounded-full mb-2">Siglo XVI (1510-1590)</span>
+                        <h4 class="text-lg font-bold text-slate-900">Ambroise Paré</h4>
+                        <p class="text-xs text-slate-400 font-bold">Cirujano Militar Francés • Pionero de Patología</p>
+                        <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+                            Analizó sistemáticamente el daño de órganos vitales por proyectiles y traumas. Es el ancestro directo de la medicina forense sistemática.
+                        </p>
+                    </div>
+                    <div class="hidden md:flex items-center justify-start">
+                        <div class="w-10 h-10 rounded-full bg-slate-300 border-4 border-white shadow-md flex items-center justify-center text-white font-bold">
+                            <i class="fa-solid fa-user-doctor text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hito 2: Mathieu Orfila -->
+                <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="hidden md:flex items-center justify-end pr-12">
+                        <div class="w-10 h-10 rounded-full bg-slate-300 border-4 border-white shadow-md flex items-center justify-center text-white font-bold">
+                            <i class="fa-solid fa-flask text-xs"></i>
+                        </div>
+                    </div>
+                    <div class="pl-12 md:pl-12">
+                        <span class="inline-block bg-slate-100 text-slate-800 text-xs font-bold px-3 py-1 rounded-full mb-2">1814</span>
+                        <h4 class="text-lg font-bold text-slate-900">Mathieu Orfila</h4>
+                        <p class="text-xs text-slate-400 font-bold">Químico Forense • "Padre de la Toxicología"</p>
+                        <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+                            Publicó el primer tratado científico de venenos. Demostró la detección de arsénico en tejidos humanos, abriendo la química analítica forense.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Hito 3: Hans Gross (DESTACADO EN ROJO) -->
+                <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="md:text-right md:pr-12 pl-12 md:pl-0">
+                        <span class="inline-block bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-2 shadow-sm animate-pulse">1893</span>
+                        <h4 class="text-xl font-black text-red-600">Hans Gross (1847-1915)</h4>
+                        <p class="text-xs text-red-800 font-bold">Juez de Instrucción • "Padre de la Criminalística"</p>
+                        <p class="text-sm font-semibold text-slate-700 mt-2 leading-relaxed">
+                            Sistematizó científicamente los métodos de investigación criminal en su obra cumbre <em>"El manual del Juez de Instrucción"</em>. Él unificó la física, química, biología y medicina dándole oficialmente el nombre de <strong>Criminalística</strong>.
+                        </p>
+                    </div>
+                    <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-red-600 border-4 border-white shadow-lg shadow-red-500/30 flex items-center justify-center text-white font-bold z-10">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <div class="hidden md:flex items-center justify-start pl-12">
+                        <div class="border-2 border-red-500/20 bg-red-50/50 rounded-2xl p-4 max-w-xs">
+                            <span class="text-[10px] font-bold text-red-600 uppercase tracking-widest">Aporte Clave</span>
+                            <p class="text-xs text-red-950 mt-1">Unificó las ciencias naturales bajo el paraguas de la investigación de delitos penales.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hito 4: Alphonse Bertillon (DESTACADO EN ROJO) -->
+                <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="hidden md:flex items-center justify-end pr-12">
+                        <div class="border-2 border-red-500/20 bg-red-50/50 rounded-2xl p-4 max-w-xs text-right">
+                            <span class="text-[10px] font-bold text-red-600 uppercase tracking-widest">Aporte Clave</span>
+                            <p class="text-xs text-red-950 mt-1">Fotografía policial con escala métrica y fichaje antropométrico.</p>
+                        </div>
+                    </div>
+                    <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-red-600 border-4 border-white shadow-lg shadow-red-500/30 flex items-center justify-center text-white font-bold z-10">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+                    <div class="pl-12 md:pl-12">
+                        <span class="inline-block bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-2 shadow-sm">1882</span>
+                        <h4 class="text-xl font-black text-red-600">Alphonse Bertillon (1853-1914)</h4>
+                        <p class="text-xs text-red-800 font-bold">Investigador Policial • Creador del Bertillonaje</p>
+                        <p class="text-sm font-semibold text-slate-700 mt-2 leading-relaxed">
+                            Creó la <strong>Antropometría</strong> (medición sistematizada del cuerpo humano para registro). Aunque fue sustituida por la dactiloscopía, introdujo la fotografía forense estandarizada de perfil y de frente con escala de
+                            referencia métrica.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Hito 5: Edmond Locard (DESTACADO EN ROJO) -->
+                <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="md:text-right md:pr-12 pl-12 md:pl-0">
+                        <span class="inline-block bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-2 shadow-sm">1910</span>
+                        <h4 class="text-xl font-black text-red-600">Edmond Locard (1877-1966)</h4>
+                        <p class="text-xs text-red-800 font-bold">Criminalista Francés • "Sherlock Holmes de Francia"</p>
+                        <p class="text-sm font-semibold text-slate-700 mt-2 leading-relaxed">
+                            Fundó el <strong>primer laboratorio de criminalística del mundo</strong> en Lyon, Francia (1910). Enunció el célebre principio de transferencia física que rige toda investigación científica de indicios.
+                        </p>
+                    </div>
+                    <div class="absolute left-4 md:left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-red-600 border-4 border-white shadow-lg shadow-red-500/30 flex items-center justify-center text-white font-bold z-10">
+                        <i class="fa-solid fa-building-user"></i>
+                    </div>
+                    <div class="hidden md:flex items-center justify-start pl-12">
+                        <div class="border-2 border-red-500/20 bg-red-50/50 rounded-2xl p-4 max-w-xs">
+                            <span class="text-[10px] font-bold text-red-600 uppercase tracking-widest">Aporte Clave</span>
+                            <p class="text-xs text-red-950 mt-1">Llevó la ciencia forense de la teoría abstracta a la instrumentación práctica en laboratorio.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hito 6: Calvin Goddard -->
+                <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="hidden md:flex items-center justify-end pr-12">
+                        <div class="w-10 h-10 rounded-full bg-slate-300 border-4 border-white shadow-md flex items-center justify-center text-white font-bold">
+                            <i class="fa-solid fa-gun text-xs"></i>
+                        </div>
+                    </div>
+                    <div class="pl-12 md:pl-12">
+                        <span class="inline-block bg-slate-100 text-slate-800 text-xs font-bold px-3 py-1 rounded-full mb-2">1925</span>
+                        <h4 class="text-lg font-bold text-slate-900">Calvin Goddard</h4>
+                        <p class="text-xs text-slate-400 font-bold">Médico e Investigador Militar • Balística Comparativa</p>
+                        <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+                            Introdujo el uso del microscopio de comparación para el análisis y cotejo de marcas de percusión y estriado en casquillos y proyectiles balísticos.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="space-y-8" id="seccion4">
+            <div class="border-b border-slate-200 pb-6">
+                <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">
+                    De la Escena del Crimen al Tribunal
+                </h3>
+            </div>
+
+            <!-- Explicación del Papel Científico -->
+            <div class="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 space-y-6 shadow-sm">
+                <h4 class="text-lg font-bold text-slate-950">¿Cuál es el verdadero papel del criminalista en el sistema de justicia?</h4>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Tu misión final como perito no es atrapar criminales por instinto, sino <strong class="text-slate-900">convertir un indicio material en una verdad jurídica inapelable</strong>. Para que tu dictamen tenga validez legal y resista los
+                    ataques de la defensa en el juicio oral penal, las evidencias deben seguir estrictamente esta ruta metodológica de cinco pasos:
+                </p>
+
+                <!-- Flujo Visual en tarjetas numeradas de la Ruta Lógica -->
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 pt-6">
+
+                    <!-- Tarjeta Ruta 1 -->
+                    <div class="bg-slate-50/80 border border-slate-200 p-5 rounded-2xl relative">
+                        <span class="absolute -top-4 -left-2 bg-slate-900 text-white font-black text-xs px-3 py-1.5 rounded-xl shadow-sm">01</span>
+                        <div class="mt-2 space-y-2">
+                            <h5 class="text-xs font-black text-red-600 uppercase tracking-wider">Búsqueda y Localización</h5>
+                            <p class="text-[11px] text-slate-500 leading-relaxed">
+                                Aplicación de métodos de rastreo geométrico (espiral, franjas, cuadrículas) para encontrar indicios sin alterarlos.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta Ruta 2 -->
+                    <div class="bg-slate-50/80 border border-slate-200 p-5 rounded-2xl relative">
+                        <span class="absolute -top-4 -left-2 bg-slate-900 text-white font-black text-xs px-3 py-1.5 rounded-xl shadow-sm">02</span>
+                        <div class="mt-2 space-y-2">
+                            <h5 class="text-xs font-black text-red-600 uppercase tracking-wider">Fijación y Levantamiento</h5>
+                            <p class="text-[11px] text-slate-500 leading-relaxed">
+                                Fijación fotográfica, planimétrica y escrita. Recolección con instrumental estéril y embalaje correcto.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta Ruta 3 -->
+                    <div class="bg-slate-50/80 border border-slate-200 p-5 rounded-2xl relative">
+                        <span class="absolute -top-4 -left-2 bg-slate-900 text-white font-black text-xs px-3 py-1.5 rounded-xl shadow-sm">03</span>
+                        <div class="mt-2 space-y-2">
+                            <h5 class="text-xs font-black text-red-600 uppercase tracking-wider">Cadena de Custodia</h5>
+                            <p class="text-[11px] text-slate-500 leading-relaxed">
+                                Resguardo ininterrumpido. Registro escrito de firmas de toda persona que toque físicamente el indicio.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta Ruta 4 -->
+                    <div class="bg-slate-50/80 border border-slate-200 p-5 rounded-2xl relative">
+                        <span class="absolute -top-4 -left-2 bg-slate-900 text-white font-black text-xs px-3 py-1.5 rounded-xl shadow-sm">04</span>
+                        <div class="mt-2 space-y-2">
+                            <h5 class="text-xs font-black text-red-600 uppercase tracking-wider">Análisis de Laboratorio</h5>
+                            <p class="text-[11px] text-slate-500 leading-relaxed">
+                                Procesamiento químico, físico o biológico utilizando instrumentación calibrada y reactivos validados.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta Ruta 5 -->
+                    <div class="bg-slate-50/80 border border-slate-200 p-5 rounded-2xl relative">
+                        <span class="absolute -top-4 -left-2 bg-slate-900 text-white font-black text-xs px-3 py-1.5 rounded-xl shadow-sm">05</span>
+                        <div class="mt-2 space-y-2">
+                            <h5 class="text-xs font-black text-red-600 uppercase tracking-wider">Dictamen Pericial</h5>
+                            <p class="text-[11px] text-slate-500 leading-relaxed">
+                                El informe científico oficial final que defenderás ante un juez penal bajo los principios de oralidad.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Detalle del Dictamen Pericial -->
+                <div class="border-t border-slate-100 pt-6">
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 flex flex-col md:flex-row gap-4 items-center">
+                        <div class="bg-white p-3 rounded-xl shadow-sm text-red-600 text-2xl">
+                            <i class="fa-solid fa-file-signature"></i>
+                        </div>
+                        <div>
+                            <h5 class="text-sm font-bold text-slate-900">El Dictamen Pericial: Tu Firma del Saber Científico</h5>
+                            <p class="text-xs text-slate-500 leading-relaxed mt-1">
+                                Tu ciencia le da certeza a las sentencias judiciales, protegiendo al inocente de cargos injustos y castigando al culpable a partir de verdades científicas irrefutables. Estudia bien cada proceso técnico porque serás cuestionado por peritos contrarios.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="bg-gradient-to-br from-red-50 to-red-100/50 border border-red-200 rounded-3xl p-8 text-center space-y-6 max-w-3xl mx-auto shadow-md">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white text-red-600 text-2xl shadow-sm">
+                <i class="fa-solid fa-user-shield"></i>
+            </div>
+            <h4 class="text-2xl font-extrabold text-slate-900">¿Estás listo para tu primer prueba de retroalimentación?</h4>
+            <p class="text-sm text-slate-600 leading-relaxed max-w-xl mx-auto">
+                Has concluido la lectura teórica básica de introducción. Si te sientes seguro del conocimiento de estas bases, avanza a resolver el cuestionario interactivo para calificar tu nivel académico actual.
+            </p>
+
+            <!-- LOS DOS BOTONES CON COMENTARIOS PARA REEMPLAZAR ENLACES -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+
+                <!-- BOTÓN 1: REGRESAR AL TEMARIO -->
+                <!-- Reemplazar el valor de href="temario.html" para redirigir a tu página del temario -->
+                <a href="temario.html" class="w-full sm:w-auto px-6 py-3 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 border border-slate-200 font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-sm flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-circle-arrow-left"></i>
+                    <span>Regresar al Temario</span>
+                </a>
+
+                <!-- BOTÓN 2: IR AL CUESTIONARIO -->
+                <!-- Reemplazar el valor de href="cuestionario.html" para redirigir a tu página del examen o quiz -->
+                <a href="intro-crimi-cues.html" class="w-full sm:w-auto px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center space-x-2">
+                    <span>Ir al Cuestionario</span>
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-slate-200 bg-white py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0 text-xs text-slate-500">
+            <div>
+                <span>• Ingeniería en Sistemas Computacionales</span>
+            </div>
+            <div class="flex space-x-6 font-medium text-slate-400">
+                <span>"El asesino de tu carrera" © 2026</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. LÓGICA DE ACTUALIZACIÓN DEL PROGRESO GLOBAL ---
+        // Almacena las tarjetas que el usuario ya ha volteado
+        const flippedCardsSet = new Set();
+        const totalCards = 15;
+
+        function toggleFlip(cardElement) {
+            // Activa o desactiva la clase para el efecto rotación CSS
+            cardElement.classList.toggle('flip-card-active');
+
+            // Agrega esta tarjeta al conjunto de leídas si se activó
+            if (cardElement.classList.contains('flip-card-active')) {
+                // Obtenemos un identificador único de la tarjeta mediante su texto frontal
+                const cardTitle = cardElement.querySelector('h3').textContent;
+                flippedCardsSet.add(cardTitle);
+            }
+
+            // Actualiza el indicador de progreso global basado en las tarjetas volteadas
+            const percent = Math.floor((flippedCardsSet.size / totalCards) * 100);
+            document.getElementById('progressBar').style.width = percent + '%';
+            document.getElementById('progressNumber').textContent = percent + '% Completado';
+        }
+    </script>
+
+</body>
+
+</html>

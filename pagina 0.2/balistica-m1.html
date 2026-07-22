@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 1: Balística Interior - El Asesino de tu Carrera</title>
+    <link rel="stylesheet" href="styles/balistica-m1.css">
+    <link rel="icon" type="image/jpeg" href="img/logo.jpeg">
+
+    <!-- TAILWIND CSS: Utility-first CSS framework for pristine layout styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FONT AWESOME: Standardized iconography set for user controls and UI feedback -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- THREE.JS: Core 3D engine library for processing real-time graphics and physics -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+    <header class="bg-white border-b border-zinc-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-red-800 flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-red-900/10">
+                    <i class="fa-solid fa-crosshairs"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-black tracking-tight text-zinc-900">EL ASESINO DE TU CARRERA</h1>
+                    <a class="text-xs font-bold uppercase tracking-widest text-red-600" href="temario.html">Regresar al temario</a>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="hidden sm:flex flex-col items-end">
+                    <span class="text-xs font-bold text-zinc-700">Progreso del Módulo 1</span>
+                    <span id="header-progress-text" class="text-[10px] font-mono text-red-800 font-bold">Iniciado (10%)</span>
+                </div>
+                <div class="w-32 bg-zinc-100 rounded-full h-2 overflow-hidden border border-zinc-200">
+                    <div id="header-progress-fill" class="bg-red-800 h-full progress-transition" style="width: 10%"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex flex-col gap-10">
+
+        <!-- SECCIÓN 1: LABORATORIO SIMULADOR 3D -->
+        <section class="bg-white rounded-2xl border border-zinc-200 p-6 shadow-sm flex flex-col">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                <div>
+                    <h2 class="text-xl font-bold text-zinc-900 flex items-center gap-2">
+                        <i class="fa-solid fa-cube text-red-800 animate-pulse"></i> Laboratorio de Simulación Balística 3D
+                    </h2>
+                    <p class="text-xs text-zinc-500">Inspecciona la recámara y percute el cartucho para observar la expansión de gases con visualización completa.</p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <button id="btn-fire" class="px-4 py-2.5 bg-red-800 text-white font-bold rounded-xl text-xs hover:bg-red-700 active:scale-95 transition-all flex items-center gap-1.5 shadow-md shadow-red-900/15">
+                        <i class="fa-solid fa-gun"></i> PERCUTIR
+                    </button>
+                    <button id="btn-reset-sim" class="p-2.5 border border-zinc-200 rounded-xl text-zinc-600 hover:bg-zinc-50 active:scale-95 transition-all" title="Restablecer vista">
+                        <i class="fa-solid fa-rotate-left text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="canvas-container" class="relative w-full h-[450px] bg-slate-100 rounded-2xl overflow-hidden border border-zinc-200 shadow-inner cursor-grab active:cursor-grabbing">
+                <!-- Live Telemetry overlay -->
+                <div class="absolute top-4 left-4 bg-zinc-950/90 backdrop-blur-md border border-zinc-800 rounded-xl p-4 text-white text-[11px] z-10 flex flex-col gap-1.5 shadow-xl pointer-events-none">
+                    <div class="font-bold text-red-500 tracking-wider flex items-center gap-1">
+                        <i class="fa-solid fa-circle-nodes text-[9px] animate-pulse"></i> TELEMETRÍA INTERNA
+                    </div>
+                    <div class="h-[1px] bg-zinc-800 my-1"></div>
+                    <div>Presión de Gases: <span id="telemetry-pressure" class="text-zinc-300 font-mono">1 Atm</span></div>
+                    <div>Ánima del Cañón: <span id="telemetry-anima" class="text-cyan-400 font-mono">Rayado Dextrógiro (6 estrías)</span></div>
+                    <div>Estado Químico: <span id="telemetry-state" class="text-green-400 font-mono">Listo para Ignición</span></div>
+                    <div>Velocidad Inicial: <span id="telemetry-velocity" class="text-purple-400 font-mono">0 m/s</span></div>
+                </div>
+
+                <!-- Color Coding Legend -->
+                <div class="absolute bottom-4 left-4 right-4 bg-zinc-950/95 backdrop-blur-sm border border-zinc-800 rounded-xl p-3 text-white text-[10px] sm:text-xs z-10 flex items-center justify-between shadow-lg pointer-events-none">
+                    <div class="flex gap-4">
+                        <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Casquillo (Latón)</span>
+                        <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-red-600"></span> Proyectil (Cobre)</span>
+                        <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span> Estrías de Guía</span>
+                    </div>
+                    <div class="text-zinc-400 hidden sm:inline-block"><i class="fa-solid fa-hand-pointer mr-1 text-cyan-400"></i>Arrastra para rotar la inspección</div>
+                </div>
+            </div>
+
+            <div class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <button onclick="changeCameraAngle('bullet')" class="p-3 text-left border border-zinc-200 rounded-xl hover:border-red-800 hover:bg-zinc-50 transition-all">
+                    <div class="text-xs font-extrabold text-zinc-950 flex items-center gap-1">
+                        <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                        1. Conjunto Cartucho (Alejado)
+                    </div>
+                    <p class="text-[10px] text-zinc-500 mt-1">Inspección completa del cartucho y su acoplamiento estructural.</p>
+                </button>
+                <button onclick="changeCameraAngle('ignition')" class="p-3 text-left border border-zinc-200 rounded-xl hover:border-red-800 hover:bg-zinc-50 transition-all">
+                    <div class="text-xs font-extrabold text-zinc-950 flex items-center gap-1">
+                        <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+                        2. Zona de Percusión (Alejado)
+                    </div>
+                    <p class="text-[10px] text-zinc-500 mt-1">Inspección del plano del culote, fulminante y aguja percutora.</p>
+                </button>
+                <button onclick="changeCameraAngle('grooves')" class="p-3 text-left border border-zinc-200 rounded-xl hover:border-red-800 hover:bg-zinc-50 transition-all">
+                    <div class="text-xs font-extrabold text-zinc-950 flex items-center gap-1">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                        3. Paso de Estría (Alejado)
+                    </div>
+                    <p class="text-[10px] text-zinc-500 mt-1">Inspección completa de la inclinación y estriado del cañón.</p>
+                </button>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: TARJETAS DIDÁCTICAS INTERACTIVAS -->
+        <section class="bg-white rounded-2xl border border-zinc-200 p-6 shadow-sm">
+            <div class="mb-6">
+                <h2 class="text-xl font-bold text-zinc-900 flex items-center gap-2">
+                    <i class="fa-solid fa-rectangle-list text-purple-600"></i> Inspección Forense: Tarjetas de Conocimiento Clave
+                </h2>
+                <p class="text-xs text-zinc-500">Haz clic sobre las tarjetas para revelar el conocimiento científico verídico y reconstructivo de la doctrina del Dr. Moreno González.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                <!-- Tarjeta 1: Antecedentes Históricos -->
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flex justify-between items-start">
+                                <span class="text-[10px] font-bold tracking-wider text-zinc-400 uppercase">TEMA 01</span>
+                                <div class="w-9 h-9 rounded-xl bg-red-50 text-red-700 flex items-center justify-center shadow-sm">
+                                    <i class="fa-solid fa-timeline"></i>
+                                </div>
+                            </div>
+                            <div class="text-left">
+                                <h3 class="font-extrabold text-base text-zinc-900 mb-1">Antecedentes Históricos</h3>
+                                <p class="text-xs text-zinc-500 leading-relaxed">Los pilares científicos: Henry Goddard, Alejandro Lacassagne y Victor Balthazard.</p>
+                            </div>
+                            <div class="text-left text-[11px] text-red-800 font-bold flex items-center gap-1">
+                                <span>Girar para revelar doctrina</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                            </div>
+                        </div>
+                        <div class="flip-card-back text-left">
+                            <h4 class="font-bold text-zinc-900 text-sm mb-1">Los Cimientos Forenses</h4>
+                            <p class="text-xs text-zinc-600 leading-relaxed"><strong>Henry Goddard (1835)</strong> inició con los moldes de balas, <strong>Lacassagne (1889)</strong> estudió las estrías del cañón, y <strong>Balthazard (1913)</strong> demostró científicamente que toda arma de fuego imprime
+                                huellas únicas e identificables en proyectiles y casquillos.</p>
+                            <span class="text-[10px] bg-red-50 text-red-800 px-2.5 py-0.5 rounded-full mt-2 inline-block font-mono font-bold">Historia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2: Definición de Balística -->
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flex justify-between items-start">
+                                <span class="text-[10px] font-bold tracking-wider text-zinc-400 uppercase">TEMA 02</span>
+                                <div class="w-9 h-9 rounded-xl bg-cyan-50 text-cyan-700 flex items-center justify-center shadow-sm">
+                                    <i class="fa-solid fa-quote-left"></i>
+                                </div>
+                            </div>
+                            <div class="text-left">
+                                <h3 class="font-extrabold text-base text-zinc-900 mb-1">Definición de Balística</h3>
+                                <p class="text-xs text-zinc-500 leading-relaxed">Entiende el concepto integral y el marco doctrinal de la balística aplicada.</p>
+                            </div>
+                            <div class="text-left text-[11px] text-cyan-700 font-bold flex items-center gap-1">
+                                <span>Girar para revelar doctrina</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                            </div>
+                        </div>
+                        <div class="flip-card-back text-left">
+                            <h4 class="font-bold text-zinc-900 text-sm mb-1">Concepto Doctrinal</h4>
+                            <p class="text-xs text-zinc-600 leading-relaxed">Según el Dr. L. Rafael Moreno González, es la <strong>ciencia y arte que estudia integralmente las armas de fuego</strong>, el alcance y dirección de los proyectiles que disparan, y todos los efectos químicos, mecánicos y fisiológicos
+                                que estos producen.</p>
+                            <span class="text-[10px] bg-cyan-50 text-cyan-800 px-2.5 py-0.5 rounded-full mt-2 inline-block font-mono font-bold">Doctrina</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3: Ramas Fundamentales -->
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flex justify-between items-start">
+                                <span class="text-[10px] font-bold tracking-wider text-zinc-400 uppercase">TEMA 03</span>
+                                <div class="w-9 h-9 rounded-xl bg-yellow-50 text-yellow-700 flex items-center justify-center shadow-sm">
+                                    <i class="fa-solid fa-code-branch"></i>
+                                </div>
+                            </div>
+                            <div class="text-left">
+                                <h3 class="font-extrabold text-base text-zinc-900 mb-1">Ramas Fundamentales</h3>
+                                <p class="text-xs text-zinc-500 leading-relaxed">El viaje completo: Balística Interior, Exterior y Balística de Efectos.</p>
+                            </div>
+                            <div class="text-left text-[11px] text-yellow-700 font-bold flex items-center gap-1">
+                                <span>Girar para revelar doctrina</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                            </div>
+                        </div>
+                        <div class="flip-card-back text-left">
+                            <h4 class="font-bold text-zinc-900 text-sm mb-1">Cronología Forense</h4>
+                            <p class="text-xs text-zinc-600 leading-relaxed">Se divide en: <strong>Interior</strong> (fenómenos dentro del arma al percutir la pólvora), <strong>Exterior</strong> (vuelo y comportamiento parabólico del proyectil en el espacio) y de <strong>Efectos</strong> (los daños,
+                                penetración y cavitación producidos sobre el blanco).</p>
+                            <span class="text-[10px] bg-yellow-50 text-yellow-800 px-2.5 py-0.5 rounded-full mt-2 inline-block font-mono font-bold">Clasificación</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 4: Clasificación de Armas -->
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flex justify-between items-start">
+                                <span class="text-[10px] font-bold tracking-wider text-zinc-400 uppercase">TEMA 04</span>
+                                <div class="w-9 h-9 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center shadow-sm">
+                                    <i class="fa-solid fa-gun"></i>
+                                </div>
+                            </div>
+                            <div class="text-left">
+                                <h3 class="font-extrabold text-base text-zinc-900 mb-1">Clasificación de Armas</h3>
+                                <p class="text-xs text-zinc-500 leading-relaxed">Cómo clasificar técnicamente según la longitud del cañón y tipo de ánima.</p>
+                            </div>
+                            <div class="text-left text-[11px] text-purple-700 font-bold flex items-center gap-1">
+                                <span>Girar para revelar doctrina</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                            </div>
+                        </div>
+                        <div class="flip-card-back text-left">
+                            <h4 class="font-bold text-zinc-900 text-sm mb-1">Mecánica del Cañón</h4>
+                            <p class="text-xs text-zinc-600 leading-relaxed">Clasificación por longitud: <strong>Cortas</strong> (revólveres y pistolas) y <strong>Largas</strong> (fusiles y escopetas). Y por ánima: <strong>Lisa</strong> (escopetas, sin estrías) y <strong>Rayada</strong> (cañones con
+                                surcos helicoidales estabilizadores).</p>
+                            <span class="text-[10px] bg-purple-50 text-purple-800 px-2.5 py-0.5 rounded-full mt-2 inline-block font-mono font-bold">Tipología</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 5: Anatomía del Cartucho -->
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flex justify-between items-start">
+                                <span class="text-[10px] font-bold tracking-wider text-zinc-400 uppercase">TEMA 05</span>
+                                <div class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center shadow-sm">
+                                    <i class="fa-solid fa-circle"></i>
+                                </div>
+                            </div>
+                            <div class="text-left">
+                                <h3 class="font-extrabold text-base text-zinc-900 mb-1">Anatomía del Cartucho</h3>
+                                <p class="text-xs text-zinc-500 leading-relaxed">La unidad funcional completa. Conoce las 4 partes indispensables.</p>
+                            </div>
+                            <div class="text-left text-[11px] text-indigo-700 font-bold flex items-center gap-1">
+                                <span>Girar para revelar doctrina</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                            </div>
+                        </div>
+                        <div class="flip-card-back text-left">
+                            <h4 class="font-bold text-zinc-900 text-sm mb-1">El Sistema Integrado</h4>
+                            <p class="text-xs text-zinc-600 leading-relaxed">Compuesto estructuralmente por: <strong>vaina o casquillo</strong> (alojamiento de metal), <strong>cápsula fulminante o estopín</strong> (mezcla iniciadora química), <strong>carga de proyección</strong> (pólvora propulsora)
+                                y <strong>proyectil u ojiva</strong> (la única parte que viaja).</p>
+                            <span class="text-[10px] bg-indigo-50 text-indigo-800 px-2.5 py-0.5 rounded-full mt-2 inline-block font-mono font-bold">Estructura</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 6: Las Pólvoras -->
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flex justify-between items-start">
+                                <span class="text-[10px] font-bold tracking-wider text-zinc-400 uppercase">TEMA 06</span>
+                                <div class="w-9 h-9 rounded-xl bg-orange-50 text-orange-700 flex items-center justify-center shadow-sm">
+                                    <i class="fa-solid fa-fire"></i>
+                                </div>
+                            </div>
+                            <div class="text-left">
+                                <h3 class="font-extrabold text-base text-zinc-900 mb-1">Las Pólvoras</h3>
+                                <p class="text-xs text-zinc-500 leading-relaxed">Combustión y composición de pólvoras negras frente a las piroxiladas.</p>
+                            </div>
+                            <div class="text-left text-[11px] text-orange-700 font-bold flex items-center gap-1">
+                                <span>Girar para revelar doctrina</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                            </div>
+                        </div>
+                        <div class="flip-card-back text-left">
+                            <h4 class="font-bold text-zinc-900 text-sm mb-1">Propulsores Forenses</h4>
+                            <p class="text-xs text-zinc-600 leading-relaxed">Pólvoras <strong>Negras</strong> (salitre 78%, carbón 12%, azufre 10%) de deflagración ruidosa y sucia, frente a las pólvoras <strong>Piroxiladas (sin humo)</strong> a base de nitrocelulosa y nitroglicerina, de combustión controlada
+                                y eficiente.</p>
+                            <span class="text-[10px] bg-orange-50 text-orange-800 px-2.5 py-0.5 rounded-full mt-2 inline-block font-mono font-bold">Química</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 7: Física de la Balística -->
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flex justify-between items-start">
+                                <span class="text-[10px] font-bold tracking-wider text-zinc-400 uppercase">TEMA 07</span>
+                                <div class="w-9 h-9 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center shadow-sm">
+                                    <i class="fa-solid fa-calculator"></i>
+                                </div>
+                            </div>
+                            <div class="text-left">
+                                <h3 class="font-extrabold text-base text-zinc-900 mb-1">Física de la Balística</h3>
+                                <p class="text-xs text-zinc-500 leading-relaxed">Fórmulas y leyes físicas que dominan el vuelo del proyectil en el aire.</p>
+                            </div>
+                            <div class="text-left text-[11px] text-amber-700 font-bold flex items-center gap-1">
+                                <span>Girar para revelar doctrina</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                            </div>
+                        </div>
+                        <div class="flip-card-back text-left">
+                            <h4 class="font-bold text-zinc-900 text-sm mb-1">Física Aplicada</h4>
+                            <p class="text-xs text-zinc-600 leading-relaxed">Rige la energía cinética: <strong>Ek = (M * V²) / 2</strong>. El coeficiente balístico mide la capacidad de vencer la resistencia del aire, mientras que la gravedad desvía el vuelo en una trayectoria parabólica descendente.</p>
+                            <span class="text-[10px] bg-amber-50 text-amber-800 px-2.5 py-0.5 rounded-full mt-2 inline-block font-mono font-bold">Física</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 8: Balística Identificativa -->
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flex justify-between items-start">
+                                <span class="text-[10px] font-bold tracking-wider text-zinc-400 uppercase">TEMA 08</span>
+                                <div class="w-9 h-9 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center shadow-sm">
+                                    <i class="fa-solid fa-microscope"></i>
+                                </div>
+                            </div>
+                            <div class="text-left">
+                                <h3 class="font-extrabold text-base text-zinc-900 mb-1">Balística Identificativa</h3>
+                                <p class="text-xs text-zinc-500 leading-relaxed">Las marcas microscópicas mecánicas que actúan como huella dactilar.</p>
+                            </div>
+                            <div class="text-left text-[11px] text-teal-700 font-bold flex items-center gap-1">
+                                <span>Girar para revelar doctrina</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                            </div>
+                        </div>
+                        <div class="flip-card-back text-left">
+                            <h4 class="font-bold text-zinc-900 text-sm mb-1">La Firma del Acero</h4>
+                            <p class="text-xs text-zinc-600 leading-relaxed">Se fundamenta en que es imposible crear dos herramientas idénticas. El cañón marca la bala con estrías/campos de fricción; y el percutor, extractor, eyector y plano de recámara marcan el metal del casquillo.</p>
+                            <span class="text-[10px] bg-teal-50 text-teal-800 px-2.5 py-0.5 rounded-full mt-2 inline-block font-mono font-bold">Cotejo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 9: Balística Reconstructiva -->
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flex justify-between items-start">
+                                <span class="text-[10px] font-bold tracking-wider text-zinc-400 uppercase">TEMA 09</span>
+                                <div class="w-9 h-9 rounded-xl bg-pink-50 text-pink-700 flex items-center justify-center shadow-sm">
+                                    <i class="fa-solid fa-arrows-to-eye"></i>
+                                </div>
+                            </div>
+                            <div class="text-left">
+                                <h3 class="font-extrabold text-base text-zinc-900 mb-1">Balística Reconstructiva</h3>
+                                <p class="text-xs text-zinc-500 leading-relaxed">Descifra la dinámica de los hechos: distancias de disparo y trayectorias.</p>
+                            </div>
+                            <div class="text-left text-[11px] text-pink-700 font-bold flex items-center gap-1">
+                                <span>Girar para revelar doctrina</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                            </div>
+                        </div>
+                        <div class="flip-card-back text-left">
+                            <h4 class="font-bold text-zinc-900 text-sm mb-1">Dinámica Forense</h4>
+                            <p class="text-xs text-zinc-600 leading-relaxed">Permite reconstruir distancias de disparo (boca de jarro, quemarropa, corta, larga) mediante el estudio del tatuaje de pólvora y el <strong>Anillo de Fisch</strong> (zona de contusión y enjugamiento) en el orificio de entrada.</p>
+                            <span class="text-[10px] bg-pink-50 text-pink-800 px-2.5 py-0.5 rounded-full mt-2 inline-block font-mono font-bold">Análisis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 10: Investigación Criminal -->
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flex justify-between items-start">
+                                <span class="text-[10px] font-bold tracking-wider text-zinc-400 uppercase">TEMA 10</span>
+                                <div class="w-9 h-9 rounded-xl bg-zinc-100 text-zinc-700 flex items-center justify-center shadow-sm">
+                                    <i class="fa-solid fa-briefcase"></i>
+                                </div>
+                            </div>
+                            <div class="text-left">
+                                <h3 class="font-extrabold text-base text-zinc-900 mb-1">Investigación en la Escena</h3>
+                                <p class="text-xs text-zinc-500 leading-relaxed">La metodología técnica y criminalística correcta de recolección de indicios.</p>
+                            </div>
+                            <div class="text-left text-[11px] text-zinc-600 font-bold flex items-center gap-1">
+                                <span>Girar para revelar doctrina</span> <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                            </div>
+                        </div>
+                        <div class="flip-card-back text-left">
+                            <h4 class="font-bold text-zinc-900 text-sm mb-1">Preservación Física</h4>
+                            <p class="text-xs text-zinc-600 leading-relaxed">Levantamiento cuidadoso del arma sujetando únicamente el guardamonte o empuñadura estriada (preservando dactiloscopía). Búsqueda minuciosa de casquillos y embalaje ordenado individual en bolsas de papel.</p>
+                            <span class="text-[10px] bg-zinc-100 text-zinc-800 px-2.5 py-0.5 rounded-full mt-2 inline-block font-mono font-bold">Investigación</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: CUESTIONARIO FORENSE COMPLETO (Retos de Guardia al final de la página) -->
+        <section class="bg-white rounded-2xl border border-zinc-200 p-6 shadow-sm max-w-3xl mx-auto w-full">
+            <div class="flex items-center justify-between mb-4 pb-4 border-b border-zinc-100">
+                <div>
+                    <h2 class="text-lg font-bold text-zinc-900 flex items-center gap-2">
+                        <i class="fa-solid fa-clipboard-question text-red-800"></i> Retos de Guardia: Evaluación Práctica Final
+                    </h2>
+                    <p class="text-xs text-zinc-500">Resuelve secuencialmente los 10 casos prácticos y reales basados en la doctrina clásica.</p>
+                </div>
+                <span id="quiz-badge" class="px-2.5 py-1 bg-red-50 text-red-800 font-mono text-xs font-bold rounded-lg border border-red-200">
+                    Pregunta 1/10
+                </span>
+            </div>
+
+            <!-- Quiz Progress bar -->
+            <div class="w-full bg-zinc-100 rounded-full h-1.5 mb-6 overflow-hidden">
+                <div id="quiz-progress" class="bg-red-800 h-full progress-transition" style="width: 10%"></div>
+            </div>
+
+            <div id="quiz-container">
+                <!-- Question wrapper -->
+                <div id="question-block" class="mb-6">
+                    <span class="inline-block px-2.5 py-0.5 bg-red-50 text-red-800 border border-red-200 rounded-md text-[10px] font-bold uppercase mb-2">Caso de Estudio Forense</span>
+                    <h3 id="question-text" class="text-xs sm:text-sm font-semibold text-zinc-950 leading-relaxed mb-4">
+                        Cargando caso...
+                    </h3>
+
+                    <div id="options-list" class="flex flex-col gap-3">
+                        <!-- Injected dynamically -->
+                    </div>
+                </div>
+
+                <!-- Live Feedback Panel -->
+                <div id="feedback-panel" class="hidden rounded-xl p-4 mb-6 transition-all border">
+                    <div class="flex gap-3">
+                        <div id="feedback-icon" class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold text-sm">
+                            <!-- Injected dynamically -->
+                        </div>
+                        <div>
+                            <h4 id="feedback-title" class="font-extrabold text-xs uppercase tracking-wider">Resultado</h4>
+                            <p id="feedback-text" class="text-xs leading-relaxed mt-1"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="btn-next" class="w-full py-3 bg-zinc-950 text-white font-bold rounded-xl text-xs hover:bg-zinc-800 transition-colors disabled:opacity-50 disabled:pointer-events-none" disabled>
+                    Siguiente Caso <i class="fa-solid fa-arrow-right ml-1"></i>
+                </button>
+            </div>
+
+            <!-- PANTALLA FINAL DE RESULTADOS CON LOS TRES BOTONES MANDATORIOS -->
+            <div id="quiz-results-screen" class="hidden flex flex-col items-center text-center py-6">
+                <div class="w-16 h-16 rounded-full bg-green-50 text-green-700 border border-green-200 flex items-center justify-center text-2xl font-bold mb-4 shadow-sm">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                <h3 class="text-lg font-bold text-zinc-900">Módulo Finalizado con Éxito</h3>
+                <p class="text-xs text-zinc-500 mt-1 max-w-sm">Has completado el dictamen científico de balística interior de todas tus guardias.</p>
+
+                <div class="bg-zinc-50 border border-zinc-200 rounded-2xl p-4 w-full my-6 flex justify-around items-center">
+                    <div>
+                        <div class="text-2xl font-black text-zinc-950" id="final-score">8/10</div>
+                        <div class="text-[10px] text-zinc-400 uppercase font-bold tracking-wider">Aciertos</div>
+                    </div>
+                    <div class="h-8 w-[1px] bg-zinc-200"></div>
+                    <div>
+                        <div class="text-2xl font-black text-green-700" id="final-percent">80%</div>
+                        <div class="text-[10px] text-zinc-400 uppercase font-bold tracking-wider">Efectividad</div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2.5 w-full font-bold">
+
+                    <button onclick="restartQuiz()" class="w-full md:w-auto px-6 py-3.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 font-bold text-xs rounded-xl uppercase tracking-wider transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-arrow-rotate-right"></i> Reintentar Módulo
+                </button>
+
+                    <!-- Botón 2: Regresar a la página de los temarios -->
+                    <form action="temario.html"> <button> Regresar al Temario</button>
+                    </form>
+
+                    <!-- Botón 3: Avanzar al Siguiente Módulo -->
+                    <form action="balistica-m2.html"> <button>Siguente módulo</button>
+                    </form>
+                    <!--<button onclick="goToNextModule()" class="w-full md:w-auto px-6 py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-xl uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-600/10">
+                    Siguiente Módulo: Balística <i class="fa-solid fa-chevron-right"></i>
+                </button>-->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-zinc-200 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-zinc-500">
+            <p>© 2026 Universidad Insurgentes • Licenciatura en Criminalística. Herramienta interactiva de uso didáctico.</p>
+            <div class="flex gap-4">
+                <span class="hover:text-zinc-300 transition">Doctrina del Dr. Rafael Moreno González</span>
+                <span>•</span>
+                <span class="hover:text-zinc-300 transition">Versión Didáctica v1.3</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DE DIÁLOGO PERSONALIZADO (Evita usar alert() del navegador que bloquea iframes) -->
+    <div id="custom-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl border border-zinc-200 p-6 max-w-md w-full shadow-2xl flex flex-col gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-red-50 text-red-800 flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-circle-info"></i>
+                </div>
+                <h3 id="modal-title" class="font-extrabold text-zinc-950 text-base">Notificación</h3>
+            </div>
+            <p id="modal-desc" class="text-xs text-zinc-600 leading-relaxed">Mensaje del sistema forense.</p>
+            <button onclick="closeModal()" class="w-full py-2.5 bg-zinc-900 hover:bg-zinc-800 text-white font-bold rounded-xl text-xs transition-colors">
+                Entendido
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT: Lógica de simulación 3D (Three.js), rotación manual y motor de cuestionario -->
+    <script>
+        let scene, camera, renderer;
+        let cartridgeGroup, barrel, percussor;
+        let isFiring = false;
+        let fireProgress = 0;
+
+        let isDragging = false;
+        let previousMousePosition = {
+            x: 0,
+            y: 0
+        };
+
+        function init3D() {
+            const container = document.getElementById('canvas-container');
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xf1f5f9); // High contrast light background
+
+            // Zoomed out camera perspective to see the complete physical setup cleanly
+            camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
+            camera.position.set(0, 1.8, 6.0);
+
+            renderer = new THREE.WebGLRenderer({
+                antialias: true
+            });
+            renderer.setSize(width, height);
+            container.appendChild(renderer.domElement);
+
+            // Lab illumination setup (White + color accents)
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.45);
+            scene.add(ambientLight);
+
+            const dirLight1 = new THREE.DirectionalLight(0xffffff, 0.85);
+            dirLight1.position.set(2, 5, 5);
+            scene.add(dirLight1);
+
+            const techCyanLight = new THREE.DirectionalLight(0x06b6d4, 0.55);
+            techCyanLight.position.set(-5, -2, -5);
+            scene.add(techCyanLight);
+
+            const techLilaLight = new THREE.DirectionalLight(0x8b5cf6, 0.35);
+            techLilaLight.position.set(5, -2, 2);
+            scene.add(techLilaLight);
+
+            // === BARREL CONSTRUCTION ===
+            const barrelGeo = new THREE.CylinderGeometry(0.55, 0.55, 3.8, 32, 1, true);
+            const barrelMat = new THREE.MeshStandardMaterial({
+                color: 0x27272a,
+                transparent: true,
+                opacity: 0.3,
+                roughness: 0.15,
+                metalness: 0.95,
+                side: THREE.DoubleSide
+            });
+            barrel = new THREE.Mesh(barrelGeo, barrelMat);
+            barrel.rotation.x = Math.PI / 2;
+            barrel.position.z = -1;
+            scene.add(barrel);
+
+            const groovesGroup = new THREE.Group();
+            for (let i = 0; i < 6; i++) {
+                const grooveGeo = new THREE.CylinderGeometry(0.53, 0.53, 3.75, 12, 1, true);
+                const grooveMat = new THREE.MeshBasicMaterial({
+                    color: 0x0891b2,
+                    transparent: true,
+                    opacity: 0.45,
+                    wireframe: true
+                });
+                const grooveMesh = new THREE.Mesh(grooveGeo, grooveMat);
+                grooveMesh.rotation.y = (Math.PI / 3) * i;
+                groovesGroup.add(grooveMesh);
+            }
+            barrel.add(groovesGroup);
+
+            // === CARTRIDGE GROUP (Brass casing + Copper bullet + Silver primer) ===
+            cartridgeGroup = new THREE.Group();
+
+            // 1. Brass Casing
+            const casingGeo = new THREE.CylinderGeometry(0.48, 0.48, 1.4, 32);
+            const casingMat = new THREE.MeshStandardMaterial({
+                color: 0xd97706,
+                roughness: 0.25,
+                metalness: 0.85
+            });
+            const casing = new THREE.Mesh(casingGeo, casingMat);
+            casing.position.y = -0.6;
+            cartridgeGroup.add(casing);
+
+            // 2. Copper Bullet / Projectile
+            const projectileGeo = new THREE.ConeGeometry(0.46, 0.9, 32);
+            const projectileMat = new THREE.MeshStandardMaterial({
+                color: 0x9a3412,
+                roughness: 0.3,
+                metalness: 0.8
+            });
+            const projectile = new THREE.Mesh(projectileGeo, projectileMat);
+            projectile.position.y = 0.55;
+            cartridgeGroup.add(projectile);
+
+            // 3. Firing Primer Cup
+            const primerGeo = new THREE.CylinderGeometry(0.18, 0.18, 0.05, 16);
+            const primerMat = new THREE.MeshStandardMaterial({
+                color: 0x71717a,
+                metalness: 0.9,
+                roughness: 0.1
+            });
+            const primer = new THREE.Mesh(primerGeo, primerMat);
+            primer.position.y = -1.32;
+            cartridgeGroup.add(primer);
+
+            cartridgeGroup.rotation.x = Math.PI / 2;
+            cartridgeGroup.position.set(0, 0, 1.1);
+            scene.add(cartridgeGroup);
+
+            // === FIRING PIN (Percussor) ===
+            const percussorGeo = new THREE.CylinderGeometry(0.05, 0.02, 0.7, 16);
+            const percussorMat = new THREE.MeshStandardMaterial({
+                color: 0x3f3f46,
+                metalness: 0.9,
+                roughness: 0.3
+            });
+            percussor = new THREE.Mesh(percussorGeo, percussorMat);
+            percussor.rotation.x = Math.PI / 2;
+            percussor.position.set(0, 0, 2.8);
+            scene.add(percussor);
+
+            container.addEventListener('mousedown', (e) => {
+                isDragging = true;
+            });
+            container.addEventListener('mousemove', (e) => {
+                const deltaMove = {
+                    x: e.offsetX - previousMousePosition.x,
+                    y: e.offsetY - previousMousePosition.y
+                };
+
+                if (isDragging) {
+                    const deltaRotationQuaternion = new THREE.Quaternion()
+                        .setFromEuler(new THREE.Euler(
+                            toRadians(deltaMove.y * 0.4),
+                            toRadians(deltaMove.x * 0.4),
+                            0,
+                            'XYZ'
+                        ));
+
+                    cartridgeGroup.quaternion.multiplyQuaternions(deltaRotationQuaternion, cartridgeGroup.quaternion);
+                    barrel.quaternion.multiplyQuaternions(deltaRotationQuaternion, barrel.quaternion);
+                }
+
+                previousMousePosition = {
+                    x: e.offsetX,
+                    y: e.offsetY
+                };
+            });
+            window.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+
+            // Mobile/Tablet swipe compatibility
+            container.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                const touch = e.touches[0];
+                previousMousePosition = {
+                    x: touch.clientX,
+                    y: touch.clientY
+                };
+            });
+            container.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                const touch = e.touches[0];
+                const deltaMove = {
+                    x: touch.clientX - previousMousePosition.x,
+                    y: touch.clientY - previousMousePosition.y
+                };
+
+                const deltaRotationQuaternion = new THREE.Quaternion()
+                    .setFromEuler(new THREE.Euler(
+                        toRadians(deltaMove.y * 0.4),
+                        toRadians(deltaMove.x * 0.4),
+                        0,
+                        'XYZ'
+                    ));
+
+                cartridgeGroup.quaternion.multiplyQuaternions(deltaRotationQuaternion, cartridgeGroup.quaternion);
+                barrel.quaternion.multiplyQuaternions(deltaRotationQuaternion, barrel.quaternion);
+
+                previousMousePosition = {
+                    x: touch.clientX,
+                    y: touch.clientY
+                };
+            });
+            container.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+
+            window.addEventListener('resize', onWindowResize);
+            animate();
+        }
+
+        function toRadians(angle) {
+            return angle * (Math.PI / 180);
+        }
+
+        function onWindowResize() {
+            const container = document.getElementById('canvas-container');
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+            renderer.setSize(width, height);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Steady state idle rotation
+            if (!isDragging && !isFiring) {
+                cartridgeGroup.rotation.y += 0.003;
+                barrel.rotation.y += 0.0015;
+            }
+
+            if (isFiring) {
+                fireProgress += 0.035;
+
+                if (fireProgress < 0.25) {
+                    // Percussion strike
+                    percussor.position.z = 2.8 - (fireProgress * 5.0);
+                } else if (fireProgress >= 0.25 && fireProgress < 0.5) {
+                    // Igniting propellants
+                    document.getElementById('telemetry-pressure').innerText = "3,420 Atm (Extrema)";
+                    document.getElementById('telemetry-pressure').className = "text-red-500 font-mono font-bold animate-pulse";
+                    document.getElementById('telemetry-state').innerText = "Combustión Pólvora";
+                    document.getElementById('telemetry-state').className = "text-orange-600 font-mono font-bold";
+
+                    barrel.position.x = (Math.random() - 0.5) * 0.03;
+                } else if (fireProgress >= 0.5 && fireProgress < 1.6) {
+                    // Moving along dextrogyre grooves
+                    const bullet = cartridgeGroup.children[1];
+                    bullet.position.y += 0.16;
+                    bullet.rotation.y += 0.5;
+
+                    document.getElementById('telemetry-velocity').innerText = "345 m/s (Supersónica)";
+                    document.getElementById('telemetry-state').innerText = "Desplazamiento Ánima";
+                    document.getElementById('telemetry-state').className = "text-cyan-600 font-mono font-bold";
+                } else {
+                    // Resetting state
+                    isFiring = false;
+                    fireProgress = 0;
+                    barrel.position.set(0, 0, -1);
+                    percussor.position.z = 2.8;
+                    cartridgeGroup.children[1].position.y = 0.55;
+                    document.getElementById('telemetry-pressure').innerText = "1 Atm";
+                    document.getElementById('telemetry-pressure').className = "text-zinc-600 font-mono";
+                    document.getElementById('telemetry-state').innerText = "Listo para Ignición";
+                    document.getElementById('telemetry-state').className = "text-green-600 font-mono";
+                    document.getElementById('telemetry-velocity').innerText = "0 m/s";
+                }
+            }
+
+            renderer.render(scene, camera);
+        }
+
+        // Fire trigger
+        document.getElementById('btn-fire').addEventListener('click', () => {
+            if (isFiring) return;
+            isFiring = true;
+            fireProgress = 0;
+        });
+
+        // Reset scene values
+        document.getElementById('btn-reset-sim').addEventListener('click', () => {
+            isFiring = false;
+            fireProgress = 0;
+            camera.position.set(0, 1.8, 6.0);
+            camera.lookAt(0, 0, 0);
+            cartridgeGroup.rotation.set(Math.PI / 2, 0, 0);
+            cartridgeGroup.children[1].position.y = 0.55;
+            percussor.position.z = 2.8;
+            barrel.rotation.set(Math.PI / 2, 0, 0);
+            document.getElementById('telemetry-pressure').innerText = "1 Atm";
+            document.getElementById('telemetry-state').innerText = "Listo para Ignición";
+            document.getElementById('telemetry-state').className = "text-green-600 font-mono";
+            document.getElementById('telemetry-velocity').innerText = "0 m/s";
+            showModal("Laboratorio Restablecido", "La recámara, el cañón y el percutor se han colocado de nuevo en su configuración original de fábrica.");
+        });
+
+        function changeCameraAngle(type) {
+            if (type === 'bullet') {
+                // Vista completamente alejada y centrada del conjunto del cartucho
+                camera.position.set(0, 2.2, 7.0);
+                camera.lookAt(0, 0, 0.5);
+                showModal("Inspección Completa: Cartucho", "Esta vista se enfoca de manera alejada en la recámara. Observa la perfecta unión y acoplamiento estructural del cartucho completo (vaina, pólvora y ojiva) en relación con el cañón antes del disparo.");
+            } else if (type === 'ignition') {
+                // Vista completamente alejada, en diagonal y centrada de la zona de percusión trasera
+                camera.position.set(3.8, 2.5, 6.5);
+                camera.lookAt(0, 0, 1.2);
+                showModal("Inspección Completa: Percusión", "Enfocado con perfecta visibilidad alejada en el culote del casquillo. Aquí se visualiza el espacio donde la aguja golpea el fulminante, iniciando la deflagración y el estampado de marcas mecánicas.");
+            } else if (type === 'grooves') {
+                // Vista completamente alejada y frontal, centrada en el recorrido y paso de estría del cañón
+                camera.position.set(0, 2.2, -7.0);
+                camera.lookAt(0, 0, -1.0);
+                showModal("Inspección Completa: Paso de Estría", "Observamos el cañón desde su parte frontal de forma alejada. Se puede apreciar la longitud completa del cañón y el rayado helicoidal interno diseñado para estabilizar la trayectoria.");
+            }
+        }
+
+        // === FORENSIC QUIZ SYSTEM (10 REACTIVOS CLÁSICOS) ===
+        const forensicQuiz = [{
+            question: "En una investigación de homicidio, el perito recupera un proyectil calibre .38 Special incrustado en madera. Al examinarlo, nota que está completamente liso y sin marcas de estrías de rotación. ¿Cuál es el diagnóstico científico correcto?",
+            options: [{
+                key: "A",
+                text: "El proyectil fue disparado con un cartucho defectuoso que carecía de pólvora propulsora.",
+                correct: false
+            }, {
+                key: "B",
+                text: "Fue disparado por un arma de ánima lisa, como una escopeta o un arma de fabricación casera rústica.",
+                correct: true
+            }, {
+                key: "C",
+                text: "La velocidad de salida del proyectil de la boca del cañón superó los límites térmicos y fundió las marcas del ánima.",
+                correct: false
+            }, {
+                key: "D",
+                text: "El tirador revistió el cañón con aceites lubricantes de teflón para evitar el rayado físico.",
+                correct: false
+            }],
+            explanation: "Las armas de ánima lisa (escopetas convencionales o pistolas de fabricación artesanal) no imprimen estrías helicoidales debido a que sus cañones carecen de estriado interior maquinado."
+        }, {
+            question: "Se recolecta un casquillo percutido de 9mm en la escena. Al microscopio forense, se observa que la huella de la aguja percutora está perfectamente centrada en el fulminante pero es sumamente tenue. ¿A qué se debe esto?",
+            options: [{
+                key: "A",
+                text: "Al uso de pólvora de base doble con velocidad excesiva de deflagración interna.",
+                correct: false
+            }, {
+                key: "B",
+                text: "A que el casquillo era de una aleación de latón más blanda que el estándar industrial.",
+                correct: false
+            }, {
+                key: "C",
+                text: "A un resorte del percutor vencido o acumulación de residuos de grasa en el canal de aguja.",
+                correct: true
+            }, {
+                key: "D",
+                text: "Al desbalance térmico originado por disparar bajo condiciones de frío ambiental extremo.",
+                correct: false
+            }],
+            explanation: "Una marca de percusión tenue pero centrada delata problemas mecánicos del arma, como resortes fatigados, suciedad acumulada o agujas desgastadas que restan energía de golpe."
+        }, {
+            question: "En balística comparativa, el perito determina que dos balas recuperadas de escenas distintas comparten el estriado dextrógiro con 6 marcas, pero descarta que correspondan al mismo cañón debido al paso de estría. ¿Cómo se explica esto?",
+            options: [{
+                key: "A",
+                text: "El paso de estría cambia de ángulo de forma aleatoria con cada disparo realizado.",
+                correct: false
+            }, {
+                key: "B",
+                text: "Cada fabricante diseña tasas de rotación distintas según el peso del proyectil a estabilizar.",
+                correct: true
+            }, {
+                key: "C",
+                text: "El paso de estría solo se mantiene constante en armas de uso militar exclusivo.",
+                correct: false
+            }, {
+                key: "D",
+                text: "La pólvora utilizada altera químicamente la inclinación de las estrías del cañón.",
+                correct: false
+            }],
+            explanation: "El paso de estría (longitud para dar un giro completo) es un rasgo técnico fijado de fábrica. Diferentes marcas pueden tener 6 estrías pero con variaciones en su tasa de rotación."
+        }, {
+            question: "Al inspeccionar un casquillo percutido de latón, el investigador localiza una fisura longitudinal severa. El informe médico indica que el sospechoso no sufrió lesiones. ¿Cuál es el origen de este fallo?",
+            options: [{
+                key: "A",
+                text: "El casquillo no realizó la obturación correcta debido a un desgaste extremo del latón.",
+                correct: true
+            }, {
+                key: "B",
+                text: "La mezcla del fulminante causó una corrosión ácida inmediata en las paredes del casquillo.",
+                correct: false
+            }, {
+                key: "C",
+                text: "El proyectil era de plomo blando y se soldó por calor a las paredes de la recámara.",
+                correct: false
+            }, {
+                key: "D",
+                text: "La pólvora moderna deflagró generando una presión de succión destructiva.",
+                correct: false
+            }],
+            explanation: "Si el latón está desgastado (común en cartuchos recargados), se agrieta y falla en expandirse para sellar la recámara (obturación), fugando gases de alta presión."
+        }, {
+            question: "Un cartucho intacto presenta una leve marca de percusión pero no disparó. El perito debe determinar científicamente si el fallo se debe a la aguja percutora o a la química del fulminante. ¿Cómo procede?",
+            options: [{
+                key: "A",
+                text: "Pesando el cartucho para analizar fluctuaciones micrométricas de la pólvora interna.",
+                correct: false
+            }, {
+                key: "B",
+                text: "Midiendo la profundidad de la huella para verificar si alcanzó el rango de impacto mínimo.",
+                correct: true
+            }, {
+                key: "C",
+                text: "Sometiendo el fulminante a pruebas químicas de acidez forense en laboratorio.",
+                correct: false
+            }, {
+                key: "D",
+                text: "Agitando el cartucho para escuchar si la pólvora está compactada por la humedad.",
+                correct: false
+            }],
+            explanation: "El análisis micro-comparativo de profundidad de percusión determina si el golpe de la aguja percutora tuvo la energía de activación mínima para deformar la cápsula e iniciar la chispa."
+        }, {
+            question: "Para aclarar la diferencia exacta entre 'Deflagración' y 'Detonación' conforme a la doctrina del Dr. Moreno González, ¿cuál de las siguientes afirmaciones es la científicamente válida?",
+            options: [{
+                key: "A",
+                text: "La deflagración libera gases inertes; la detonación genera combustión sin oxígeno.",
+                correct: false
+            }, {
+                key: "B",
+                text: "La deflagración es subsónica y segura; la detonación es supersónica y destruiría la recámara.",
+                correct: true
+            }, {
+                key: "C",
+                text: "La deflagración es exclusiva de cartuchos de escopeta; la detonación ocurre en pistolas.",
+                correct: false
+            }, {
+                key: "D",
+                text: "La detonación ocurre únicamente en el aire libre; la deflagración requiere un sistema cerrado.",
+                correct: false
+            }],
+            explanation: "La pólvora de las armas está diseñada para deflagrar (combustión progresiva por debajo de la velocidad del sonido). Si detonara (combustión supersónica), la presión destruiría la recámara."
+        }, {
+            question: "Se debate en el tribunal si un proyectil fue disparado por un revólver o una pistola semiautomática. Al microscopio forense del casquillo, encuentras marcas de eyector y extractor mecánico. ¿Qué indica esto?",
+            options: [{
+                key: "A",
+                text: "Proviene de una pistola semiautomática, ya que los revólveres no expulsan mecánicamente las vainas.",
+                correct: true
+            }, {
+                key: "B",
+                text: "Proviene de un revólver de cañón basculante con sistema de extracción en estrella de aire.",
+                correct: false
+            }, {
+                key: "C",
+                text: "No determina el tipo de arma, pues ambas plataformas comparten el mismo mecanismo extractor.",
+                correct: false
+            }, {
+                key: "D",
+                text: "Indica un cartucho defectuoso que se alimentó de reversa en el tambor cilíndrico.",
+                correct: false
+            }],
+            explanation: "Las pistolas semiautomáticas requieren sistemas de extracción y eyección para desalojar el casquillo en cada ciclo de disparo, dejando marcas mecánicas que los revólveres no producen."
+        }, {
+            question: "En un allanamiento se incauta una pistola con el cañón recortado artesanalmente. Al realizar disparos de prueba, se registra una gran pérdida de velocidad del proyectil. ¿Cuál es la explicación física de este fenómeno?",
+            options: [{
+                key: "A",
+                text: "El corte alteró el campo magnético del cañón, restando velocidad al plomo.",
+                correct: false
+            }, {
+                key: "B",
+                text: "Los gases calientes de la pólvora tienen menor espacio y tiempo útil para empujar la bala.",
+                correct: true
+            }, {
+                key: "C",
+                text: "El proyectil sufre turbulencia inversa por la falta del reborde de corona industrial.",
+                correct: false
+            }, {
+                key: "D",
+                text: "La pólvora necesita la resistencia del aire exterior en el cañón para combustionar.",
+                correct: false
+            }],
+            explanation: "Al acortar el cañón de forma drástica, los gases generados por la pólvora empujan el proyectil durante menos tiempo antes de que éste salga al aire libre, perdiendo velocidad inicial."
+        }, {
+            question: "El perito detecta líneas paralelas finas y continuas a lo largo de los campos de la bala de prueba, adicionales a las estrías del cañón. ¿Cómo se denominan estas huellas balísticas?",
+            options: [{
+                key: "A",
+                text: "Estrías de rozamiento secundario provocadas por óxido, impurezas o suciedad del ánima.",
+                correct: true
+            }, {
+                key: "B",
+                text: "Marcas térmicas secundarias por el calor de la fricción extrema de los metales.",
+                correct: false
+            }, {
+                key: "C",
+                text: "Huellas de transferencia del fulminante que viajaron en la base del proyectil.",
+                correct: false
+            }, {
+                key: "D",
+                text: "Marcas de retroceso inverso producidas por el flujo turbulento de los gases traseros.",
+                correct: false
+            }],
+            explanation: "Las imperfecciones físicas microscópicas, el desgaste por óxido o la suciedad acumulada en el cañón crean estrías de rozamiento secundarias, esenciales para el cotejo positivo de identidad."
+        }, {
+            question: "Una bala de prueba muestra estrías muy ensanchadas e irregulares al inicio de su estriado (zona de toma de estrías). ¿Cómo interpreta el perito este indicio físico?",
+            options: [{
+                key: "A",
+                text: "El cañón presenta erosión o desgaste severo por exceso de disparos continuos.",
+                correct: true
+            }, {
+                key: "B",
+                text: "El proyectil disparado correspondía a un calibre inferior al diseñado por fábrica.",
+                correct: false
+            }, {
+                key: "C",
+                text: "La pólvora utilizada generó una explosión con fuerzas laterales que deformaron el cañón.",
+                correct: false
+            }, {
+                key: "D",
+                text: "El disparo se realizó con el arma sumergida, amortiguando la entrada a las estrías.",
+                correct: false
+            }],
+            explanation: "Con el uso continuo (miles de disparos), la zona de toma de estrías se erosiona. Esto causa que la bala 'patine' momentáneamente al entrar al cañón antes de tomar el giro, ensanchando las marcas."
+        }];
+
+        let currentQuestionIdx = 0;
+        let score = 0;
+        let isAnswered = false;
+
+        function loadQuestion() {
+            isAnswered = false;
+            document.getElementById('btn-next').disabled = true;
+            document.getElementById('feedback-panel').classList.add('hidden');
+
+            const currentCase = forensicQuiz[currentQuestionIdx];
+
+            document.getElementById('quiz-badge').innerText = `Pregunta ${currentQuestionIdx + 1}/10`;
+            const progressPercent = ((currentQuestionIdx + 1) * 10);
+            document.getElementById('quiz-progress').style.width = `${progressPercent}%`;
+
+            // Synchronization with the Header Progress Tracker
+            document.getElementById('header-progress-fill').style.width = `${progressPercent}%`;
+            document.getElementById('header-progress-text').innerText = `${progressPercent}% Completado`;
+
+            document.getElementById('question-text').innerText = currentCase.question;
+
+            const optionsList = document.getElementById('options-list');
+            optionsList.innerHTML = '';
+
+            currentCase.options.forEach((opt) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-xl border border-zinc-200 hover:bg-zinc-50 hover:border-zinc-300 transition-all text-xs flex items-start gap-3 focus:outline-none";
+                btn.onclick = () => selectOption(btn, opt);
+
+                btn.innerHTML = `
+                    <span class="w-5 h-5 rounded-full border border-zinc-300 flex items-center justify-center font-bold text-[10px] text-zinc-500 bg-white flex-shrink-0">
+                        ${opt.key}
+                    </span>
+                    <span class="text-zinc-700 leading-relaxed font-semibold">${opt.text}</span>
+                `;
+                optionsList.appendChild(btn);
+            });
+        }
+
+        function selectOption(selectedBtn, option) {
+            if (isAnswered) return;
+            isAnswered = true;
+
+            const currentCase = forensicQuiz[currentQuestionIdx];
+            const optionsList = document.getElementById('options-list');
+            const buttons = optionsList.getElementsByTagName('button');
+
+            for (let btn of buttons) {
+                btn.disabled = true;
+                btn.className = "w-full text-left p-4 rounded-xl border border-zinc-100 opacity-60 text-xs flex items-start gap-3 transition-all";
+            }
+
+            const feedbackPanel = document.getElementById('feedback-panel');
+            const feedbackIcon = document.getElementById('feedback-icon');
+            const feedbackTitle = document.getElementById('feedback-title');
+            const feedbackText = document.getElementById('feedback-text');
+
+            if (option.correct) {
+                score++;
+                selectedBtn.className = "w-full text-left p-4 rounded-xl border-2 border-green-600 bg-green-50/50 text-xs flex items-start gap-3 transition-all font-semibold";
+                selectedBtn.querySelector('span').className = "w-5 h-5 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-[10px] flex-shrink-0";
+
+                feedbackPanel.className = "block rounded-xl p-4 mb-6 transition-all border border-green-200 bg-green-50/70";
+                feedbackIcon.className = "w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 bg-green-600 text-white font-bold text-sm";
+                feedbackIcon.innerHTML = `<i class="fa-solid fa-check"></i>`;
+                feedbackTitle.innerText = "Dictamen Forense Acertado";
+                feedbackTitle.className = "font-bold text-xs uppercase tracking-wider text-green-800";
+                feedbackText.innerText = `¡Correcto! ${currentCase.explanation}`;
+                feedbackText.className = "text-[11px] leading-relaxed mt-1 text-green-700";
+            } else {
+                selectedBtn.className = "w-full text-left p-4 rounded-xl border-2 border-red-600 bg-red-50/50 text-xs flex items-start gap-3 transition-all font-semibold";
+                selectedBtn.querySelector('span').className = "w-5 h-5 rounded-full bg-red-600 text-white flex items-center justify-center font-bold text-[10px] flex-shrink-0";
+
+                for (let i = 0; i < currentCase.options.length; i++) {
+                    if (currentCase.options[i].correct) {
+                        buttons[i].className = "w-full text-left p-4 rounded-xl border-2 border-green-600 bg-green-50/30 text-xs flex items-start gap-3 transition-all opacity-100";
+                        break;
+                    }
+                }
+
+                feedbackPanel.className = "block rounded-xl p-4 mb-6 transition-all border border-red-200 bg-red-50/70";
+                feedbackIcon.className = "w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 bg-red-600 text-white font-bold text-sm";
+                feedbackIcon.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+                feedbackTitle.innerText = "Error de Protocolo Científico";
+                feedbackTitle.className = "font-bold text-xs uppercase tracking-wider text-red-900";
+                feedbackText.innerText = `Incorrecto. El análisis pericial indica: ${currentCase.explanation}`;
+                feedbackText.className = "text-[11px] leading-relaxed mt-1 text-red-800";
+            }
+
+            document.getElementById('btn-next').disabled = false;
+        }
+
+        document.getElementById('btn-next').addEventListener('click', () => {
+            currentQuestionIdx++;
+            if (currentQuestionIdx < forensicQuiz.length) {
+                loadQuestion();
+            } else {
+                document.getElementById('question-block').classList.add('hidden');
+                document.getElementById('feedback-panel').classList.add('hidden');
+                document.getElementById('btn-next').classList.add('hidden');
+
+                const percent = Math.round((score / forensicQuiz.length) * 100);
+                document.getElementById('final-score').innerText = `${score}/${forensicQuiz.length}`;
+                document.getElementById('final-percent').innerText = `${percent}%`;
+
+                if (percent < 70) {
+                    document.getElementById('final-percent').className = "text-2xl font-black text-red-700 animate-pulse";
+                } else {
+                    document.getElementById('final-percent').className = "text-2xl font-black text-green-700";
+                }
+
+                document.getElementById('quiz-results-screen').classList.remove('hidden');
+            }
+        });
+
+        // Quiz resetting actions
+        function restartQuiz() {
+            currentQuestionIdx = 0;
+            score = 0;
+            document.getElementById('question-block').classList.remove('hidden');
+            document.getElementById('btn-next').classList.remove('hidden');
+            document.getElementById('quiz-results-screen').classList.add('hidden');
+            loadQuestion();
+            showModal("Cuestionario Reiniciado", "Has restablecido el examen de casos reales de balística interior. Lee con detenimiento científico cada reactivo.");
+        }
+
+        function returnToMenu() {
+            showModal("Regresar al Temario", "Simulando regreso seguro al panel de módulos de la Licenciatura en Criminalística. ¡Buen trabajo en este nivel!");
+        }
+
+        function goToNextModule() {
+            showModal("Siguiente Módulo: Balística Exterior", "Preparando la transición al Módulo 2: Balística Exterior (El Vuelo y la Trayectoria del Proyectil). ¡La física de la trayectoria te espera!");
+        }
+
+        // Custom notification system
+        function showModal(title, desc) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-desc').innerText = desc;
+            document.getElementById('custom-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('custom-modal').classList.add('hidden');
+        }
+
+        // Initialize elements on load
+        window.onload = function() {
+            init3D();
+            loadQuestion();
+        }
+    </script>
+</body>
+
+</html>
